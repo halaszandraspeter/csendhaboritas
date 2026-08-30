@@ -12,10 +12,12 @@ export const metadata: Metadata = {
 export default async function HelyszinPage() {
   const event = await getEvent()
 
+  // Use Sanity data when available, fall back to known defaults
   const venue = event?.venue ?? 'Grizzly Music Pub'
   const address = event?.address ?? 'Miskolc'
   const description = event?.venueDescription
   const mapUrl = event?.mapEmbedUrl
+  const transportInfo = event?.transportInfo
   const photos = event?.venuePhotos ?? []
 
   return (
@@ -24,7 +26,7 @@ export default async function HelyszinPage() {
         HELYSZÍN
       </h1>
 
-      {/* Venue info */}
+      {/* Venue info — always visible (uses fallbacks when Sanity not connected) */}
       <div className="flex items-start gap-4 mb-10">
         <MapPin size={32} className="text-day1 flex-shrink-0 mt-1" />
         <div>
@@ -55,25 +57,28 @@ export default async function HelyszinPage() {
         </div>
       )}
 
-      {/* Transport info */}
-      {'transportInfo' in (event ?? {}) && (event as { transportInfo?: string })?.transportInfo && (
+      {/* Transport / parking info */}
+      {transportInfo && (
         <div className="mb-10">
           <h3 className="font-display text-xl tracking-widest text-day1 mb-3">
             MEGKÖZELÍTÉS
           </h3>
           <p className="font-body text-fg/80 leading-relaxed">
-            {(event as { transportInfo?: string })?.transportInfo}
+            {transportInfo}
           </p>
         </div>
       )}
 
-      {/* Venue photos */}
+      {/* Venue photos — keyed by Sanity _key for stable identity */}
       {photos.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-muted mt-8">
           {photos.map((photo, i) => {
             const url = sanityImageUrl(photo).width(800).height(533).url()
+            // Sanity injects _key on array items at runtime even though our type
+            // doesn't declare it; fall back to index only if absent.
+            const key = (photo as { _key?: string })._key ?? i
             return (
-              <div key={i} className="relative aspect-[3/2] bg-surface overflow-hidden">
+              <div key={key} className="relative aspect-[3/2] bg-surface overflow-hidden">
                 <Image
                   src={url}
                   alt={`${venue} fotó ${i + 1}`}
@@ -87,14 +92,10 @@ export default async function HelyszinPage() {
         </div>
       )}
 
-      {/* Placeholder when no Sanity data */}
+      {/* Shown only when Sanity is connected but the event document is empty of extras */}
       {!event && (
-        <div className="border border-muted p-8 text-center">
-          <p className="font-display text-2xl tracking-widest text-fg/40">
-            GRIZZLY MUSIC PUB
-          </p>
-          <p className="font-body text-muted-fg mt-2">Miskolc</p>
-          <p className="font-body text-xs text-muted-fg mt-4">
+        <div className="border border-muted p-8 text-center mt-8">
+          <p className="font-body text-xs text-muted-fg">
             Részletek hamarosan · Október 9–10, 2026
           </p>
         </div>

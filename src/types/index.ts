@@ -78,6 +78,7 @@ export interface EventData {
   mapEmbedUrl?: string
   venueDescription?: string
   venuePhotos?: SanityImage[]
+  transportInfo?: string
   socialLinks?: EventSocialLinks
   sponsors?: Sponsor[]
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getAllBands } from '@/src/lib/sanity/queries'
+import { PLACEHOLDER_DAY1, PLACEHOLDER_DAY2 } from '@/src/data/placeholder'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -7,9 +8,9 @@ export const metadata: Metadata = {
   description: 'A Miskolci Csendháborítás két napjának teljes műsora — Október 9–10.',
 }
 
-const PLACEHOLDER: Record<1 | 2, string[]> = {
-  1: ['TISZTAKOSZ', 'YÜREI', 'RISINGS', 'ÉGITESTEK', 'LITTLE MISS', 'TELTHÁZ'],
-  2: ['LIES', 'BLISS', 'DAY OUT', 'PUB VATIS', 'DEMPY', 'LIBERTÉ'],
+const PLACEHOLDER: Record<1 | 2, readonly string[]> = {
+  1: PLACEHOLDER_DAY1,
+  2: PLACEHOLDER_DAY2,
 }
 
 export default async function ProgramPage() {
