@@ -1,26 +1,32 @@
 @import "tailwindcss";
+@plugin "tailwindcss-animate";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ── Colour tokens ── */
+  --color-bg: #000000;
+  --color-fg: #ffffff;
+  /** Day 1 — Október 9. — lime green */
+  --color-day1: #aadd00;
+  /** Day 2 — Október 10. — hot pink */
+  --color-day2: #ee44dd;
+  --color-surface: #111111;
+  --color-muted: #1a1a1a;
+  --color-muted-fg: #888888;
+
+  /* ── Font tokens ── */
+  --font-display: var(--font-bebas-neue);
+  --font-body: var(--font-inter);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base ── */
+html {
+  background-color: #000;
+  color: #fff;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body, system-ui, sans-serif);
+  background-color: #000;
+  color: #fff;
 }
