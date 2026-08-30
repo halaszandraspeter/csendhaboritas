@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { getAllBands } from '@/src/lib/sanity/queries'
-import { PLACEHOLDER_DAY1, PLACEHOLDER_DAY2 } from '@/src/data/placeholder'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -8,16 +7,10 @@ export const metadata: Metadata = {
   description: 'A Miskolci Csendháborítás két napjának teljes műsora — Október 9–10.',
 }
 
-const PLACEHOLDER: Record<1 | 2, readonly string[]> = {
-  1: PLACEHOLDER_DAY1,
-  2: PLACEHOLDER_DAY2,
-}
-
 export default async function ProgramPage() {
   const bands = await getAllBands()
   const day1Bands = bands.filter((b) => b.day === 1)
   const day2Bands = bands.filter((b) => b.day === 2)
-  const hasData = bands.length > 0
 
   return (
     <div className="min-h-dvh px-6 py-16 max-w-5xl mx-auto w-full">
@@ -37,39 +30,36 @@ export default async function ProgramPage() {
           </div>
 
           <ul className="space-y-1">
-            {hasData
-              ? day1Bands.map((band) => (
-                  <li key={band._id}>
-                    <Link
-                      href={`/zenekarok/${band.slug.current}`}
-                      className="flex justify-between items-center py-3 border-b border-muted hover:border-day1 group transition-colors"
-                    >
-                      <span className="font-display text-xl tracking-widest text-fg group-hover:text-day1 transition-colors">
-                        {band.name}
-                      </span>
-                      <div className="flex items-center gap-3">
-                        {band.genre && (
-                          <span className="text-xs text-muted-fg font-body hidden sm:block">
-                            {band.genre}
-                          </span>
-                        )}
-                        {band.setTime && (
-                          <span className="font-display text-sm text-day1 tabular-nums">
-                            {band.setTime}
-                          </span>
-                        )}
-                      </div>
-                    </Link>
-                  </li>
-                ))
-              : PLACEHOLDER[1].map((name) => (
-                  <li
-                    key={name}
-                    className="py-3 border-b border-muted font-display text-xl tracking-widest text-fg/40"
+            {day1Bands.length > 0 ? (
+              day1Bands.map((band) => (
+                <li key={band._id}>
+                  <Link
+                    href={`/zenekarok/${band.slug.current}`}
+                    className="flex justify-between items-center py-3 border-b border-muted hover:border-day1 group transition-colors"
                   >
-                    {name}
-                  </li>
-                ))}
+                    <span className="font-display text-xl tracking-widest text-fg group-hover:text-day1 transition-colors">
+                      {band.name}
+                    </span>
+                    <div className="flex items-center gap-3">
+                      {band.genre && (
+                        <span className="text-xs text-muted-fg font-body hidden sm:block">
+                          {band.genre}
+                        </span>
+                      )}
+                      {band.setTime && (
+                        <span className="font-display text-sm text-day1 tabular-nums">
+                          {band.setTime}
+                        </span>
+                      )}
+                    </div>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <li className="font-display text-2xl tracking-widest text-muted-fg/50 py-10 text-center">
+                HAMAROSAN...
+              </li>
+            )}
           </ul>
         </div>
 
@@ -84,39 +74,36 @@ export default async function ProgramPage() {
           </div>
 
           <ul className="space-y-1">
-            {hasData
-              ? day2Bands.map((band) => (
-                  <li key={band._id}>
-                    <Link
-                      href={`/zenekarok/${band.slug.current}`}
-                      className="flex justify-between items-center py-3 border-b border-muted hover:border-day2 group transition-colors"
-                    >
-                      <span className="font-display text-xl tracking-widest text-fg group-hover:text-day2 transition-colors">
-                        {band.name}
-                      </span>
-                      <div className="flex items-center gap-3">
-                        {band.genre && (
-                          <span className="text-xs text-muted-fg font-body hidden sm:block">
-                            {band.genre}
-                          </span>
-                        )}
-                        {band.setTime && (
-                          <span className="font-display text-sm text-day2 tabular-nums">
-                            {band.setTime}
-                          </span>
-                        )}
-                      </div>
-                    </Link>
-                  </li>
-                ))
-              : PLACEHOLDER[2].map((name) => (
-                  <li
-                    key={name}
-                    className="py-3 border-b border-muted font-display text-xl tracking-widest text-fg/40"
+            {day2Bands.length > 0 ? (
+              day2Bands.map((band) => (
+                <li key={band._id}>
+                  <Link
+                    href={`/zenekarok/${band.slug.current}`}
+                    className="flex justify-between items-center py-3 border-b border-muted hover:border-day2 group transition-colors"
                   >
-                    {name}
-                  </li>
-                ))}
+                    <span className="font-display text-xl tracking-widest text-fg group-hover:text-day2 transition-colors">
+                      {band.name}
+                    </span>
+                    <div className="flex items-center gap-3">
+                      {band.genre && (
+                        <span className="text-xs text-muted-fg font-body hidden sm:block">
+                          {band.genre}
+                        </span>
+                      )}
+                      {band.setTime && (
+                        <span className="font-display text-sm text-day2 tabular-nums">
+                          {band.setTime}
+                        </span>
+                      )}
+                    </div>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <li className="font-display text-2xl tracking-widest text-muted-fg/50 py-10 text-center">
+                HAMAROSAN...
+              </li>
+            )}
           </ul>
         </div>
       </div>

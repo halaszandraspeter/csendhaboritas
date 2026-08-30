@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { getAllBands } from '@/src/lib/sanity/queries'
-import { PLACEHOLDER_DAY1, PLACEHOLDER_DAY2 } from '@/src/data/placeholder'
 import { BandCard } from '@/src/components/ui/BandCard'
 import type { Band } from '@/src/types'
 
@@ -14,13 +13,11 @@ function DaySection({
   accentClass,
   borderClass,
   bands,
-  placeholderNames,
 }: {
   label: string
   accentClass: string
   borderClass: string
   bands: Band[]
-  placeholderNames: readonly string[]
 }) {
   return (
     <div>
@@ -38,13 +35,9 @@ function DaySection({
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-muted">
-          {placeholderNames.map((name) => (
-            <div key={name} className="bg-surface aspect-[3/2] flex items-end p-4">
-              <span className="font-display text-xl tracking-widest text-fg/40">{name}</span>
-            </div>
-          ))}
-        </div>
+        <p className="font-display text-2xl tracking-widest text-muted-fg/50 py-10 text-center">
+          HAMAROSAN...
+        </p>
       )}
     </div>
   )
@@ -67,14 +60,12 @@ export default async function ZenekarokPage() {
           accentClass="text-day1"
           borderClass="bg-day1"
           bands={day1Bands}
-          placeholderNames={PLACEHOLDER_DAY1}
         />
         <DaySection
           label="OKTÓBER 10. — 2. NAP"
           accentClass="text-day2"
           borderClass="bg-day2"
           bands={day2Bands}
-          placeholderNames={PLACEHOLDER_DAY2}
         />
       </div>
     </div>

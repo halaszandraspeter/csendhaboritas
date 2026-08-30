@@ -37,14 +37,9 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
                 </li>
               ))
             ) : (
-              // Placeholder lineup
-              ['TISZTAKOSZ', 'YÜREI', 'RISINGS', 'ÉGITESTEK', 'LITTLE MISS', 'TELTHÁZ'].map(
-                (name) => (
-                  <li key={name} className="font-display tracking-wider text-base text-fg/60">
-                    {name}
-                  </li>
-                )
-              )
+              <li className="font-display text-lg tracking-widest text-muted-fg/50 py-4 text-center">
+                HAMAROSAN...
+              </li>
             )}
           </ul>
         </div>
@@ -72,13 +67,9 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
                 </li>
               ))
             ) : (
-              ['LIES', 'BLISS', 'DAY OUT', 'PUB VATIS', 'DEMPY', 'LIBERTÉ'].map(
-                (name) => (
-                  <li key={name} className="font-display tracking-wider text-base text-fg/60">
-                    {name}
-                  </li>
-                )
-              )
+              <li className="font-display text-lg tracking-widest text-muted-fg/50 py-4 text-center">
+                HAMAROSAN...
+              </li>
             )}
           </ul>
         </div>

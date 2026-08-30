@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   description: 'Grizzly Music Pub — a Miskolci Csendháborítás helyszíne. Cím, megközelítés, térkép.',
 }
 
+/** Accepts a bare URL or a full <iframe> tag — extracts the src either way. */
+function extractMapSrc(input: string | undefined | null): string | null {
+  if (!input) return null
+  const trimmed = input.trim()
+  if (trimmed.startsWith('http')) return trimmed
+  const match = trimmed.match(/src="([^"]+)"/)
+  return match ? match[1] : null
+}
+
 export default async function HelyszinPage() {
   const event = await getEvent()
 
@@ -16,7 +25,8 @@ export default async function HelyszinPage() {
   const venue = event?.venue ?? 'Grizzly Music Pub'
   const address = event?.address ?? 'Miskolc'
   const description = event?.venueDescription
-  const mapUrl = event?.mapEmbedUrl
+  // Accept either a bare URL or a full <iframe> paste from Google Maps
+  const mapUrl = extractMapSrc(event?.mapEmbedUrl)
   const transportInfo = event?.transportInfo
   const photos = event?.venuePhotos ?? []
 
@@ -42,9 +52,12 @@ export default async function HelyszinPage() {
         </p>
       )}
 
-      {/* Map embed */}
+      {/* Map embed — CSS filter gives a dark/night look without an API key */}
       {mapUrl && (
-        <div className="w-full aspect-video mb-10 overflow-hidden border border-muted">
+        <div
+          className="w-full aspect-video mb-10 overflow-hidden border border-muted"
+          style={{ filter: 'invert(90%) hue-rotate(180deg)' }}
+        >
           <iframe
             src={mapUrl}
             width="100%"

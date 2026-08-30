@@ -1,5 +1,4 @@
 import { BandCard } from '@/src/components/ui/BandCard'
-import { PLACEHOLDER_DAY1, PLACEHOLDER_DAY2 } from '@/src/data/placeholder'
 import type { Band } from '@/src/types'
 
 interface BandGridSectionProps {
@@ -7,16 +6,14 @@ interface BandGridSectionProps {
   day2Bands: Band[]
 }
 
-/** Renders a day section — real data if available, placeholder otherwise */
+/** Renders a day section — real data if available, "coming soon" otherwise */
 function DaySection({
   label,
   bands,
-  placeholderNames,
   accentClass,
 }: {
   label: string
   bands: Band[]
-  placeholderNames: readonly string[]
   accentClass: string
 }) {
   return (
@@ -31,13 +28,9 @@ function DaySection({
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-muted">
-          {placeholderNames.map((name) => (
-            <div key={name} className="bg-surface aspect-[3/2] flex items-end p-4">
-              <span className="font-display text-xl tracking-widest text-fg/40">{name}</span>
-            </div>
-          ))}
-        </div>
+        <p className="font-display text-2xl tracking-widest text-muted-fg/50 py-10 text-center">
+          HAMAROSAN...
+        </p>
       )}
     </div>
   )
@@ -54,13 +47,11 @@ export function BandGridSection({ day1Bands, day2Bands }: BandGridSectionProps) 
         <DaySection
           label="Október 9. — 1. Nap"
           bands={day1Bands}
-          placeholderNames={PLACEHOLDER_DAY1}
           accentClass="text-day1"
         />
         <DaySection
           label="Október 10. — 2. Nap"
           bands={day2Bands}
-          placeholderNames={PLACEHOLDER_DAY2}
           accentClass="text-day2"
         />
       </div>

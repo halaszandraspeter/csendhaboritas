@@ -13,18 +13,6 @@ export const eventSchema = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'day1',
-      title: '1. nap dátuma',
-      type: 'date',
-      description: 'Október 9.',
-    }),
-    defineField({
-      name: 'day2',
-      title: '2. nap dátuma',
-      type: 'date',
-      description: 'Október 10.',
-    }),
-    defineField({
       name: 'venue',
       title: 'Helyszín neve',
       type: 'string',
@@ -37,8 +25,11 @@ export const eventSchema = defineType({
     }),
     defineField({
       name: 'mapEmbedUrl',
-      title: 'Google Maps embed URL',
-      type: 'url',
+      title: 'Google Maps embed',
+      type: 'text',
+      rows: 2,
+      description:
+        'Google Maps → Share → Embed a map. Paste either the full <iframe> code or just the URL from its src="…" attribute.',
     }),
     defineField({
       name: 'venueDescription',
