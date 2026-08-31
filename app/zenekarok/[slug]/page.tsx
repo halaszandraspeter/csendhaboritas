@@ -109,23 +109,25 @@ export default async function BandPage({
         {/* Right — band info */}
         <div className="flex-1 flex flex-col justify-between p-8 overflow-y-auto">
           {/* Band logo / name */}
-          {bandLogoUrl ? (
-            <Image
-              src={bandLogoUrl}
-              alt={`${band.name} logo`}
-              width={400}
-              height={150}
-              className="max-w-[280px] object-contain mb-4"
-            />
-          ) : (
-            <h1 className={`font-display text-5xl tracking-widest ${dayAccent} mb-4`}>
-              {band.name}
-            </h1>
-          )}
+          <div className="flex justify-center">
+            {bandLogoUrl ? (
+              <Image
+                src={bandLogoUrl}
+                alt={`${band.name} logo`}
+                width={400}
+                height={150}
+                className="max-w-[280px] object-contain mb-4"
+              />
+            ) : (
+              <h1 className={`font-display text-5xl tracking-widest ${dayAccent} mb-4`}>
+                {band.name}
+              </h1>
+            )}
+          </div>
 
           {/* Members */}
           {band.members && band.members.length > 0 && (
-            <div className="flex gap-4 flex-wrap mb-6">
+            <div className="flex gap-4 flex-wrap mb-6 justify-center">
               {band.members.map((member) => {
                 const memberPhotoUrl = member.photo
                   ? sanityImageUrl(member.photo).width(240).height(240).url()
@@ -157,22 +159,30 @@ export default async function BandPage({
 
           {/* Bio */}
           {band.bio && (
-            <div className="mb-6">
+            <div className="mb-6 text-right">
               <h2 className="font-display text-2xl tracking-widest mb-3">
                 <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
                   MI VAGYUNK A {band.name.toUpperCase()}
                 </span>
               </h2>
-              <p className="font-body text-base leading-relaxed whitespace-pre-line">
-                <span className="bg-[#e5e5e5] text-black px-1 py-0.5 box-decoration-clone leading-loose">
-                  {band.bio}
-                </span>
-              </p>
+              <div className="font-body text-base">
+                {band.bio.split('\n').map((line, i) => (
+                  line.trim() === '' ? (
+                    <div key={i} className="h-4" />
+                  ) : (
+                    <div key={i}>
+                      <span className="bg-[#e5e5e5] text-black px-1 leading-[1.8]">
+                        {line}
+                      </span>
+                    </div>
+                  )
+                ))}
+              </div>
             </div>
           )}
 
           {/* Social links + music embed */}
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col items-end">
             {band.socialLinks && (
               <SocialLinks links={band.socialLinks} />
             )}
@@ -289,11 +299,19 @@ export default async function BandPage({
                   MI VAGYUNK A {band.name.toUpperCase()}
                 </span>
               </h2>
-              <p className="font-body text-base leading-relaxed whitespace-pre-line">
-                <span className="bg-[#e5e5e5] text-black px-1 py-0.5 box-decoration-clone leading-loose">
-                  {band.bio}
-                </span>
-              </p>
+              <div className="font-body text-base">
+                {band.bio.split('\n').map((line, i) => (
+                  line.trim() === '' ? (
+                    <div key={i} className="h-4" />
+                  ) : (
+                    <div key={i}>
+                      <span className="bg-[#e5e5e5] text-black px-1 leading-[1.8]">
+                        {line}
+                      </span>
+                    </div>
+                  )
+                ))}
+              </div>
             </div>
           )}
 
