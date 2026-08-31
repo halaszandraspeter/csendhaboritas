@@ -133,7 +133,7 @@ export default async function BandPage({
                 const nameAlign = member.nameAlignment === 'right' ? 'right-0' : 'left-0'
                 return (
                   <div key={member._key} className="flex flex-col items-center">
-                    <div className={`relative w-30 h-30 overflow-hidden border-3 ${dayBorder} bg-surface`}>
+                    <div className={`relative w-30 h-30 overflow-hidden border-2 ${dayBorder} bg-surface`}>
                       {memberPhotoUrl ? (
                         <Image
                           src={memberPhotoUrl}
@@ -145,7 +145,7 @@ export default async function BandPage({
                       ) : (
                         <div className="w-full h-full bg-muted" />
                       )}
-                      <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-[10px] font-display tracking-widest uppercase text-black ${dayBg}`}>
+                      <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-xs font-display tracking-widest uppercase text-black ${dayBg}`}>
                         {member.name}
                       </span>
                     </div>
@@ -158,13 +158,13 @@ export default async function BandPage({
           {/* Bio */}
           {band.bio && (
             <div className="mb-6">
-              <h2 className="font-display text-sm tracking-widest mb-2">
-                <span className={`${dayBg} text-black px-1 py-0.5 box-decoration-clone`}>
+              <h2 className="font-display text-2xl tracking-widest mb-3">
+                <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
                   MI VAGYUNK A {band.name.toUpperCase()}
                 </span>
               </h2>
-              <p className="font-body text-sm leading-relaxed whitespace-pre-line">
-                <span className="bg-[#e5e5e5] text-black px-1 py-0.5 box-decoration-clone leading-relaxed">
+              <p className="font-body text-base leading-relaxed whitespace-pre-line">
+                <span className="bg-[#e5e5e5] text-black px-1 py-0.5 box-decoration-clone leading-loose">
                   {band.bio}
                 </span>
               </p>
@@ -259,7 +259,7 @@ export default async function BandPage({
                 const nameAlign = member.nameAlignment === 'right' ? 'right-0' : 'left-0'
                 return (
                   <div key={member._key} className="flex flex-col items-center">
-                    <div className={`relative aspect-square w-full overflow-hidden border-3 ${dayBorder} bg-surface`}>
+                    <div className={`relative aspect-square w-full overflow-hidden border-2 ${dayBorder} bg-surface`}>
                       {memberPhotoUrl ? (
                         <Image
                           src={memberPhotoUrl}
@@ -271,7 +271,7 @@ export default async function BandPage({
                       ) : (
                         <div className="w-full h-full bg-muted" />
                       )}
-                      <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-[9px] font-display tracking-widest uppercase text-black ${dayBg}`}>
+                      <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-[11px] font-display tracking-widest uppercase text-black ${dayBg}`}>
                         {member.name}
                       </span>
                     </div>
@@ -284,13 +284,13 @@ export default async function BandPage({
           {/* Bio */}
           {band.bio && (
             <div className="mb-6">
-              <h2 className="font-display text-sm tracking-widest mb-2">
-                <span className={`${dayBg} text-black px-1 py-0.5 box-decoration-clone`}>
+              <h2 className="font-display text-xl tracking-widest mb-3">
+                <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
                   MI VAGYUNK A {band.name.toUpperCase()}
                 </span>
               </h2>
-              <p className="font-body text-sm leading-relaxed whitespace-pre-line">
-                <span className="bg-[#e5e5e5] text-black px-1 py-0.5 box-decoration-clone leading-relaxed">
+              <p className="font-body text-base leading-relaxed whitespace-pre-line">
+                <span className="bg-[#e5e5e5] text-black px-1 py-0.5 box-decoration-clone leading-loose">
                   {band.bio}
                 </span>
               </p>
