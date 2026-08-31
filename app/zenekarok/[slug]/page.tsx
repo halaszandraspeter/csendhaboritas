@@ -128,9 +128,11 @@ export default async function BandPage({
           {band.members && band.members.length > 0 && (() => {
             const count = band.members.length
             // 5,6,9 → 3 cols | 7,8 → 4 cols | otherwise min(count, 4)
-            const cols = [5, 6, 9].includes(count) ? 3 : [7, 8].includes(count) ? 4 : Math.min(count, 4)
+            const xlCols = [5, 6, 9].includes(count) ? 3 : [7, 8].includes(count) ? 4 : Math.min(count, 4)
+            // Static class lookup for Tailwind to detect
+            const xlColsClass = { 1: 'xl:grid-cols-1', 2: 'xl:grid-cols-2', 3: 'xl:grid-cols-3', 4: 'xl:grid-cols-4' }[xlCols] || 'xl:grid-cols-4'
             return (
-              <div className="grid gap-4 mb-6" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
+              <div className={`grid grid-cols-2 ${xlColsClass} gap-4 mb-6`}>
                 {band.members.map((member) => {
                   const memberPhotoUrl = member.photo
                     ? sanityImageUrl(member.photo).width(300).height(300).url()
