@@ -22,6 +22,7 @@ export interface BandMember {
   _key: string
   name: string
   photo?: SanityImage
+  nameAlignment?: 'left' | 'right'
 }
 
 export interface BandSocialLinks {

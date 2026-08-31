@@ -171,7 +171,7 @@ export default async function BandPage({
             </div>
           )}
 
-          {/* Social links + music embed */
+          {/* Social links + music embed */}
           <div className="space-y-4">
             {band.socialLinks && (
               <SocialLinks links={band.socialLinks} />
