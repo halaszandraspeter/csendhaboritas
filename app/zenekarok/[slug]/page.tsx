@@ -145,7 +145,7 @@ export default async function BandPage({
                       ) : (
                         <div className="w-full h-full bg-muted" />
                       )}
-                      <span className={`absolute bottom-1 ${nameAlign} px-1 py-0.5 text-[10px] font-display tracking-widest uppercase text-black ${dayBg}`}>
+                      <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-[10px] font-display tracking-widest uppercase text-black ${dayBg}`}>
                         {member.name}
                       </span>
                     </div>
@@ -271,7 +271,7 @@ export default async function BandPage({
                       ) : (
                         <div className="w-full h-full bg-muted" />
                       )}
-                      <span className={`absolute bottom-1 ${nameAlign} px-1 py-0.5 text-[9px] font-display tracking-widest uppercase text-black ${dayBg}`}>
+                      <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-[9px] font-display tracking-widest uppercase text-black ${dayBg}`}>
                         {member.name}
                       </span>
                     </div>
