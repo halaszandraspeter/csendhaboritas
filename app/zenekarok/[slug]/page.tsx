@@ -98,7 +98,7 @@ export default async function BandPage({
           className="flex-shrink-0 flex items-center overflow-hidden"
         >
           <span
-            className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90 -ml-5`}
+            className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90 -ml-6`}
             style={{ writingMode: 'vertical-rl' }}
           >
             CSENDHABORÍTÁS
