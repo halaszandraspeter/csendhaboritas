@@ -92,10 +92,10 @@ export default async function BandPage({
 
         {/* Centre — vertical decorative text */}
         <div
-          className="flex-shrink-0 w-20 flex items-center justify-center bg-bg overflow-hidden"
+          className="flex-shrink-0 w-36 flex items-center justify-center bg-bg overflow-hidden"
         >
           <span
-            className={`font-display text-7xl font-black tracking-[-0.02em] ${dayAccent} select-none opacity-90`}
+            className={`font-display text-[144px] font-black tracking-[0.05em] ${dayAccent} select-none opacity-90`}
             style={{ writingMode: 'vertical-rl' }}
           >
             CSENDHABORÍTÁS
