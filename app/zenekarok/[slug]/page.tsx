@@ -90,12 +90,12 @@ export default async function BandPage({
           </div>
         </div>
 
-        {/* Centre — vertical rotating band name divider */}
+        {/* Centre — vertical decorative text */}
         <div
-          className="flex-shrink-0 w-12 flex items-center justify-center bg-bg"
+          className="flex-shrink-0 w-20 flex items-center justify-center bg-bg overflow-hidden"
         >
           <span
-            className={`font-display text-lg font-bold tracking-[0.3em] ${dayAccent} select-none`}
+            className={`font-display text-7xl font-black tracking-[-0.02em] ${dayAccent} select-none opacity-90`}
             style={{ writingMode: 'vertical-rl' }}
           >
             CSENDHABORÍTÁS
