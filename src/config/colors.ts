@@ -6,10 +6,10 @@
 export const colors = {
   bg: '#000000',
   fg: '#ffffff',
-  /** Day 1 (Október 9.) — lime green */
-  day1: '#aadd00',
-  /** Day 2 (Október 10.) — hot pink / magenta */
-  day2: '#ee44dd',
+  /** Day 1 (Október 9.) — green */
+  day1: '#9ae06c',
+  /** Day 2 (Október 10.) — purple */
+  day2: '#f594fd',
   surface: '#111111',
   muted: '#1a1a1a',
   mutedFg: '#888888',

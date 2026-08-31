@@ -5,10 +5,10 @@
   /* ── Colour tokens ── */
   --color-bg: #000000;
   --color-fg: #ffffff;
-  /** Day 1 — Október 9. — lime green */
-  --color-day1: #aadd00;
-  /** Day 2 — Október 10. — hot pink */
-  --color-day2: #ee44dd;
+  /** Day 1 — Október 9. — green */
+  --color-day1: #9ae06c;
+  /** Day 2 — Október 10. — purple */
+  --color-day2: #f594fd;
   --color-surface: #111111;
   --color-muted: #1a1a1a;
   --color-muted-fg: #888888;
