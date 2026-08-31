@@ -82,6 +82,19 @@ export const bandSchema = defineType({
               type: 'image',
               options: { hotspot: true },
             }),
+            defineField({
+              name: 'nameAlignment',
+              title: 'Név igazítás',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Balra', value: 'left' },
+                  { title: 'Jobbra', value: 'right' },
+                ],
+                layout: 'radio',
+              },
+              initialValue: 'left',
+            }),
           ],
           preview: {
             select: { title: 'name', media: 'photo' },

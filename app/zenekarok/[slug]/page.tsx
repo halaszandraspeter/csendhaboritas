@@ -7,7 +7,7 @@ import { DayBadge } from '@/src/components/ui/DayBadge'
 import { SocialLinks } from '@/src/components/ui/SocialLinks'
 import { MusicEmbed } from '@/src/components/ui/MusicEmbed'
 import { SkylineDivider } from '@/src/components/ui/SkylineDivider'
-import { dayTextClass, dayBorderClass } from '@/src/config/colors'
+import { dayTextClass, dayBorderClass, dayBgClass } from '@/src/config/colors'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
@@ -52,6 +52,7 @@ export default async function BandPage({
 
   const dayAccent = dayTextClass(band.day)
   const dayBorder = dayBorderClass(band.day)
+  const dayBg = dayBgClass(band.day)
 
   return (
     <article className="min-h-dvh bg-bg">
@@ -124,29 +125,30 @@ export default async function BandPage({
 
           {/* Members */}
           {band.members && band.members.length > 0 && (
-            <div className="flex gap-3 flex-wrap mb-6">
+            <div className="flex gap-4 flex-wrap mb-6">
               {band.members.map((member) => {
                 const memberPhotoUrl = member.photo
-                  ? sanityImageUrl(member.photo).width(120).height(120).url()
+                  ? sanityImageUrl(member.photo).width(240).height(240).url()
                   : null
+                const nameAlign = member.nameAlignment === 'right' ? 'right-0' : 'left-0'
                 return (
-                  <div key={member._key} className="flex flex-col items-center gap-1">
-                    <div className={`w-16 h-16 overflow-hidden border ${dayBorder} bg-surface`}>
+                  <div key={member._key} className="flex flex-col items-center">
+                    <div className={`relative w-30 h-30 overflow-hidden border-3 ${dayBorder} bg-surface`}>
                       {memberPhotoUrl ? (
                         <Image
                           src={memberPhotoUrl}
                           alt={member.name}
-                          width={64}
-                          height={64}
+                          width={120}
+                          height={120}
                           className="object-cover grayscale w-full h-full"
                         />
                       ) : (
                         <div className="w-full h-full bg-muted" />
                       )}
+                      <span className={`absolute bottom-1 ${nameAlign} px-1 py-0.5 text-[10px] font-display tracking-widest uppercase text-black ${dayBg}`}>
+                        {member.name}
+                      </span>
                     </div>
-                    <span className="text-[10px] font-display tracking-widest text-muted-fg uppercase">
-                      {member.name}
-                    </span>
                   </div>
                 )
               })}
@@ -156,16 +158,20 @@ export default async function BandPage({
           {/* Bio */}
           {band.bio && (
             <div className="mb-6">
-              <h2 className={`font-display text-sm tracking-widest ${dayAccent} mb-2`}>
-                MI VAGYUNK A {band.name.toUpperCase()}
+              <h2 className="font-display text-sm tracking-widest mb-2">
+                <span className={`${dayBg} text-black px-1 py-0.5 box-decoration-clone`}>
+                  MI VAGYUNK A {band.name.toUpperCase()}
+                </span>
               </h2>
-              <p className="font-body text-sm text-fg/80 leading-relaxed whitespace-pre-line">
-                {band.bio}
+              <p className="font-body text-sm leading-relaxed whitespace-pre-line">
+                <span className="bg-[#e5e5e5] text-black px-1 py-0.5 box-decoration-clone leading-relaxed">
+                  {band.bio}
+                </span>
               </p>
             </div>
           )}
 
-          {/* Social links + music embed */}
+          {/* Social links + music embed */
           <div className="space-y-4">
             {band.socialLinks && (
               <SocialLinks links={band.socialLinks} />
@@ -245,29 +251,30 @@ export default async function BandPage({
 
           {/* Members 2×2 grid */}
           {band.members && band.members.length > 0 && (
-            <div className="grid grid-cols-4 gap-3 mb-6">
+            <div className="grid grid-cols-3 gap-3 mb-6">
               {band.members.map((member) => {
                 const memberPhotoUrl = member.photo
-                  ? sanityImageUrl(member.photo).width(120).height(120).url()
+                  ? sanityImageUrl(member.photo).width(200).height(200).url()
                   : null
+                const nameAlign = member.nameAlignment === 'right' ? 'right-0' : 'left-0'
                 return (
-                  <div key={member._key} className="flex flex-col items-center gap-1">
-                    <div className={`aspect-square w-full overflow-hidden border ${dayBorder} bg-surface`}>
+                  <div key={member._key} className="flex flex-col items-center">
+                    <div className={`relative aspect-square w-full overflow-hidden border-3 ${dayBorder} bg-surface`}>
                       {memberPhotoUrl ? (
                         <Image
                           src={memberPhotoUrl}
                           alt={member.name}
-                          width={80}
-                          height={80}
+                          width={100}
+                          height={100}
                           className="object-cover grayscale w-full h-full"
                         />
                       ) : (
                         <div className="w-full h-full bg-muted" />
                       )}
+                      <span className={`absolute bottom-1 ${nameAlign} px-1 py-0.5 text-[9px] font-display tracking-widest uppercase text-black ${dayBg}`}>
+                        {member.name}
+                      </span>
                     </div>
-                    <span className="text-[9px] font-display tracking-widest text-muted-fg uppercase text-center">
-                      {member.name}
-                    </span>
                   </div>
                 )
               })}
@@ -277,11 +284,15 @@ export default async function BandPage({
           {/* Bio */}
           {band.bio && (
             <div className="mb-6">
-              <h2 className={`font-display text-sm tracking-widest ${dayAccent} mb-2`}>
-                MI VAGYUNK A {band.name.toUpperCase()}
+              <h2 className="font-display text-sm tracking-widest mb-2">
+                <span className={`${dayBg} text-black px-1 py-0.5 box-decoration-clone`}>
+                  MI VAGYUNK A {band.name.toUpperCase()}
+                </span>
               </h2>
-              <p className="font-body text-sm text-fg/80 leading-relaxed whitespace-pre-line">
-                {band.bio}
+              <p className="font-body text-sm leading-relaxed whitespace-pre-line">
+                <span className="bg-[#e5e5e5] text-black px-1 py-0.5 box-decoration-clone leading-relaxed">
+                  {band.bio}
+                </span>
               </p>
             </div>
           )}

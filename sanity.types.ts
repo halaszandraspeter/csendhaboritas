@@ -121,6 +121,7 @@ export type Band = {
       crop?: SanityImageCrop;
       _type: "image";
     };
+    nameAlignment?: "left" | "right";
     _key: string;
   }>;
   socialLinks?: {
