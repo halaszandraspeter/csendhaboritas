@@ -81,12 +81,16 @@ export default async function BandPage({
               <Image
                 src="/logo.png"
                 alt="Miskolci Csendháborítás"
-                width={140}
-                height={48}
-                className="invert opacity-80"
+                width={280}
+                height={96}
+                className="invert"
               />
             </Link>
-            <DayBadge day={band.day} className="mt-2" />
+            <div className={`${dayBg} inline-block mt-4 px-3 py-2`}>
+              <span className="font-display text-3xl font-bold tracking-widest text-black uppercase">
+                {band.name}
+              </span>
+            </div>
           </div>
         </div>
 
