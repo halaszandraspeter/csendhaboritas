@@ -88,19 +88,15 @@ export default async function BandPage({
             </Link>
             <DayBadge day={band.day} className="mt-2" />
           </div>
-          {/* Skyline at bottom */}
-          <div className="absolute bottom-0 inset-x-0">
-            <SkylineDivider />
-          </div>
         </div>
 
         {/* Centre — vertical rotating band name divider */}
         <div
-          className={`flex-shrink-0 w-10 flex items-center justify-center bg-bg border-x ${dayBorder} border-opacity-30`}
+          className="flex-shrink-0 w-12 flex items-center justify-center bg-bg"
         >
           <span
-            className={`font-display text-xs tracking-[0.4em] ${dayAccent} select-none`}
-            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+            className={`font-display text-lg font-bold tracking-[0.3em] ${dayAccent} select-none`}
+            style={{ writingMode: 'vertical-rl' }}
           >
             CSENDHABORÍTÁS
           </span>
