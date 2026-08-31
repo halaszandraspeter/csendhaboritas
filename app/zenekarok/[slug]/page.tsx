@@ -164,19 +164,19 @@ export default async function BandPage({
 
           {/* Bio */}
           {band.bio && (
-            <div className="mb-6 text-right">
+            <div className="mb-6 mt-10 text-right">
               <h2 className="font-display text-2xl tracking-widest mb-3">
                 <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
                   MI VAGYUNK A {band.name.toUpperCase()}
                 </span>
               </h2>
-              <div className="font-body text-base leading-none">
+              <div className="font-body text-base leading-[1.7]">
                 {band.bio.split('\n').map((line, i) => (
                   line.trim() === '' ? (
                     <div key={i} className="h-4" />
                   ) : (
                     <div key={i}>
-                      <span className="bg-[#e5e5e5] text-black px-1 py-[0.35em] inline-block uppercase">
+                      <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
                         {line}
                       </span>
                     </div>
@@ -187,7 +187,7 @@ export default async function BandPage({
           )}
 
           {/* Social links + music embed */}
-          <div className="space-y-4 flex flex-col items-end">
+          <div className="space-y-4 flex flex-col items-end mb-8">
             {band.socialLinks && (
               <SocialLinks links={band.socialLinks} />
             )}
@@ -298,19 +298,19 @@ export default async function BandPage({
 
           {/* Bio */}
           {band.bio && (
-            <div className="mb-6">
+            <div className="mb-6 mt-8">
               <h2 className="font-display text-xl tracking-widest mb-3">
                 <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
                   MI VAGYUNK A {band.name.toUpperCase()}
                 </span>
               </h2>
-              <div className="font-body text-base leading-none">
+              <div className="font-body text-base leading-[1.7]">
                 {band.bio.split('\n').map((line, i) => (
                   line.trim() === '' ? (
                     <div key={i} className="h-4" />
                   ) : (
                     <div key={i}>
-                      <span className="bg-[#e5e5e5] text-black px-1 py-[0.35em] inline-block uppercase">
+                      <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
                         {line}
                       </span>
                     </div>
@@ -321,13 +321,13 @@ export default async function BandPage({
           )}
 
           {/* Social + embed */}
-          <div className="space-y-4 mb-6">
+          <div className="space-y-4 mb-8">
             {band.socialLinks && <SocialLinks links={band.socialLinks} />}
             {band.musicEmbedUrl && <MusicEmbed url={band.musicEmbedUrl} />}
           </div>
 
           {/* Set time bar */}
-          <div className={`border-t ${dayBorder} pt-4`}>
+          <div className={`border-t ${dayBorder} pt-4 mt-4`}>
             <p className="text-xs text-muted-fg font-body uppercase tracking-wider">
               Grizzly Music Pub · Csendháborítás · Miskolc
             </p>
