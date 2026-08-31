@@ -165,13 +165,13 @@ export default async function BandPage({
                   MI VAGYUNK A {band.name.toUpperCase()}
                 </span>
               </h2>
-              <div className="font-body text-base">
+              <div className="font-body text-base leading-none">
                 {band.bio.split('\n').map((line, i) => (
                   line.trim() === '' ? (
                     <div key={i} className="h-4" />
                   ) : (
                     <div key={i}>
-                      <span className="bg-[#e5e5e5] text-black px-1 leading-[1.8]">
+                      <span className="bg-[#e5e5e5] text-black px-1 py-[0.35em] inline-block uppercase">
                         {line}
                       </span>
                     </div>
@@ -299,13 +299,13 @@ export default async function BandPage({
                   MI VAGYUNK A {band.name.toUpperCase()}
                 </span>
               </h2>
-              <div className="font-body text-base">
+              <div className="font-body text-base leading-none">
                 {band.bio.split('\n').map((line, i) => (
                   line.trim() === '' ? (
                     <div key={i} className="h-4" />
                   ) : (
                     <div key={i}>
-                      <span className="bg-[#e5e5e5] text-black px-1 leading-[1.8]">
+                      <span className="bg-[#e5e5e5] text-black px-1 py-[0.35em] inline-block uppercase">
                         {line}
                       </span>
                     </div>
