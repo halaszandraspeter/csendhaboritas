@@ -126,36 +126,41 @@ export default async function BandPage({
           </div>
 
           {/* Members */}
-          {band.members && band.members.length > 0 && (
-            <div className="flex gap-4 flex-wrap mb-6 justify-center">
-              {band.members.map((member) => {
-                const memberPhotoUrl = member.photo
-                  ? sanityImageUrl(member.photo).width(240).height(240).url()
-                  : null
-                const nameAlign = member.nameAlignment === 'right' ? 'right-0' : 'left-0'
-                return (
-                  <div key={member._key} className="flex flex-col items-center">
-                    <div className={`relative w-30 h-30 overflow-hidden border-2 ${dayBorder} bg-surface`}>
-                      {memberPhotoUrl ? (
-                        <Image
-                          src={memberPhotoUrl}
-                          alt={member.name}
-                          width={120}
-                          height={120}
-                          className="object-cover grayscale w-full h-full"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-muted" />
-                      )}
-                      <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-xs font-display tracking-widest uppercase text-black ${dayBg}`}>
-                        {member.name}
-                      </span>
+          {band.members && band.members.length > 0 && (() => {
+            const count = band.members.length
+            // 5,6,9 → 3 cols | 7,8 → 4 cols | otherwise min(count, 4)
+            const cols = [5, 6, 9].includes(count) ? 3 : [7, 8].includes(count) ? 4 : Math.min(count, 4)
+            return (
+              <div className="grid gap-4 mb-6" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
+                {band.members.map((member) => {
+                  const memberPhotoUrl = member.photo
+                    ? sanityImageUrl(member.photo).width(300).height(300).url()
+                    : null
+                  const nameAlign = member.nameAlignment === 'right' ? 'right-0' : 'left-0'
+                  return (
+                    <div key={member._key} className="flex flex-col items-center">
+                      <div className={`relative aspect-square w-full overflow-hidden border-2 ${dayBorder} bg-surface`}>
+                        {memberPhotoUrl ? (
+                          <Image
+                            src={memberPhotoUrl}
+                            alt={member.name}
+                            width={150}
+                            height={150}
+                            className="object-cover grayscale w-full h-full"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-muted" />
+                        )}
+                        <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-xs font-display tracking-widest uppercase text-black ${dayBg}`}>
+                          {member.name}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
-          )}
+                  )
+                })}
+              </div>
+            )
+          })()}
 
           {/* Bio */}
           {band.bio && (
@@ -259,9 +264,9 @@ export default async function BandPage({
             <DayBadge day={band.day} className="mt-2" />
           </div>
 
-          {/* Members 2×2 grid */}
+          {/* Members 2-col grid */}
           {band.members && band.members.length > 0 && (
-            <div className="grid grid-cols-3 gap-3 mb-6">
+            <div className="grid grid-cols-2 gap-3 mb-6">
               {band.members.map((member) => {
                 const memberPhotoUrl = member.photo
                   ? sanityImageUrl(member.photo).width(200).height(200).url()
