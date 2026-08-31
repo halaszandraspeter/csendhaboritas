@@ -83,7 +83,6 @@ export default async function BandPage({
                 alt="Miskolci Csendháborítás"
                 width={280}
                 height={96}
-                className="invert"
               />
             </Link>
             <div className={`${dayBg} inline-block mt-4 px-3 py-2`}>
@@ -96,10 +95,10 @@ export default async function BandPage({
 
         {/* Centre — vertical decorative text */}
         <div
-          className="flex-shrink-0 w-36 flex items-center justify-center overflow-hidden"
+          className="flex-shrink-0 flex items-center overflow-hidden"
         >
           <span
-            className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90`}
+            className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90 -ml-2`}
             style={{ writingMode: 'vertical-rl' }}
           >
             CSENDHABORÍTÁS
