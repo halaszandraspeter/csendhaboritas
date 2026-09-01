@@ -74,6 +74,13 @@ export interface EventRule {
   description: string
 }
 
+export interface Organizer {
+  _key: string
+  name: string
+  email?: string
+  mobile?: string
+}
+
 export interface EventData {
   _id: string
   _type: 'event'
@@ -88,4 +95,5 @@ export interface EventData {
   socialLinks?: EventSocialLinks
   sponsors?: Sponsor[]
   rules?: EventRule[]
+  organizers?: Organizer[]
 }

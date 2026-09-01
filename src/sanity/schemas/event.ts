@@ -90,6 +90,45 @@ export const eventSchema = defineType({
       ],
     }),
     defineField({
+      name: 'organizers',
+      title: 'Szervezők',
+      type: 'array',
+      description: 'Kapcsolattartók a rendezvényhez',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Név',
+              type: 'string',
+              description: 'Megjelenik a "Mi vagyunk a [Név]" stílusban',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'email',
+              title: 'E-mail',
+              type: 'string',
+            }),
+            defineField({
+              name: 'mobile',
+              title: 'Telefonszám',
+              type: 'string',
+            }),
+          ],
+          preview: {
+            select: { title: 'name', email: 'email' },
+            prepare({ title, email }) {
+              return {
+                title: title || 'Új szervező',
+                subtitle: email,
+              }
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: 'rules',
       title: 'Házirend',
       type: 'array',
