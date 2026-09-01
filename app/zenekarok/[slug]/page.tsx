@@ -57,7 +57,7 @@ export default async function BandPage({
     <article className="min-h-dvh bg-[#e5e5e5]">
       {/* ── DESKTOP LAYOUT ── */}
       <div className="hidden md:flex flex-col min-h-dvh relative">
-        <div className="flex flex-1 relative pt-16 px-[3vw] lg:px-16 gap-[6vw] lg:gap-32">
+        <div className="flex flex-1 relative pt-16 px-[3vw] xl:px-16 gap-[6vw] xl:gap-32">
 
           {/* Left — concert photo */}
           <div className="relative w-1/2 overflow-visible bg-black flex flex-col z-10">
