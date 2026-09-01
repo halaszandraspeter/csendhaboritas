@@ -56,7 +56,7 @@ const rules: RuleSection[] = [
     lines: [
       'Ha nem tudsz viselkedni, a biztonsági személyzet kikísérhet.',
       'Erősen ittas vagy bódult állapotban a belépést megtagadhatjuk.',
-      'Legyél részeg, de legyél jó fej!',
+      'Lehetsz részeg, de legyél jó fej!',
     ],
   },
   {
@@ -113,7 +113,7 @@ export default function HazirendPage() {
 
       <div className="space-y-10">
         {rules.map((section, idx) => (
-          <section key={idx} className="text-right">
+          <section key={idx} className="text-center">
             <h2 className="font-display text-xl md:text-2xl tracking-widest mb-3">
               <span className={`${idx % 2 === 0 ? 'bg-day1' : 'bg-day2'} text-black px-2 py-1 box-decoration-clone`}>
                 {section.header}
