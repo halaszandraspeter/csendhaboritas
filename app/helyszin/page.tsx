@@ -47,9 +47,19 @@ export default async function HelyszinPage() {
 
       {/* Description */}
       {description && (
-        <p className="font-body text-fg/80 leading-relaxed mb-10 max-w-2xl">
-          {description}
-        </p>
+        <div className="font-body text-base leading-[1.7] mb-10 max-w-2xl">
+          {description.split('\n').map((line, i) => (
+            line.trim() === '' ? (
+              <div key={i} className="h-4" />
+            ) : (
+              <div key={i}>
+                <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
+                  {line}
+                </span>
+              </div>
+            )
+          ))}
+        </div>
       )}
 
       {/* Map embed — CSS filter gives a dark/night look without an API key */}
@@ -73,12 +83,24 @@ export default async function HelyszinPage() {
       {/* Transport / parking info */}
       {transportInfo && (
         <div className="mb-10">
-          <h3 className="font-display text-xl tracking-widest text-day1 mb-3">
-            MEGKÖZELÍTÉS
+          <h3 className="font-display text-2xl tracking-widest mb-3">
+            <span className="bg-day2 text-black px-2 py-1 box-decoration-clone">
+              MEGKÖZELÍTÉS
+            </span>
           </h3>
-          <p className="font-body text-fg/80 leading-relaxed">
-            {transportInfo}
-          </p>
+          <div className="font-body text-base leading-[1.7]">
+            {transportInfo.split('\n').map((line, i) => (
+              line.trim() === '' ? (
+                <div key={i} className="h-4" />
+              ) : (
+                <div key={i}>
+                  <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
+                    {line}
+                  </span>
+                </div>
+              )
+            ))}
+          </div>
         </div>
       )}
 
