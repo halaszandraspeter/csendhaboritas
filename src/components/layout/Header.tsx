@@ -22,6 +22,15 @@ const navItems = [
 export function Header() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [closeButtonColor, setCloseButtonColor] = useState<'green' | 'purple'>('green')
+
+  // Randomize close button color when menu opens
+  const handleMenuToggle = () => {
+    if (!isMenuOpen) {
+      setCloseButtonColor(Math.random() > 0.5 ? 'green' : 'purple')
+    }
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   // Close menu on route change
   useEffect(() => {
@@ -102,10 +111,11 @@ export function Header() {
 
       {/* Mobile Hamburger Button - Sticky */}
       <button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        onClick={handleMenuToggle}
         className={cn(
           'md:hidden fixed top-4 right-4 z-50 p-3 rounded-full bg-bg/95 backdrop-blur-sm border border-muted shadow-lg transition-all duration-200',
-          isMenuOpen && 'bg-day1 border-day1'
+          isMenuOpen && closeButtonColor === 'green' && 'bg-day1 border-day1',
+          isMenuOpen && closeButtonColor === 'purple' && 'bg-day2 border-day2'
         )}
         aria-label={isMenuOpen ? 'Menü bezárása' : 'Menü megnyitása'}
         aria-expanded={isMenuOpen}
