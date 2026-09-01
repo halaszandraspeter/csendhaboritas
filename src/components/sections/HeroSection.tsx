@@ -46,7 +46,7 @@ export function HeroSection({ event }: HeroSectionProps) {
         <div className="flex gap-4 items-center flex-wrap justify-center">
           <div className="relative px-6 py-3">
             <Image
-              src="/sticker-purple.webp"
+              src="/sticker-green.webp"
               alt=""
               fill
               className="object-contain"
@@ -59,7 +59,7 @@ export function HeroSection({ event }: HeroSectionProps) {
           <span className="text-muted-fg font-body text-sm">·</span>
           <div className="relative px-6 py-3">
             <Image
-              src="/sticker-green.webp"
+              src="/sticker-purple.webp"
               alt=""
               fill
               className="object-contain"
@@ -74,6 +74,14 @@ export function HeroSection({ event }: HeroSectionProps) {
         {/* Venue */}
         <p className="font-display text-lg md:text-2xl tracking-widest text-fg/80">
           GRIZZLY MUSIC PUB · MISKOLC
+        </p>
+
+        {/* Tagline */}
+        <p className="font-body text-sm md:text-base text-fg/70 max-w-md leading-relaxed">
+          Egy fesztivál a miskolci undergroundért.<br />
+          12 előadó, 2 nap és 1 közös cél:<br />
+          egy olyan közeg megteremtése,<br />
+          ahol az új hangok egymásra találnak.
         </p>
 
         {/* Social icons */}
@@ -118,7 +126,7 @@ export function HeroSection({ event }: HeroSectionProps) {
 
       {/* Skyline at bottom of hero */}
       <div className="relative">
-        <SkylineDivider className="fill-fg opacity-90" />
+        <SkylineDivider linePosition="bottom" />
       </div>
     </section>
   )

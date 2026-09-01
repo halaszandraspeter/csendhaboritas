@@ -19,8 +19,8 @@ export function Footer({ event }: FooterProps) {
   const sponsors = event?.sponsors ?? []
 
   return (
-    <footer className="bg-bg border-t border-muted">
-      <SkylineDivider />
+    <footer className="bg-bg">
+      <SkylineDivider linePosition="top" />
 
       <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col items-center gap-6 text-center">
         {/* Brand */}
