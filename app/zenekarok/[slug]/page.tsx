@@ -301,7 +301,7 @@ export default async function BandPage({
           </div>
         </div>
 
-        <div className="px-5 pb-24 pt-8">
+        <div className="px-5 pb-24 pt-12">
           {/* Bio */}
           {band.bio && (
             <div className="mb-6">
