@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import { getEvent } from '@/src/lib/sanity/queries'
 import type { Organizer } from '@/src/types'
+import { ContactInfoSticker } from '@/src/components/ui/ContactInfoSticker'
 
 export const metadata: Metadata = {
   title: 'Kapcsolat',
   description: 'Kapcsolatfelvétel a Miskolci Csendháborítás szervezőivel.',
 }
 
-function ContactSticker({
+function OrganizerCard({
   organizer,
   variant,
 }: {
@@ -17,65 +18,30 @@ function ContactSticker({
   const bgColor = variant === 'light' ? 'bg-neutral-300' : 'bg-neutral-500'
   const textColor = variant === 'light' ? 'text-neutral-900' : 'text-neutral-100'
   const rotation = variant === 'light' ? '-rotate-2' : 'rotate-2'
+  // Alternate sticker colors for contact info
+  const firstStickerVariant = variant === 'light' ? 'green' : 'purple'
+  const secondStickerVariant = variant === 'light' ? 'purple' : 'green'
 
   return (
     <div
-      className={`${bgColor} ${rotation} p-6 md:p-8 shadow-lg transform transition-transform hover:scale-105 hover:rotate-0`}
+      className={`${bgColor} ${rotation} p-6 md:p-8 shadow-lg transform transition-transform hover:scale-[1.02] hover:rotate-0`}
       style={{
         clipPath:
           'polygon(2% 0%, 8% 3%, 15% 0%, 22% 2%, 30% 0%, 38% 3%, 45% 1%, 52% 0%, 60% 2%, 68% 0%, 75% 3%, 82% 1%, 90% 0%, 95% 2%, 100% 0%, 100% 100%, 0% 100%, 0% 0%)',
       }}
     >
-      {/* "MI VAGYUNK A [NAME]" style header */}
-      <h2 className={`font-display text-xl md:text-2xl tracking-widest mb-4 ${textColor}`}>
-        <span className="bg-black/10 px-2 py-1">MI VAGYOK</span>
-      </h2>
-      <p className={`font-display text-3xl md:text-4xl font-bold tracking-wider mb-6 ${textColor}`}>
+      {/* Name - 1.5x bigger */}
+      <p className={`font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider mb-6 ${textColor}`}>
         {organizer.name.toUpperCase()}
       </p>
 
-      <div className={`space-y-3 font-body text-base md:text-lg ${textColor}`}>
+      {/* Contact info stickers */}
+      <div className="flex flex-col gap-3 items-start">
         {organizer.email && (
-          <a
-            href={`mailto:${organizer.email}`}
-            className="flex items-center gap-3 hover:underline"
-          >
-            <svg
-              className="w-5 h-5 flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              />
-            </svg>
-            <span className="break-all">{organizer.email}</span>
-          </a>
+          <ContactInfoSticker value={organizer.email} variant={firstStickerVariant} />
         )}
         {organizer.mobile && (
-          <a
-            href={`tel:${organizer.mobile.replace(/\s/g, '')}`}
-            className="flex items-center gap-3 hover:underline"
-          >
-            <svg
-              className="w-5 h-5 flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-              />
-            </svg>
-            <span>{organizer.mobile}</span>
-          </a>
+          <ContactInfoSticker value={organizer.mobile} variant={secondStickerVariant} />
         )}
       </div>
     </div>
@@ -95,7 +61,7 @@ export default async function KapcsolatPage() {
       {organizers.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {organizers.map((organizer, index) => (
-            <ContactSticker
+            <OrganizerCard
               key={organizer._key}
               organizer={organizer}
               variant={index % 2 === 0 ? 'light' : 'dark'}
