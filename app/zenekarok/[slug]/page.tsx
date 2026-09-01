@@ -103,7 +103,7 @@ export default async function BandPage({
               </div>
             </div>
             {/* Logo top-left — sticks out of the picture */}
-            <div className="absolute top-6 -left-6 z-20 w-[clamp(280px,28vw,560px)]">
+            <div className="absolute -top-10 -left-6 z-20 w-[clamp(280px,28vw,560px)]">
               <Link href="/" className="block">
                 <Image
                   src="/logo-band.webp"
