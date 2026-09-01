@@ -61,21 +61,45 @@ export default async function BandPage({
 
           {/* Left — concert photo */}
           <div className="relative w-1/2 overflow-visible bg-black flex flex-col">
-            {bandPhotoUrl ? (
-              <Image
-                src={bandPhotoUrl}
-                alt={`${band.name} koncert fotó`}
-                width={900}
-                height={1200}
-                className="w-full h-auto grayscale"
-                priority
-                sizes="50vw"
-              />
-            ) : (
-              <div className="flex-1 bg-surface" />
-            )}
-            {/* Gradient toward the divider */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
+            {/* Image wrapper — sticker is positioned relative to this */}
+            <div className="relative">
+              {bandPhotoUrl ? (
+                <Image
+                  src={bandPhotoUrl}
+                  alt={`${band.name} koncert fotó`}
+                  width={900}
+                  height={1200}
+                  className="w-full h-auto grayscale"
+                  priority
+                  sizes="50vw"
+                />
+              ) : (
+                <div className="aspect-[3/4] bg-surface" />
+              )}
+              {/* Gradient toward the divider */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
+              {/* Event info sticker — opposite color to band's day */}
+              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 z-20 w-[640px]">
+                <div className="relative">
+                  <Image
+                    src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
+                    alt=""
+                    width={640}
+                    height={160}
+                    className="w-full h-auto"
+                    aria-hidden="true"
+                  />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
+                    <span className="font-display text-2xl tracking-widest uppercase">
+                      Grizzly Music Pub · Csendháborítás
+                    </span>
+                    <span className="font-display text-4xl tracking-widest font-bold">
+                      {band.setTime ?? '--:--'} okt. {band.day === 1 ? '9' : '10'}. · Miskolc
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
             {/* Logo top-left — sticks out of the picture */}
             <div className="absolute -top-10 -left-6 z-20">
               <Link href="/" className="block">
@@ -90,27 +114,6 @@ export default async function BandPage({
                 <span className="font-display text-3xl font-bold tracking-widest text-black uppercase">
                   {band.name}
                 </span>
-              </div>
-            </div>
-            {/* Event info sticker — opposite color to band's day */}
-            <div className="absolute top-[80%] left-1/2 -translate-x-1/2 z-20 w-[640px]">
-              <div className="relative">
-                <Image
-                  src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
-                  alt=""
-                  width={640}
-                  height={160}
-                  className="w-full h-auto"
-                  aria-hidden="true"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
-                  <span className="font-display text-2xl tracking-widest uppercase">
-                    Grizzly Music Pub · Csendháborítás
-                  </span>
-                  <span className="font-display text-4xl tracking-widest font-bold">
-                    {band.setTime ?? '--:--'} okt. {band.day === 1 ? '9' : '10'}. · Miskolc
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -223,7 +226,7 @@ export default async function BandPage({
             )}
 
             {/* Social links + music embed */}
-            <div className="relative space-y-4 flex flex-col items-end pb-12">
+            <div className="relative space-y-4 flex flex-col items-end pb-16">
               {band.socialLinks && (
                 <SocialLinks links={band.socialLinks} />
               )}
