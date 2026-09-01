@@ -177,7 +177,7 @@ export function Header() {
                     height={56}
                     className="h-full w-auto object-contain"
                   />
-                  <span className="absolute inset-0 flex items-center justify-center font-display text-xl tracking-widest text-bg font-bold uppercase">
+                  <span className="absolute inset-0 flex items-center justify-center font-display text-[1.75rem] tracking-widest text-bg font-bold uppercase">
                     {item.label}
                   </span>
                 </div>
