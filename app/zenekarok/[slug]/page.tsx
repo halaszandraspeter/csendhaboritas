@@ -57,177 +57,186 @@ export default async function BandPage({
   return (
     <article className="min-h-dvh bg-[#e5e5e5]">
       {/* ── DESKTOP LAYOUT ── */}
-      <div className="hidden md:flex min-h-dvh relative pt-16 px-16 gap-16">
+      <div className="hidden md:flex flex-col min-h-dvh relative">
+        <div className="flex flex-1 relative pt-16 px-16 gap-32">
 
-        {/* Left — concert photo */}
-        <div className="relative w-1/2 overflow-hidden">
-          {bandPhotoUrl ? (
-            <Image
-              src={bandPhotoUrl}
-              alt={`${band.name} koncert fotó`}
-              fill
-              className="object-cover object-top grayscale"
-              priority
-              sizes="60vw"
-            />
-          ) : (
-            <div className="absolute inset-0 bg-surface" />
-          )}
-          {/* Gradient toward the divider */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80" />
-          {/* Logo top-left — sticks out of the picture */}
-          <div className="absolute -top-8 -left-8">
-            <Link href="/" className="block">
+          {/* Left — concert photo */}
+          <div className="relative w-1/2 overflow-visible bg-black">
+            {bandPhotoUrl ? (
               <Image
-                src="/logo-band.webp"
-                alt="Miskolci Csendháborítás"
-                width={560}
-                height={192}
-              />
-            </Link>
-            <div className={`${dayBg} inline-block mt-2 px-3 py-2`}>
-              <span className="font-display text-3xl font-bold tracking-widest text-black uppercase">
-                {band.name}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Centre — vertical decorative text */}
-        <div
-          className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
-        >
-          <span
-            className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90`}
-            style={{ writingMode: 'vertical-rl' }}
-          >
-            CSENDHÁBORÍTÁS
-          </span>
-        </div>
-
-        {/* Right — band info */}
-        <div className="w-1/2 flex flex-col justify-between p-8 overflow-y-auto relative">
-          {/* Background image */}
-          <div className="absolute inset-0">
-            <Image
-              src="/hero-bg.webp"
-              alt=""
-              fill
-              className="object-cover"
-              aria-hidden="true"
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-bg/80" />
-            <div className="absolute inset-0 bg-bg/60" />
-          </div>
-          {/* Band logo / name */}
-          <div className="relative flex justify-center">
-            {bandLogoUrl ? (
-              <Image
-                src={bandLogoUrl}
-                alt={`${band.name} logo`}
-                width={400}
-                height={150}
-                className="max-w-[280px] object-contain mb-4"
+                src={bandPhotoUrl}
+                alt={`${band.name} koncert fotó`}
+                fill
+                className="object-cover object-top grayscale"
+                priority
+                sizes="60vw"
               />
             ) : (
-              <h1 className={`font-display text-5xl tracking-widest ${dayAccent} mb-4`}>
-                {band.name}
-              </h1>
+              <div className="absolute inset-0 bg-surface" />
             )}
+            {/* Gradient toward the divider */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80" />
+            {/* Logo top-left — sticks out of the picture */}
+            <div className="absolute -top-8 -left-8 z-20">
+              <Link href="/" className="block">
+                <Image
+                  src="/logo-band.webp"
+                  alt="Miskolci Csendháborítás"
+                  width={560}
+                  height={192}
+                />
+              </Link>
+              <div className={`${dayBg} inline-block mt-2 px-3 py-2`}>
+                <span className="font-display text-3xl font-bold tracking-widest text-black uppercase">
+                  {band.name}
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* Members */}
-          {band.members && band.members.length > 0 && (() => {
-            const count = band.members.length
-            // 5,6,9 → 3 cols | 7,8 → 4 cols | otherwise min(count, 4)
-            const xlCols = [5, 6, 9].includes(count) ? 3 : [7, 8].includes(count) ? 4 : Math.min(count, 4)
-            // Static class lookup for Tailwind to detect
-            const xlColsClass = { 1: 'xl:grid-cols-1', 2: 'xl:grid-cols-2', 3: 'xl:grid-cols-3', 4: 'xl:grid-cols-4' }[xlCols] || 'xl:grid-cols-4'
-            return (
-              <div className={`relative grid grid-cols-2 ${xlColsClass} gap-4 mb-6`}>
-                {band.members.map((member) => {
-                  const memberPhotoUrl = member.photo
-                    ? sanityImageUrl(member.photo).width(300).height(300).url()
-                    : null
-                  const nameAlign = member.nameAlignment === 'right' ? 'right-0' : 'left-0'
-                  return (
-                    <div key={member._key} className="flex flex-col items-center">
-                      <div className={`relative aspect-square w-full overflow-hidden border-2 ${dayBorder} bg-surface`}>
-                        {memberPhotoUrl ? (
-                          <Image
-                            src={memberPhotoUrl}
-                            alt={member.name}
-                            width={150}
-                            height={150}
-                            className="object-cover grayscale w-full h-full"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-muted" />
-                        )}
-                        <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-xs font-display tracking-widest uppercase text-black ${dayBg}`}>
-                          {member.name}
+          {/* Centre — vertical decorative text */}
+          <div
+            className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
+          >
+            <span
+              className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90`}
+              style={{ writingMode: 'vertical-rl' }}
+            >
+              CSENDHÁBORÍTÁS
+            </span>
+          </div>
+
+          {/* Right — band info */}
+          <div className="w-1/2 flex flex-col justify-between p-8 overflow-y-auto relative bg-black">
+            {/* Background image */}
+            <div className="absolute inset-0">
+              <Image
+                src="/hero-bg.webp"
+                alt=""
+                fill
+                className="object-cover"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-bg/80" />
+              <div className="absolute inset-0 bg-bg/60" />
+            </div>
+            {/* Band logo / name */}
+            <div className="relative flex justify-center">
+              {bandLogoUrl ? (
+                <Image
+                  src={bandLogoUrl}
+                  alt={`${band.name} logo`}
+                  width={400}
+                  height={150}
+                  className="max-w-[280px] object-contain mb-4"
+                />
+              ) : (
+                <h1 className={`font-display text-5xl tracking-widest ${dayAccent} mb-4`}>
+                  {band.name}
+                </h1>
+              )}
+            </div>
+
+            {/* Members */}
+            {band.members && band.members.length > 0 && (() => {
+              const count = band.members.length
+              // 5,6,9 → 3 cols | 7,8 → 4 cols | otherwise min(count, 4)
+              const xlCols = [5, 6, 9].includes(count) ? 3 : [7, 8].includes(count) ? 4 : Math.min(count, 4)
+              // Static class lookup for Tailwind to detect
+              const xlColsClass = { 1: 'xl:grid-cols-1', 2: 'xl:grid-cols-2', 3: 'xl:grid-cols-3', 4: 'xl:grid-cols-4' }[xlCols] || 'xl:grid-cols-4'
+              return (
+                <div className={`relative grid grid-cols-2 ${xlColsClass} gap-4 mb-6`}>
+                  {band.members.map((member) => {
+                    const memberPhotoUrl = member.photo
+                      ? sanityImageUrl(member.photo).width(300).height(300).url()
+                      : null
+                    const nameAlign = member.nameAlignment === 'right' ? 'right-0' : 'left-0'
+                    return (
+                      <div key={member._key} className="flex flex-col items-center">
+                        <div className={`relative aspect-square w-full overflow-hidden border-2 ${dayBorder} bg-surface`}>
+                          {memberPhotoUrl ? (
+                            <Image
+                              src={memberPhotoUrl}
+                              alt={member.name}
+                              width={150}
+                              height={150}
+                              className="object-cover grayscale w-full h-full"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-muted" />
+                          )}
+                          <span className={`absolute bottom-0 ${nameAlign} px-1 py-0.5 text-xs font-display tracking-widest uppercase text-black ${dayBg}`}>
+                            {member.name}
+                          </span>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              )
+            })()}
+
+            {/* Bio */}
+            {band.bio && (
+              <div className="relative mb-6 mt-10 text-right">
+                <h2 className="font-display text-2xl tracking-widest mb-3">
+                  <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
+                    MI VAGYUNK A {band.name.toUpperCase()}
+                  </span>
+                </h2>
+                <div className="font-body text-base leading-[1.7]">
+                  {band.bio.split('\n').map((line, i) => (
+                    line.trim() === '' ? (
+                      <div key={i} className="h-4" />
+                    ) : (
+                      <div key={i}>
+                        <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
+                          {line}
                         </span>
                       </div>
-                    </div>
-                  )
-                })}
+                    )
+                  ))}
+                </div>
               </div>
-            )
-          })()}
+            )}
 
-          {/* Bio */}
-          {band.bio && (
-            <div className="relative mb-6 mt-10 text-right">
-              <h2 className="font-display text-2xl tracking-widest mb-3">
-                <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
-                  MI VAGYUNK A {band.name.toUpperCase()}
-                </span>
-              </h2>
-              <div className="font-body text-base leading-[1.7]">
-                {band.bio.split('\n').map((line, i) => (
-                  line.trim() === '' ? (
-                    <div key={i} className="h-4" />
-                  ) : (
-                    <div key={i}>
-                      <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
-                        {line}
-                      </span>
-                    </div>
-                  )
-                ))}
-              </div>
+            {/* Social links + music embed */}
+            <div className="relative space-y-4 flex flex-col items-end mb-8">
+              {band.socialLinks && (
+                <SocialLinks links={band.socialLinks} />
+              )}
+              {band.musicEmbedUrl && (
+                <MusicEmbed url={band.musicEmbedUrl} />
+              )}
             </div>
-          )}
 
-          {/* Social links + music embed */}
-          <div className="relative space-y-4 flex flex-col items-end mb-8">
-            {band.socialLinks && (
-              <SocialLinks links={band.socialLinks} />
-            )}
-            {band.musicEmbedUrl && (
-              <MusicEmbed url={band.musicEmbedUrl} />
-            )}
+            {/* Set time bar */}
+            <div className={`relative mt-auto pt-6 border-t ${dayBorder} flex items-center justify-between`}>
+              <div>
+                <p className="text-xs text-muted-fg font-body uppercase tracking-wider">
+                  Grizzly Music Pub · Csendháborítás
+                </p>
+                <p className={`font-display text-lg tracking-widest ${dayAccent}`}>
+                  {band.setTime ? `${band.setTime} ` : ''}
+                  <DayBadge day={band.day} />
+                  <span className="text-muted-fg ml-2">· Miskolc</span>
+                </p>
+              </div>
+              <Link
+                href="/program"
+                className="text-xs font-display tracking-widest text-muted-fg hover:text-fg transition-colors flex items-center gap-1"
+              >
+                <ArrowLeft size={12} />
+                PROGRAM
+              </Link>
+            </div>
           </div>
+        </div>
 
-          {/* Set time bar */}
-          <div className={`relative mt-auto pt-6 border-t ${dayBorder} flex items-center justify-between`}>
-            <div>
-              <p className="text-xs text-muted-fg font-body uppercase tracking-wider">
-                Grizzly Music Pub · Csendháborítás
-              </p>
-              <p className={`font-display text-lg tracking-widest ${dayAccent}`}>
-                {band.setTime ? `${band.setTime} ` : ''}
-                <DayBadge day={band.day} />
-                <span className="text-muted-fg ml-2">· Miskolc</span>
-              </p>
-            </div>
-            <Link
-              href="/program"
-              className="text-xs font-display tracking-widest text-muted-fg hover:text-fg transition-colors flex items-center gap-1"
-            >
-              <ArrowLeft size={12} />
-              PROGRAM
-            </Link>
+        {/* Skyline at bottom — on top of the pictures with grey margins */}
+        <div className="relative px-16">
+          <div className="bg-black">
+            <SkylineDivider size="large" />
           </div>
         </div>
       </div>
