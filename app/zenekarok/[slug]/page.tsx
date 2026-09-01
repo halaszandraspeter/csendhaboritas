@@ -60,23 +60,24 @@ export default async function BandPage({
         <div className="flex flex-1 relative pt-16 px-16 gap-32">
 
           {/* Left — concert photo */}
-          <div className="relative w-1/2 overflow-visible bg-black">
+          <div className="relative w-1/2 overflow-visible bg-black flex flex-col">
             {bandPhotoUrl ? (
               <Image
                 src={bandPhotoUrl}
                 alt={`${band.name} koncert fotó`}
-                fill
-                className="object-cover object-top grayscale"
+                width={900}
+                height={1200}
+                className="w-full h-auto grayscale"
                 priority
-                sizes="60vw"
+                sizes="50vw"
               />
             ) : (
-              <div className="absolute inset-0 bg-surface" />
+              <div className="flex-1 bg-surface" />
             )}
             {/* Gradient toward the divider */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
             {/* Logo top-left — sticks out of the picture */}
-            <div className="absolute -top-16 -left-16 z-20">
+            <div className="absolute -top-6 -left-6 z-20">
               <Link href="/" className="block">
                 <Image
                   src="/logo-band.webp"
@@ -95,7 +96,7 @@ export default async function BandPage({
 
           {/* Centre — vertical decorative text */}
           <div
-            className="absolute inset-y-0 left-[calc(50%+4rem)] -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
+            className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
           >
             <span
               className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90`}
@@ -108,12 +109,13 @@ export default async function BandPage({
           {/* Right — band info */}
           <div className="w-1/2 flex flex-col justify-between p-8 overflow-y-auto relative bg-black">
             {/* Background image */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 overflow-hidden">
               <Image
                 src="/hero-bg.webp"
                 alt=""
-                fill
-                className="object-cover"
+                width={900}
+                height={1200}
+                className="w-full h-auto"
                 aria-hidden="true"
               />
               <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-bg/80" />
