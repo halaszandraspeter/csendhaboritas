@@ -106,9 +106,21 @@ export default async function BandPage({
         </div>
 
         {/* Right — band info */}
-        <div className="w-1/2 flex flex-col justify-between p-8 overflow-y-auto">
+        <div className="w-1/2 flex flex-col justify-between p-8 overflow-y-auto relative">
+          {/* Background image */}
+          <div className="absolute inset-0">
+            <Image
+              src="/hero-bg.webp"
+              alt=""
+              fill
+              className="object-cover"
+              aria-hidden="true"
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-bg/80" />
+            <div className="absolute inset-0 bg-bg/60" />
+          </div>
           {/* Band logo / name */}
-          <div className="flex justify-center">
+          <div className="relative flex justify-center">
             {bandLogoUrl ? (
               <Image
                 src={bandLogoUrl}
@@ -132,7 +144,7 @@ export default async function BandPage({
             // Static class lookup for Tailwind to detect
             const xlColsClass = { 1: 'xl:grid-cols-1', 2: 'xl:grid-cols-2', 3: 'xl:grid-cols-3', 4: 'xl:grid-cols-4' }[xlCols] || 'xl:grid-cols-4'
             return (
-              <div className={`grid grid-cols-2 ${xlColsClass} gap-4 mb-6`}>
+              <div className={`relative grid grid-cols-2 ${xlColsClass} gap-4 mb-6`}>
                 {band.members.map((member) => {
                   const memberPhotoUrl = member.photo
                     ? sanityImageUrl(member.photo).width(300).height(300).url()
@@ -165,7 +177,7 @@ export default async function BandPage({
 
           {/* Bio */}
           {band.bio && (
-            <div className="mb-6 mt-10 text-right">
+            <div className="relative mb-6 mt-10 text-right">
               <h2 className="font-display text-2xl tracking-widest mb-3">
                 <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
                   MI VAGYUNK A {band.name.toUpperCase()}
@@ -188,7 +200,7 @@ export default async function BandPage({
           )}
 
           {/* Social links + music embed */}
-          <div className="space-y-4 flex flex-col items-end mb-8">
+          <div className="relative space-y-4 flex flex-col items-end mb-8">
             {band.socialLinks && (
               <SocialLinks links={band.socialLinks} />
             )}
@@ -198,7 +210,7 @@ export default async function BandPage({
           </div>
 
           {/* Set time bar */}
-          <div className={`mt-auto pt-6 border-t ${dayBorder} flex items-center justify-between`}>
+          <div className={`relative mt-auto pt-6 border-t ${dayBorder} flex items-center justify-between`}>
             <div>
               <p className="text-xs text-muted-fg font-body uppercase tracking-wider">
                 Grizzly Music Pub · Csendháborítás

@@ -42,6 +42,14 @@ export function HeroSection({ event }: HeroSectionProps) {
           priority
         />
 
+        {/* Tagline */}
+        <div className="font-body text-sm md:text-base leading-[1.7] text-center">
+          <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">Egy fesztivál a miskolci undergroundért.</span></div>
+          <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">12 előadó, 2 nap és 1 közös cél:</span></div>
+          <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">egy olyan közeg megteremtése,</span></div>
+          <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">ahol az új hangok egymásra találnak.</span></div>
+        </div>
+
         {/* Day labels */}
         <div className="flex gap-4 items-center flex-wrap justify-center">
           <div className="relative px-6 py-3">
@@ -74,14 +82,6 @@ export function HeroSection({ event }: HeroSectionProps) {
         {/* Venue */}
         <p className="font-display text-lg md:text-2xl tracking-widest text-fg/80">
           GRIZZLY MUSIC PUB · MISKOLC
-        </p>
-
-        {/* Tagline */}
-        <p className="font-body text-sm md:text-base text-fg/70 max-w-md leading-relaxed">
-          Egy fesztivál a miskolci undergroundért.<br />
-          12 előadó, 2 nap és 1 közös cél:<br />
-          egy olyan közeg megteremtése,<br />
-          ahol az új hangok egymásra találnak.
         </p>
 
         {/* Social icons */}

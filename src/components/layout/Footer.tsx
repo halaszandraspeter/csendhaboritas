@@ -20,7 +20,7 @@ export function Footer({ event }: FooterProps) {
 
   return (
     <footer className="bg-bg">
-      <SkylineDivider linePosition="top" />
+      <SkylineDivider linePosition="bottom" />
 
       <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col items-center gap-6 text-center">
         {/* Brand */}
