@@ -77,7 +77,7 @@ export default async function BandPage({
             {/* Gradient toward the divider */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
             {/* Logo top-left — sticks out of the picture */}
-            <div className="absolute -top-6 -left-6 z-20">
+            <div className="absolute -top-10 -left-6 z-20">
               <Link href="/" className="block">
                 <Image
                   src="/logo-band.webp"
@@ -96,7 +96,7 @@ export default async function BandPage({
 
           {/* Centre — vertical decorative text */}
           <div
-            className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
+            className="absolute inset-y-0 left-[calc(50%-2rem)] -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
           >
             <span
               className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90`}
