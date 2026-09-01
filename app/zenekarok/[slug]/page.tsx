@@ -92,6 +92,27 @@ export default async function BandPage({
                 </span>
               </div>
             </div>
+            {/* Event info sticker — opposite color to band's day */}
+            <div className="absolute bottom-8 left-4 z-20 w-[320px]">
+              <div className="relative">
+                <Image
+                  src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
+                  alt=""
+                  width={320}
+                  height={80}
+                  className="w-full h-auto"
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
+                  <span className="font-display text-sm tracking-widest uppercase">
+                    Grizzly Music Pub · Csendháborítás
+                  </span>
+                  <span className="font-display text-lg tracking-widest font-bold">
+                    {band.setTime ?? '--:--'} okt. {band.day === 1 ? '9' : '10'}. · Miskolc
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Centre — vertical decorative text */}
@@ -202,34 +223,13 @@ export default async function BandPage({
             )}
 
             {/* Social links + music embed */}
-            <div className="relative space-y-4 flex flex-col items-end mb-8">
+            <div className="relative space-y-4 flex flex-col items-end">
               {band.socialLinks && (
                 <SocialLinks links={band.socialLinks} />
               )}
               {band.musicEmbedUrl && (
                 <MusicEmbed url={band.musicEmbedUrl} />
               )}
-            </div>
-
-            {/* Set time bar */}
-            <div className={`relative mt-auto pt-6 border-t ${dayBorder} flex items-center justify-between`}>
-              <div>
-                <p className="text-xs text-muted-fg font-body uppercase tracking-wider">
-                  Grizzly Music Pub · Csendháborítás
-                </p>
-                <p className={`font-display text-lg tracking-widest ${dayAccent}`}>
-                  {band.setTime ? `${band.setTime} ` : ''}
-                  <DayBadge day={band.day} />
-                  <span className="text-muted-fg ml-2">· Miskolc</span>
-                </p>
-              </div>
-              <Link
-                href="/program"
-                className="text-xs font-display tracking-widest text-muted-fg hover:text-fg transition-colors flex items-center gap-1"
-              >
-                <ArrowLeft size={12} />
-                PROGRAM
-              </Link>
             </div>
           </div>
         </div>
