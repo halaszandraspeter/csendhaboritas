@@ -139,19 +139,25 @@ export function Header() {
           {/* Nav items with sticker styling */}
           {navItems.map((item, index) => {
             const stickerSrc = index % 2 === 0 ? '/sticker-purple.webp' : '/sticker-green.webp'
+            // Slight rotation angles for organic sticker feel
+            const rotations = [-2, 1.5, -1, 2.5, -1.5, 1]
+            const rotation = rotations[index % rotations.length]
             return (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleHashClick(e, item.href)}
                 className={cn(
-                  'relative group transition-transform hover:scale-105 active:scale-95',
+                  'relative group transition-transform hover:scale-105 hover:rotate-0 active:scale-95',
                   'transform transition-all duration-300',
                   isMenuOpen
                     ? 'translate-y-0 opacity-100'
                     : 'translate-y-4 opacity-0'
                 )}
-                style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
+                style={{ 
+                  transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms',
+                  transform: isMenuOpen ? `rotate(${rotation}deg)` : undefined,
+                }}
               >
                 <div className="relative h-14">
                   <Image
