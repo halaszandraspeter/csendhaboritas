@@ -6,7 +6,7 @@ import { useCallback } from 'react'
 
 const navItems = [
   { href: '/#program', label: 'Program' },
-  { href: '/#helyszin-reszlet', label: 'Helyszín' },
+  { href: '/helyszin', label: 'Helyszín' },
   { href: '/#fellepok', label: 'Fellépők' },
   { href: '/hazirend', label: 'Házirend' },
   { href: '/kapcsolat', label: 'Kapcsolat' },
