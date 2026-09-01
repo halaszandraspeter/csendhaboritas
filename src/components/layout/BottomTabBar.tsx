@@ -2,14 +2,14 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Home, Calendar, MapPin, Music } from 'lucide-react'
+import { Calendar, MapPin, Music, FileText } from 'lucide-react'
 import { cn } from '@/src/lib/utils'
 
 const tabs = [
-  { href: '/', label: 'Kezdőlap', Icon: Home },
+  { href: '/#fellepok', label: 'Fellépők', Icon: Music },
   { href: '/program', label: 'Program', Icon: Calendar },
   { href: '/helyszin', label: 'Helyszín', Icon: MapPin },
-  { href: '/zenekarok', label: 'Zenekarok', Icon: Music },
+  { href: '/hazirend', label: 'Házirend', Icon: FileText },
 ]
 
 /**
@@ -26,8 +26,10 @@ export function BottomTabBar() {
     >
       <ul className="flex items-stretch h-16">
         {tabs.map(({ href, label, Icon }) => {
+          // Handle hash links - check path without hash
+          const hrefPath = href.split('#')[0] || '/'
           const isActive =
-            href === '/' ? pathname === '/' : pathname.startsWith(href)
+            hrefPath === '/' ? pathname === '/' : pathname.startsWith(hrefPath)
           return (
             <li key={href} className="flex-1">
               <Link

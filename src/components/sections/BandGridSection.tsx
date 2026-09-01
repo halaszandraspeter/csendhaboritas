@@ -38,9 +38,9 @@ function DaySection({
 
 export function BandGridSection({ day1Bands, day2Bands }: BandGridSectionProps) {
   return (
-    <section className="px-6 py-16 max-w-7xl mx-auto w-full" id="zenekarok">
+    <section className="px-6 py-16 max-w-7xl mx-auto w-full" id="fellepok">
       <h2 className="font-display text-4xl md:text-5xl tracking-widest text-fg text-center mb-12">
-        ZENEKAROK
+        FELLÉPŐK
       </h2>
 
       <div className="space-y-10">

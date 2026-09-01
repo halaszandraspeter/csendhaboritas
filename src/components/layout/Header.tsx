@@ -2,10 +2,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const navItems = [
-  { href: '/', label: 'Kezdőlap' },
+  { href: '/#fellepok', label: 'Fellépők' },
   { href: '/program', label: 'Program' },
   { href: '/helyszin', label: 'Helyszín' },
-  { href: '/zenekarok', label: 'Zenekarok' },
+  { href: '/hazirend', label: 'Házirend' },
+  { href: '/kapcsolat', label: 'Kapcsolat' },
+  { href: '/tamogatok', label: 'Támogatók' },
 ]
 
 /**
@@ -18,7 +20,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Left nav items */}
         <nav className="flex gap-8">
-          {navItems.slice(0, 2).map((item) => (
+          {navItems.slice(0, 3).map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -42,7 +44,7 @@ export function Header() {
 
         {/* Right nav items */}
         <nav className="flex gap-8">
-          {navItems.slice(2).map((item) => (
+          {navItems.slice(3).map((item) => (
             <Link
               key={item.href}
               href={item.href}

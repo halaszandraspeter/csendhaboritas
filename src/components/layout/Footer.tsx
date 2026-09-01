@@ -4,10 +4,12 @@ import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/src/components/ui/Soc
 import type { EventData } from '@/src/types'
 
 const navItems = [
-  { href: '/', label: 'Kezdőlap' },
+  { href: '/#fellepok', label: 'Fellépők' },
   { href: '/program', label: 'Program' },
   { href: '/helyszin', label: 'Helyszín' },
-  { href: '/zenekarok', label: 'Zenekarok' },
+  { href: '/hazirend', label: 'Házirend' },
+  { href: '/kapcsolat', label: 'Kapcsolat' },
+  { href: '/tamogatok', label: 'Támogatók' },
 ]
 
 interface FooterProps {
