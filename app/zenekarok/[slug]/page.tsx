@@ -55,9 +55,9 @@ export default async function BandPage({
   const dayBg = dayBgClass(band.day)
 
   return (
-    <article className="min-h-dvh bg-bg">
+    <article className="min-h-dvh bg-[#e5e5e5]">
       {/* ── DESKTOP LAYOUT ── */}
-      <div className="hidden md:flex min-h-dvh relative">
+      <div className="hidden md:flex min-h-dvh relative pt-8 px-8 gap-8">
 
         {/* Left — concert photo */}
         <div className="relative w-1/2 overflow-hidden">
