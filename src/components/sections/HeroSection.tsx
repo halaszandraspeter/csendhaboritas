@@ -31,28 +31,32 @@ export function HeroSection({ event }: HeroSectionProps) {
       </div>
 
       {/* Content */}
-      <div className="relative flex-1 flex flex-col items-center justify-center px-6 text-center gap-6 pt-8">
+      <div className="relative flex-1 flex flex-col items-center justify-center px-6 text-center gap-9 pt-8">
         {/* Logo */}
         <Image
           src="/logo-main.webp"
           alt="Miskolci Csendháborítás"
-          width={360}
-          height={120}
-          className="w-64 md:w-96 drop-shadow-[0_2px_24px_rgba(0,0,0,0.9)]"
+          width={540}
+          height={180}
+          className="w-96 md:w-[36rem] drop-shadow-[0_2px_24px_rgba(0,0,0,0.9)]"
           priority
         />
 
         {/* Tagline */}
-        <div className="font-body text-sm md:text-base leading-[1.7] text-center">
-          <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">Egy fesztivál a miskolci undergroundért.</span></div>
-          <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">12 előadó, 2 nap és 1 közös cél:</span></div>
-          <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">egy olyan közeg megteremtése,</span></div>
-          <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">ahol az új hangok egymásra találnak.</span></div>
+        <div className="font-body text-base md:text-xl leading-[1.7] text-center space-y-6">
+          <div>
+            <div><span className="bg-[#e5e5e5] text-black px-1.5 py-[0.2em] box-decoration-clone uppercase">Egy fesztivál a miskolci undergroundért.</span></div>
+            <div><span className="bg-[#e5e5e5] text-black px-1.5 py-[0.2em] box-decoration-clone uppercase">12 előadó, 2 nap és 1 közös cél:</span></div>
+          </div>
+          <div>
+            <div><span className="bg-[#e5e5e5] text-black px-1.5 py-[0.2em] box-decoration-clone uppercase">egy olyan közeg megteremtése,</span></div>
+            <div><span className="bg-[#e5e5e5] text-black px-1.5 py-[0.2em] box-decoration-clone uppercase">ahol az új hangok egymásra találnak.</span></div>
+          </div>
         </div>
 
         {/* Day labels */}
-        <div className="flex gap-4 items-center flex-wrap justify-center">
-          <div className="relative px-6 py-3">
+        <div className="flex gap-6 items-center flex-wrap justify-center">
+          <div className="relative px-9 py-5">
             <Image
               src="/sticker-green.webp"
               alt=""
@@ -60,12 +64,12 @@ export function HeroSection({ event }: HeroSectionProps) {
               className="object-contain"
               aria-hidden="true"
             />
-            <span className="relative font-display tracking-widest text-sm md:text-base text-bg font-bold">
+            <span className="relative font-display tracking-widest text-base md:text-xl text-bg font-bold">
               OKTÓBER 9.
             </span>
           </div>
-          <span className="text-muted-fg font-body text-sm">·</span>
-          <div className="relative px-6 py-3">
+          <span className="text-muted-fg font-body text-base">·</span>
+          <div className="relative px-9 py-5">
             <Image
               src="/sticker-purple.webp"
               alt=""
@@ -73,20 +77,20 @@ export function HeroSection({ event }: HeroSectionProps) {
               className="object-contain"
               aria-hidden="true"
             />
-            <span className="relative font-display tracking-widest text-sm md:text-base text-bg font-bold">
+            <span className="relative font-display tracking-widest text-base md:text-xl text-bg font-bold">
               OKTÓBER 10.
             </span>
           </div>
         </div>
 
         {/* Venue */}
-        <p className="font-display text-lg md:text-2xl tracking-widest text-fg/80">
+        <p className="font-display text-2xl md:text-4xl tracking-widest text-fg/80">
           GRIZZLY MUSIC PUB · MISKOLC
         </p>
 
         {/* Social icons */}
         {(socials?.facebook || socials?.instagram || socials?.tiktok) && (
-          <div className="flex gap-6 items-center mt-2">
+          <div className="flex gap-9 items-center mt-3">
             {socials.facebook && (
               <a
                 href={socials.facebook}
@@ -95,7 +99,7 @@ export function HeroSection({ event }: HeroSectionProps) {
                 aria-label="Facebook"
                 className="text-fg/60 hover:text-fg transition-colors"
               >
-                <FacebookIcon size={24} />
+                <FacebookIcon size={36} />
               </a>
             )}
             {socials.instagram && (
@@ -106,7 +110,7 @@ export function HeroSection({ event }: HeroSectionProps) {
                 aria-label="Instagram"
                 className="text-fg/60 hover:text-fg transition-colors"
               >
-                <InstagramIcon size={24} />
+                <InstagramIcon size={36} />
               </a>
             )}
             {socials.tiktok && (
@@ -117,7 +121,7 @@ export function HeroSection({ event }: HeroSectionProps) {
                 aria-label="TikTok"
                 className="text-fg/60 hover:text-fg transition-colors"
               >
-                <TikTokIcon size={24} />
+                <TikTokIcon size={36} />
               </a>
             )}
           </div>

@@ -3,8 +3,8 @@ import Image from 'next/image'
 
 const navItems = [
   { href: '/#fellepok', label: 'Fellépők' },
-  { href: '/program', label: 'Program' },
-  { href: '/helyszin', label: 'Helyszín' },
+  { href: '/#program', label: 'Program' },
+  { href: '/#helyszin', label: 'Helyszín' },
   { href: '/hazirend', label: 'Házirend' },
   { href: '/kapcsolat', label: 'Kapcsolat' },
   { href: '/tamogatok', label: 'Támogatók' },

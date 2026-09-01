@@ -8,7 +8,7 @@ interface ProgramSnippetProps {
 
 export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
   return (
-    <section className="px-6 py-16 max-w-5xl mx-auto w-full">
+    <section className="px-6 py-16 max-w-5xl mx-auto w-full scroll-mt-24" id="program">
       <h2 className="font-display text-4xl md:text-5xl tracking-widest text-fg text-center mb-10">
         PROGRAM
       </h2>

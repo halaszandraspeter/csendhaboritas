@@ -11,7 +11,7 @@ export function HelyszinSnippet({ event }: HelyszinSnippetProps) {
   const address = event?.address ?? 'Miskolc'
 
   return (
-    <section className="px-6 py-12 border-y border-muted bg-surface">
+    <section className="px-6 py-12 border-y border-muted bg-surface scroll-mt-24" id="helyszin">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-start gap-4">
           <MapPin size={28} className="text-day1 flex-shrink-0 mt-1" />

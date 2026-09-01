@@ -7,8 +7,8 @@ import { cn } from '@/src/lib/utils'
 
 const tabs = [
   { href: '/#fellepok', label: 'Fellépők', Icon: Music },
-  { href: '/program', label: 'Program', Icon: Calendar },
-  { href: '/helyszin', label: 'Helyszín', Icon: MapPin },
+  { href: '/#program', label: 'Program', Icon: Calendar },
+  { href: '/#helyszin', label: 'Helyszín', Icon: MapPin },
   { href: '/hazirend', label: 'Házirend', Icon: FileText },
 ]
 
