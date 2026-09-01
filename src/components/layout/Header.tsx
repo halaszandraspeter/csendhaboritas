@@ -130,8 +130,8 @@ export function Header() {
             <Image
               src="/logo-main.webp"
               alt="Miskolci Csendháborítás"
-              width={180}
-              height={60}
+              width={252}
+              height={84}
               priority
             />
           </Link>
