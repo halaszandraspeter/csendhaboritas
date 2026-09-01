@@ -124,36 +124,50 @@ export function Header() {
           isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         )}
       >
-        <nav className="flex flex-col items-center justify-center h-full gap-6 px-8">
+        <nav className="flex flex-col items-center justify-center h-full gap-4 px-8">
           {/* Logo at top of menu */}
-          <Link href="/" onClick={() => setIsMenuOpen(false)} className="mb-8">
+          <Link href="/" onClick={() => setIsMenuOpen(false)} className="mb-6">
             <Image
               src="/logo-main.webp"
               alt="Miskolci Csendháborítás"
-              width={200}
-              height={67}
+              width={180}
+              height={60}
               priority
             />
           </Link>
 
-          {/* Nav items */}
-          {navItems.map((item, index) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={(e) => handleHashClick(e, item.href)}
-              className={cn(
-                'font-display text-3xl tracking-widest text-fg hover:text-day1 transition-all duration-200 uppercase',
-                'transform transition-all duration-300',
-                isMenuOpen
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-4 opacity-0'
-              )}
-              style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {/* Nav items with sticker styling */}
+          {navItems.map((item, index) => {
+            const stickerSrc = index % 2 === 0 ? '/sticker-purple.webp' : '/sticker-green.webp'
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleHashClick(e, item.href)}
+                className={cn(
+                  'relative group transition-transform hover:scale-105 active:scale-95',
+                  'transform transition-all duration-300',
+                  isMenuOpen
+                    ? 'translate-y-0 opacity-100'
+                    : 'translate-y-4 opacity-0'
+                )}
+                style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
+              >
+                <div className="relative h-14">
+                  <Image
+                    src={stickerSrc}
+                    alt=""
+                    width={280}
+                    height={56}
+                    className="h-full w-auto object-contain"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center font-display text-xl tracking-widest text-bg font-bold uppercase">
+                    {item.label}
+                  </span>
+                </div>
+              </Link>
+            )
+          })}
         </nav>
       </div>
     </>
