@@ -2,8 +2,10 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useCallback } from 'react'
+import { useCallback, useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import { Menu, X } from 'lucide-react'
+import { cn } from '@/src/lib/utils'
 
 const navItems = [
   { href: '/#program', label: 'Program' },
@@ -15,11 +17,28 @@ const navItems = [
 ]
 
 /**
- * Desktop-only symmetrical header.
- * Hidden on mobile — BottomTabBar handles mobile navigation.
+ * Responsive header with hamburger menu on mobile.
  */
 export function Header() {
   const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // Close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [pathname])
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpen])
 
   const handleHashClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     // Only handle hash navigation if we're already on the homepage
@@ -32,50 +51,111 @@ export function Header() {
         window.history.pushState(null, '', href)
       }
     }
+    setIsMenuOpen(false)
   }, [pathname])
 
   return (
-    <header className="hidden md:block border-b border-muted sticky top-0 z-40 bg-bg/95 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Left nav items */}
-        <nav className="flex gap-8">
-          {navItems.slice(0, 3).map((item) => (
+    <>
+      {/* Desktop Header */}
+      <header className="hidden md:block border-b border-muted sticky top-0 z-40 bg-bg/95 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Left nav items */}
+          <nav className="flex gap-8">
+            {navItems.slice(0, 3).map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleHashClick(e, item.href)}
+                className="font-display text-2xl tracking-widest text-fg hover:text-fg/70 transition-colors duration-200 uppercase"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Centre logo */}
+          <Link href="/" className="shrink-0 mx-8">
+            <Image
+              src="/logo-main.webp"
+              alt="Miskolci Csendháborítás"
+              width={180}
+              height={60}
+              priority
+            />
+          </Link>
+
+          {/* Right nav items */}
+          <nav className="flex gap-8">
+            {navItems.slice(3).map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleHashClick(e, item.href)}
+                className="font-display text-2xl tracking-widest text-fg hover:text-fg/70 transition-colors duration-200 uppercase"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      {/* Mobile Hamburger Button - Sticky */}
+      <button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className={cn(
+          'md:hidden fixed top-4 right-4 z-50 p-3 rounded-full bg-bg/95 backdrop-blur-sm border border-muted shadow-lg transition-all duration-200',
+          isMenuOpen && 'bg-day1 border-day1'
+        )}
+        aria-label={isMenuOpen ? 'Menü bezárása' : 'Menü megnyitása'}
+        aria-expanded={isMenuOpen}
+      >
+        {isMenuOpen ? (
+          <X size={24} className="text-bg" />
+        ) : (
+          <Menu size={24} className="text-fg" />
+        )}
+      </button>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={cn(
+          'md:hidden fixed inset-0 z-40 bg-bg/98 backdrop-blur-md transition-all duration-300',
+          isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        )}
+      >
+        <nav className="flex flex-col items-center justify-center h-full gap-6 px-8">
+          {/* Logo at top of menu */}
+          <Link href="/" onClick={() => setIsMenuOpen(false)} className="mb-8">
+            <Image
+              src="/logo-main.webp"
+              alt="Miskolci Csendháborítás"
+              width={200}
+              height={67}
+              priority
+            />
+          </Link>
+
+          {/* Nav items */}
+          {navItems.map((item, index) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={(e) => handleHashClick(e, item.href)}
-              className="font-display text-2xl tracking-widest text-fg hover:text-fg/70 transition-colors duration-200 uppercase"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Centre logo */}
-        <Link href="/" className="flex-shrink-0 mx-8">
-          <Image
-            src="/logo-main.webp"
-            alt="Miskolci Csendháborítás"
-            width={180}
-            height={60}
-            priority
-          />
-        </Link>
-
-        {/* Right nav items */}
-        <nav className="flex gap-8">
-          {navItems.slice(3).map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={(e) => handleHashClick(e, item.href)}
-              className="font-display text-2xl tracking-widest text-fg hover:text-fg/70 transition-colors duration-200 uppercase"
+              className={cn(
+                'font-display text-3xl tracking-widest text-fg hover:text-day1 transition-all duration-200 uppercase',
+                'transform transition-all duration-300',
+                isMenuOpen
+                  ? 'translate-y-0 opacity-100'
+                  : 'translate-y-4 opacity-0'
+              )}
+              style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
             >
               {item.label}
             </Link>
           ))}
         </nav>
       </div>
-    </header>
+    </>
   )
 }

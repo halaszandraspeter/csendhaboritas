@@ -3,7 +3,6 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { displayFont, bodyFont } from '@/src/config/fonts'
 import { Header } from '@/src/components/layout/Header'
-import { BottomTabBar } from '@/src/components/layout/BottomTabBar'
 import { FooterWrapper } from '@/src/components/layout/FooterWrapper'
 import './globals.css'
 
@@ -33,15 +32,11 @@ export default function RootLayout({
       className={`${displayFont.variable} ${bodyFont.variable}`}
     >
       <body className="min-h-dvh flex flex-col bg-bg text-fg font-body">
-        {/* Desktop header — hidden on mobile (bottom tab bar handles mobile nav) */}
         <Header />
 
-        <main className="flex-1 pb-16 md:pb-0">{children}</main>
+        <main className="flex-1">{children}</main>
 
         <FooterWrapper />
-
-        {/* Mobile bottom navigation */}
-        <BottomTabBar />
 
         <Analytics />
         <SpeedInsights />
