@@ -13,6 +13,10 @@ export function ContactInfoSticker({ value, variant }: ContactInfoStickerProps) 
 
   const stickerSrc = variant === 'purple' ? '/sticker-purple.webp' : '/sticker-green.webp'
 
+  // Split email at @ for wrapping
+  const isEmail = value.includes('@')
+  const [emailUser, emailDomain] = isEmail ? value.split('@') : [value, '']
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(value)
@@ -45,8 +49,17 @@ export function ContactInfoSticker({ value, variant }: ContactInfoStickerProps) 
           height={84}
           className="h-full w-auto object-contain"
         />
-        <span className="absolute inset-0 flex items-center justify-center font-body text-base md:text-lg text-white tracking-wide">
-          {copied ? '✓ Másolva!' : value}
+        <span className="absolute inset-0 flex items-center justify-center font-display tracking-widest text-sm md:text-base text-bg font-bold text-center leading-tight px-2">
+          {copied ? (
+            '✓ MÁSOLVA!'
+          ) : isEmail ? (
+            <span className="flex flex-col items-center">
+              <span>{emailUser}</span>
+              <span>@{emailDomain}</span>
+            </span>
+          ) : (
+            value
+          )}
         </span>
       </div>
     </button>
