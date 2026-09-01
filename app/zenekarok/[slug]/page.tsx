@@ -62,7 +62,9 @@ export default async function BandPage({
           {/* Left — concert photo */}
           <div className="relative w-1/2 overflow-visible bg-black flex flex-col">
             {/* Image wrapper — sticker is positioned relative to this */}
-            <div className="relative">
+            <div className="relative pt-16">
+              {/* Top gradient — fade from black into image */}
+              <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none" />
               {bandPhotoUrl ? (
                 <Image
                   src={bandPhotoUrl}
@@ -79,21 +81,21 @@ export default async function BandPage({
               {/* Gradient toward the divider */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
               {/* Event info sticker — opposite color to band's day */}
-              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 z-20 w-[640px]">
+              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 z-20 w-[min(480px,90%)]">
                 <div className="relative">
                   <Image
                     src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
                     alt=""
-                    width={640}
-                    height={160}
+                    width={480}
+                    height={120}
                     className="w-full h-auto"
                     aria-hidden="true"
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
-                    <span className="font-display text-2xl tracking-widest uppercase">
+                    <span className="font-display text-sm lg:text-base xl:text-lg tracking-widest uppercase">
                       Grizzly Music Pub · Csendháborítás
                     </span>
-                    <span className="font-display text-4xl tracking-widest font-bold">
+                    <span className="font-display text-lg lg:text-xl xl:text-2xl tracking-widest font-bold">
                       {band.setTime ?? '--:--'} okt. {band.day === 1 ? '9' : '10'}. · Miskolc
                     </span>
                   </div>
@@ -101,17 +103,18 @@ export default async function BandPage({
               </div>
             </div>
             {/* Logo top-left — sticks out of the picture */}
-            <div className="absolute -top-10 -left-6 z-20">
+            <div className="absolute top-6 -left-6 z-20 w-[clamp(280px,28vw,560px)]">
               <Link href="/" className="block">
                 <Image
                   src="/logo-band.webp"
                   alt="Miskolci Csendháborítás"
                   width={560}
                   height={192}
+                  className="w-full h-auto"
                 />
               </Link>
-              <div className={`${dayBg} inline-block mt-2 px-3 py-2`}>
-                <span className="font-display text-3xl font-bold tracking-widest text-black uppercase">
+              <div className={`${dayBg} inline-block mt-2 px-2 lg:px-3 py-1 lg:py-2`}>
+                <span className="font-display text-lg lg:text-2xl xl:text-3xl font-bold tracking-widest text-black uppercase">
                   {band.name}
                 </span>
               </div>
@@ -226,7 +229,7 @@ export default async function BandPage({
             )}
 
             {/* Social links + music embed */}
-            <div className="relative space-y-4 flex flex-col items-end pb-16">
+            <div className="relative space-y-4 flex flex-col items-end pb-24 lg:pb-20 xl:pb-16">
               {band.socialLinks && (
                 <SocialLinks links={band.socialLinks} />
               )}
