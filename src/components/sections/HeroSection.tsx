@@ -15,7 +15,7 @@ export function HeroSection({ event }: HeroSectionProps) {
   const socials = event?.socialLinks
 
   return (
-    <section className="relative h-dvh md:h-[calc(100dvh-5rem)] flex flex-col overflow-hidden">
+    <section className="relative h-[100dvh] md:h-[calc(100dvh-5.5rem)] flex flex-col overflow-hidden">
       {/* Background concert photo */}
       <div className="absolute inset-0">
         <Image
