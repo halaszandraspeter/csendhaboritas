@@ -8,7 +8,6 @@ import { SocialLinks } from '@/src/components/ui/SocialLinks'
 import { MusicEmbed } from '@/src/components/ui/MusicEmbed'
 import { dayTextClass, dayBorderClass, dayBgClass } from '@/src/config/colors'
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
 
 export async function generateStaticParams() {
   const slugs = await getAllBandSlugs()
@@ -245,7 +244,7 @@ export default async function BandPage({
       </div>
 
       {/* ── MOBILE LAYOUT ── */}
-      <div className="md:hidden">
+      <div className="md:hidden bg-black">
         {/* Concert photo */}
         <div className="relative w-full aspect-[4/3] overflow-hidden">
           {bandPhotoUrl ? (
@@ -260,33 +259,46 @@ export default async function BandPage({
           ) : (
             <div className="absolute inset-0 bg-surface" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg/90" />
-          {/* Back link */}
-          <Link
-            href="/zenekarok"
-            className="absolute top-4 left-4 flex items-center gap-2 text-fg/70 text-xs font-display tracking-widest"
-          >
-            <ArrowLeft size={14} /> ZENEKAROK
-          </Link>
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/90" />
+          {/* Event info sticker */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 w-[min(360px,90%)]">
+            <div className="relative">
+              <Image
+                src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
+                alt=""
+                width={360}
+                height={90}
+                className="w-full h-auto"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
+                <span className="font-display text-[10px] tracking-widest uppercase">
+                  Grizzly Music Pub · Csendháborítás
+                </span>
+                <span className="font-display text-sm tracking-widest font-bold">
+                  {band.setTime ?? '--:--'} okt. {band.day === 1 ? '9' : '10'}. · Miskolc
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="px-5 pb-24">
           {/* Band logo */}
-          <div className="py-6">
+          <div className="py-6 flex justify-center">
             {bandLogoUrl ? (
               <Image
                 src={bandLogoUrl}
                 alt={`${band.name} logo`}
                 width={300}
                 height={100}
-                className="max-w-[240px] object-contain"
+                className="max-w-60 object-contain"
               />
             ) : (
               <h1 className={`font-display text-4xl tracking-widest ${dayAccent}`}>
                 {band.name}
               </h1>
             )}
-            <DayBadge day={band.day} className="mt-2" />
           </div>
 
           {/* Members 2-col grid */}
@@ -346,20 +358,9 @@ export default async function BandPage({
           )}
 
           {/* Social + embed */}
-          <div className="space-y-4 mb-8">
+          <div className="space-y-4">
             {band.socialLinks && <SocialLinks links={band.socialLinks} />}
             {band.musicEmbedUrl && <MusicEmbed url={band.musicEmbedUrl} />}
-          </div>
-
-          {/* Set time bar */}
-          <div className={`border-t ${dayBorder} pt-4 mt-4`}>
-            <p className="text-xs text-muted-fg font-body uppercase tracking-wider">
-              Grizzly Music Pub · Csendháborítás · Miskolc
-            </p>
-            <p className={`font-display text-lg tracking-widest ${dayAccent} mt-1`}>
-              {band.setTime && `${band.setTime} · `}
-              <DayBadge day={band.day} />
-            </p>
           </div>
         </div>
       </div>
