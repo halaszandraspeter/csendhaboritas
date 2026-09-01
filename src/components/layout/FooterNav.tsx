@@ -30,7 +30,7 @@ export function FooterNav() {
   }, [pathname])
 
   return (
-    <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+    <nav className="hidden md:flex flex-wrap justify-center gap-x-6 gap-y-2">
       {navItems.map((item) => (
         <Link
           key={item.href}
