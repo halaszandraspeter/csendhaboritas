@@ -1,16 +1,7 @@
-import Link from 'next/link'
 import { SkylineDivider } from '@/src/components/ui/SkylineDivider'
 import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/src/components/ui/SocialIcons'
+import { FooterNav } from './FooterNav'
 import type { EventData } from '@/src/types'
-
-const navItems = [
-  { href: '/#fellepok', label: 'Fellépők' },
-  { href: '/#program', label: 'Program' },
-  { href: '/#helyszin', label: 'Helyszín' },
-  { href: '/hazirend', label: 'Házirend' },
-  { href: '/kapcsolat', label: 'Kapcsolat' },
-  { href: '/tamogatok', label: 'Támogatók' },
-]
 
 interface FooterProps {
   event?: EventData | null
@@ -31,17 +22,7 @@ export function Footer({ event }: FooterProps) {
         </p>
 
         {/* Nav */}
-        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="font-display text-sm tracking-widest text-muted-fg hover:text-fg transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <FooterNav />
 
         {/* Social links */}
         {(socials?.facebook || socials?.instagram || socials?.tiktok) && (

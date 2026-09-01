@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Calendar, MapPin, Music, FileText } from 'lucide-react'
 import { cn } from '@/src/lib/utils'
+import { useCallback } from 'react'
 
 const tabs = [
   { href: '/#fellepok', label: 'Fellépők', Icon: Music },
@@ -18,6 +19,18 @@ const tabs = [
  */
 export function BottomTabBar() {
   const pathname = usePathname()
+
+  const handleHashClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/#')) {
+      const hash = href.slice(1)
+      const el = document.querySelector(hash)
+      if (el) {
+        e.preventDefault()
+        el.scrollIntoView({ behavior: 'smooth' })
+        window.history.pushState(null, '', href)
+      }
+    }
+  }, [])
 
   return (
     <nav
@@ -34,6 +47,7 @@ export function BottomTabBar() {
             <li key={href} className="flex-1">
               <Link
                 href={href}
+                onClick={(e) => handleHashClick(e, href)}
                 className={cn(
                   'flex flex-col items-center justify-center gap-0.5 h-full transition-colors duration-150',
                   isActive ? 'text-day1' : 'text-muted-fg hover:text-fg'
