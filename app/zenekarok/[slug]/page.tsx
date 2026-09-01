@@ -282,7 +282,7 @@ export default async function BandPage({
           <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-30 w-[min(360px,90%)]">
             <div className="relative">
               <Image
-                src={band.day === 1 ? '/sticker-green.webp' : '/sticker-purple.webp'}
+                src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
                 alt=""
                 width={360}
                 height={90}
