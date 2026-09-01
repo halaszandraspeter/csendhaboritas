@@ -102,9 +102,9 @@ export default async function BandPage({
                 </div>
               </div>
             </div>
-            {/* Music embed — barely overlaps bottom of image */}
+            {/* Music embed — below image */}
             {band.musicEmbedUrl && (
-              <div className="relative -mt-4 z-20 px-4">
+              <div className="relative z-20 px-4">
                 <MusicEmbed url={band.musicEmbedUrl} />
               </div>
             )}
@@ -179,7 +179,7 @@ export default async function BandPage({
               // Static class lookup for Tailwind to detect
               const xlColsClass = { 1: 'xl:grid-cols-1', 2: 'xl:grid-cols-2', 3: 'xl:grid-cols-3', 4: 'xl:grid-cols-4' }[xlCols] || 'xl:grid-cols-4'
               return (
-                <div className={`relative grid grid-cols-2 ${xlColsClass} gap-4 mb-6`}>
+                <div className={`relative grid grid-cols-2 ${xlColsClass} gap-2 xl:gap-4 mb-6`}>
                   {band.members.map((member) => {
                     const memberPhotoUrl = member.photo
                       ? sanityImageUrl(member.photo).width(300).height(300).url()
