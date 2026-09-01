@@ -47,18 +47,25 @@ export default async function HelyszinPage() {
 
       {/* Description */}
       {description && (
-        <div className="font-body text-base leading-[1.7] mb-10 max-w-2xl">
-          {description.split('\n').map((line, i) => (
-            line.trim() === '' ? (
-              <div key={i} className="h-4" />
-            ) : (
-              <div key={i}>
-                <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
-                  {line}
-                </span>
-              </div>
-            )
-          ))}
+        <div className="mb-10">
+          <h3 className="font-display text-2xl tracking-widest mb-3">
+            <span className="bg-day1 text-black px-2 py-1 box-decoration-clone">
+              JÓ TUDNI
+            </span>
+          </h3>
+          <div className="font-body text-base leading-[1.7] max-w-2xl">
+            {description.split('\n').map((line, i) => (
+              line.trim() === '' ? (
+                <div key={i} className="h-4" />
+              ) : (
+                <div key={i}>
+                  <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
+                    {line}
+                  </span>
+                </div>
+              )
+            ))}
+          </div>
         </div>
       )}
 
