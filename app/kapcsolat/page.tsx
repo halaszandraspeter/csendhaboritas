@@ -44,10 +44,10 @@ function OrganizerCard({
       {/* Contact info stickers */}
       <div className="flex flex-col gap-3 items-start">
         {organizer.email && (
-          <ContactInfoSticker value={organizer.email} variant={firstStickerVariant} />
+          <ContactInfoSticker value={organizer.email} variant={firstStickerVariant} type="email" />
         )}
         {organizer.mobile && (
-          <ContactInfoSticker value={organizer.mobile} variant={secondStickerVariant} />
+          <ContactInfoSticker value={organizer.mobile} variant={secondStickerVariant} type="phone" />
         )}
       </div>
     </div>

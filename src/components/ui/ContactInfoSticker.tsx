@@ -6,16 +6,30 @@ import { useState } from 'react'
 interface ContactInfoStickerProps {
   value: string
   variant: 'purple' | 'green'
+  type: 'email' | 'phone'
 }
 
-export function ContactInfoSticker({ value, variant }: ContactInfoStickerProps) {
+export function ContactInfoSticker({ value, variant, type }: ContactInfoStickerProps) {
   const [copied, setCopied] = useState(false)
 
   const stickerSrc = variant === 'purple' ? '/sticker-purple.webp' : '/sticker-green.webp'
 
   // Split email at @ for wrapping
-  const isEmail = value.includes('@')
+  const isEmail = type === 'email'
   const [emailUser, emailDomain] = isEmail ? value.split('@') : [value, '']
+
+  // Phone is 1.5x bigger than email
+  const textSizeClass = type === 'phone' 
+    ? 'text-lg md:text-2xl' 
+    : 'text-xs md:text-sm'
+  
+  // Phone uses bold, email uses medium weight
+  const fontWeightClass = type === 'phone' ? 'font-bold' : 'font-medium'
+  
+  // Sticker height: phone is bigger
+  const stickerHeight = type === 'phone'
+    ? 'h-[5rem] md:h-[6rem]'
+    : 'h-[5.5rem] md:h-[6.5rem]'
 
   const handleCopy = async () => {
     try {
@@ -41,15 +55,15 @@ export function ContactInfoSticker({ value, variant }: ContactInfoStickerProps) 
       className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95"
       title="Kattints a másoláshoz"
     >
-      <div className="relative h-[4.5rem] md:h-[5.25rem]">
+      <div className={`relative ${stickerHeight}`}>
         <Image
           src={stickerSrc}
           alt=""
           width={450}
-          height={84}
+          height={104}
           className="h-full w-auto object-contain"
         />
-        <span className="absolute inset-0 flex items-center justify-center font-display tracking-widest text-sm md:text-base text-bg font-bold text-center leading-tight px-2">
+        <span className={`absolute inset-0 flex items-center justify-center font-display tracking-widest ${textSizeClass} text-bg ${fontWeightClass} text-center leading-tight px-4`}>
           {copied ? (
             '✓ MÁSOLVA!'
           ) : isEmail ? (
