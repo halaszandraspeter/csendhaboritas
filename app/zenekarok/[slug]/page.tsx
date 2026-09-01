@@ -102,9 +102,9 @@ export default async function BandPage({
                 </div>
               </div>
             </div>
-            {/* Music embed — overlaps bottom of image */}
+            {/* Music embed — barely overlaps bottom of image */}
             {band.musicEmbedUrl && (
-              <div className="relative -mt-16 z-20 px-4">
+              <div className="relative -mt-4 z-20 px-4">
                 <MusicEmbed url={band.musicEmbedUrl} />
               </div>
             )}
@@ -235,7 +235,7 @@ export default async function BandPage({
             )}
 
             {/* Social links */}
-            <div className="relative space-y-4 flex flex-col items-end pb-24 lg:pb-20 xl:pb-16">
+            <div className="relative space-y-4 flex flex-col items-end pb-32 lg:pb-28 xl:pb-24">
               {band.socialLinks && (
                 <SocialLinks links={band.socialLinks} />
               )}
