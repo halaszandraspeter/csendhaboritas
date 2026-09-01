@@ -96,7 +96,7 @@ export default async function BandPage({
 
           {/* Centre — vertical decorative text */}
           <div
-            className="absolute inset-y-0 left-[calc(50%-1rem)] -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
+            className="absolute inset-y-0 left-[calc(50%-1.5rem)] -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
           >
             <span
               className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90`}
