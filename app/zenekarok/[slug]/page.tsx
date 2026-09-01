@@ -93,21 +93,21 @@ export default async function BandPage({
               </div>
             </div>
             {/* Event info sticker — opposite color to band's day */}
-            <div className="absolute bottom-8 left-4 z-20 w-[320px]">
+            <div className="absolute top-[80%] left-1/2 -translate-x-1/2 z-20 w-[640px]">
               <div className="relative">
                 <Image
                   src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
                   alt=""
-                  width={320}
-                  height={80}
+                  width={640}
+                  height={160}
                   className="w-full h-auto"
                   aria-hidden="true"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
-                  <span className="font-display text-sm tracking-widest uppercase">
+                  <span className="font-display text-2xl tracking-widest uppercase">
                     Grizzly Music Pub · Csendháborítás
                   </span>
-                  <span className="font-display text-lg tracking-widest font-bold">
+                  <span className="font-display text-4xl tracking-widest font-bold">
                     {band.setTime ?? '--:--'} okt. {band.day === 1 ? '9' : '10'}. · Miskolc
                   </span>
                 </div>
@@ -223,7 +223,7 @@ export default async function BandPage({
             )}
 
             {/* Social links + music embed */}
-            <div className="relative space-y-4 flex flex-col items-end">
+            <div className="relative space-y-4 flex flex-col items-end pb-12">
               {band.socialLinks && (
                 <SocialLinks links={band.socialLinks} />
               )}
