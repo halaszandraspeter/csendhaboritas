@@ -263,7 +263,7 @@ export default async function BandPage({
             <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/90" />
           </div>
           {/* Event info sticker */}
-          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-40 w-[min(360px,90%)]">
+          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-30 w-[min(360px,90%)]">
             <div className="relative">
               <Image
                 src={band.day === 1 ? '/sticker-green.webp' : '/sticker-purple.webp'}
