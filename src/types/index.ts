@@ -68,6 +68,12 @@ export interface EventSocialLinks {
   tiktok?: string
 }
 
+export interface EventRule {
+  _key: string
+  title: string
+  description: string
+}
+
 export interface EventData {
   _id: string
   _type: 'event'
@@ -81,4 +87,5 @@ export interface EventData {
   transportInfo?: string
   socialLinks?: EventSocialLinks
   sponsors?: Sponsor[]
+  rules?: EventRule[]
 }

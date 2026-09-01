@@ -89,6 +89,43 @@ export const eventSchema = defineType({
         },
       ],
     }),
+    defineField({
+      name: 'rules',
+      title: 'Házirend',
+      type: 'array',
+      description: 'A rendezvény házirendjének pontjai',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Cím',
+              type: 'string',
+              description: 'Rövid, figyelemfelkeltő cím (pl. "BELÉPÉS = BELEEGYEZÉS")',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'description',
+              title: 'Leírás',
+              type: 'text',
+              rows: 3,
+              description: 'Részletes magyarázat. Minden sor külön bekezdésként jelenik meg.',
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'description' },
+            prepare({ title, subtitle }) {
+              return {
+                title: title || 'Új szabály',
+                subtitle: subtitle?.slice(0, 60) + (subtitle?.length > 60 ? '...' : ''),
+              }
+            },
+          },
+        },
+      ],
+    }),
   ],
   preview: {
     select: { title: 'name', subtitle: 'venue', isActive: 'isActive' },

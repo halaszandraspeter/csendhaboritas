@@ -39,7 +39,8 @@ const EVENT_QUERY = defineQuery(`
     _id, _type, name, venue, address,
     mapEmbedUrl, venueDescription, venuePhotos,
     transportInfo, socialLinks,
-    sponsors[]{ _key, name, logo, url }
+    sponsors[]{ _key, name, logo, url },
+    rules[]{ _key, title, description }
   }
 `)
 
