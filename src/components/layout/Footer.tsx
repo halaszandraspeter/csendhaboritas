@@ -12,10 +12,14 @@ export function Footer({ event }: FooterProps) {
   const sponsors = event?.sponsors ?? []
 
   return (
-    <footer className="bg-bg">
-      <SkylineDivider linePosition="bottom" />
+    <footer className="relative">
+      {/* Skyline overlaps page content above */}
+      <div className="relative -mt-24 md:-mt-32 pointer-events-none">
+        <SkylineDivider linePosition="bottom" />
+      </div>
 
-      <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col items-center gap-6 text-center">
+      <div className="bg-bg">
+        <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col items-center gap-6 text-center">
         {/* Brand */}
         <p className="font-display text-2xl md:text-3xl tracking-widest text-fg">
           MISKOLCI CSENDHÁBORÍTÁS
@@ -84,6 +88,7 @@ export function Footer({ event }: FooterProps) {
         <p className="text-xs text-muted-fg font-body">
           © 2026 Miskolci Csendháborítás
         </p>
+        </div>
       </div>
     </footer>
   )

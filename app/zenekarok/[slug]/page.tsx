@@ -6,7 +6,6 @@ import { sanityImageUrl } from '@/src/lib/sanity/image'
 import { DayBadge } from '@/src/components/ui/DayBadge'
 import { SocialLinks } from '@/src/components/ui/SocialLinks'
 import { MusicEmbed } from '@/src/components/ui/MusicEmbed'
-import { SkylineDivider } from '@/src/components/ui/SkylineDivider'
 import { dayTextClass, dayBorderClass, dayBgClass } from '@/src/config/colors'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
@@ -77,7 +76,7 @@ export default async function BandPage({
             {/* Gradient toward the divider */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80" />
             {/* Logo top-left — sticks out of the picture */}
-            <div className="absolute -top-8 -left-8 z-20">
+            <div className="absolute -top-16 -left-16 z-20">
               <Link href="/" className="block">
                 <Image
                   src="/logo-band.webp"
@@ -96,7 +95,7 @@ export default async function BandPage({
 
           {/* Centre — vertical decorative text */}
           <div
-            className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
+            className="absolute inset-y-0 left-[calc(50%+4rem)] -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
           >
             <span
               className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90`}
@@ -232,13 +231,6 @@ export default async function BandPage({
             </div>
           </div>
         </div>
-
-        {/* Skyline at bottom — on top of the pictures with grey margins */}
-        <div className="relative px-16">
-          <div className="bg-black">
-            <SkylineDivider size="large" />
-          </div>
-        </div>
       </div>
 
       {/* ── MOBILE LAYOUT ── */}
@@ -359,9 +351,6 @@ export default async function BandPage({
             </p>
           </div>
         </div>
-
-        {/* Skyline at bottom */}
-        <SkylineDivider />
       </div>
     </article>
   )

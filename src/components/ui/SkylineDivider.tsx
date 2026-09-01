@@ -11,7 +11,7 @@ export function SkylineDivider({
   linePosition?: 'top' | 'bottom' | 'none'
   size?: 'normal' | 'large'
 }) {
-  const heightClass = size === 'large' ? 'h-24 md:h-32' : 'h-12 md:h-16'
+  const heightClass = size === 'large' ? 'h-24 md:h-32' : 'h-24 md:h-32'
   return (
     <div className={`relative w-full ${className}`} aria-hidden="true">
       {linePosition === 'top' && (
