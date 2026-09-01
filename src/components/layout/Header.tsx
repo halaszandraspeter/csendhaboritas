@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useCallback } from 'react'
+import { usePathname } from 'next/navigation'
 
 const navItems = [
   { href: '/#program', label: 'Program' },
@@ -18,8 +19,11 @@ const navItems = [
  * Hidden on mobile — BottomTabBar handles mobile navigation.
  */
 export function Header() {
+  const pathname = usePathname()
+
   const handleHashClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('/#')) {
+    // Only handle hash navigation if we're already on the homepage
+    if (href.startsWith('/#') && pathname === '/') {
       const hash = href.slice(1)
       const el = document.querySelector(hash)
       if (el) {
@@ -28,7 +32,7 @@ export function Header() {
         window.history.pushState(null, '', href)
       }
     }
-  }, [])
+  }, [pathname])
 
   return (
     <header className="hidden md:block border-b border-muted sticky top-0 z-40 bg-bg/95 backdrop-blur-sm">

@@ -21,7 +21,8 @@ export function BottomTabBar() {
   const pathname = usePathname()
 
   const handleHashClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('/#')) {
+    // Only handle hash navigation if we're already on the homepage
+    if (href.startsWith('/#') && pathname === '/') {
       const hash = href.slice(1)
       const el = document.querySelector(hash)
       if (el) {
@@ -30,7 +31,7 @@ export function BottomTabBar() {
         window.history.pushState(null, '', href)
       }
     }
-  }, [])
+  }, [pathname])
 
   return (
     <nav

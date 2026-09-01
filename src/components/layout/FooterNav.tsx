@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useCallback } from 'react'
+import { usePathname } from 'next/navigation'
 
 const navItems = [
   { href: '/#program', label: 'Program' },
@@ -13,8 +14,11 @@ const navItems = [
 ]
 
 export function FooterNav() {
+  const pathname = usePathname()
+
   const handleHashClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('/#')) {
+    // Only handle hash navigation if we're already on the homepage
+    if (href.startsWith('/#') && pathname === '/') {
       const hash = href.slice(1)
       const el = document.querySelector(hash)
       if (el) {
@@ -23,7 +27,7 @@ export function FooterNav() {
         window.history.pushState(null, '', href)
       }
     }
-  }, [])
+  }, [pathname])
 
   return (
     <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
