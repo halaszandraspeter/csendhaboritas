@@ -72,6 +72,7 @@ export interface EventData {
   _id: string
   _type: 'event'
   name: string
+  isActive?: boolean
   venue: string
   address: string
   mapEmbedUrl?: string

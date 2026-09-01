@@ -13,6 +13,13 @@ export const eventSchema = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'isActive',
+      title: 'Aktív esemény',
+      type: 'boolean',
+      description: 'Jelöld be az aktuálisan aktív eseményt. Csak egy esemény legyen aktív.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'venue',
       title: 'Helyszín neve',
       type: 'string',
@@ -84,6 +91,12 @@ export const eventSchema = defineType({
     }),
   ],
   preview: {
-    select: { title: 'name', subtitle: 'venue' },
+    select: { title: 'name', subtitle: 'venue', isActive: 'isActive' },
+    prepare({ title, subtitle, isActive }) {
+      return {
+        title: isActive ? `✓ ${title}` : title,
+        subtitle: isActive ? `${subtitle} (AKTÍV)` : subtitle,
+      }
+    },
   },
 })

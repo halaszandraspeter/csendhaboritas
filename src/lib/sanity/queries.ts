@@ -35,7 +35,7 @@ const ALL_BAND_SLUGS_QUERY = defineQuery(`
 `)
 
 const EVENT_QUERY = defineQuery(`
-  *[_type == "event"][0] {
+  *[_type == "event" && isActive == true][0] {
     _id, _type, name, venue, address,
     mapEmbedUrl, venueDescription, venuePhotos,
     transportInfo, socialLinks,
