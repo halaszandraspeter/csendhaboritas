@@ -77,6 +77,7 @@ export interface EventRule {
 export interface Organizer {
   _key: string
   name: string
+  role?: string
   email?: string
   mobile?: string
 }

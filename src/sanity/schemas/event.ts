@@ -102,8 +102,13 @@ export const eventSchema = defineType({
               name: 'name',
               title: 'Név',
               type: 'string',
-              description: 'Megjelenik a "Mi vagyunk a [Név]" stílusban',
               validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'role',
+              title: 'Szerepkör',
+              type: 'string',
+              description: 'Pl. "Főszervező", "Szervező" - megjelenik a "MI VAGYOK" stílusban',
             }),
             defineField({
               name: 'email',

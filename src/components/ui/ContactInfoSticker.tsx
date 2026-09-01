@@ -37,16 +37,15 @@ export function ContactInfoSticker({ value, variant }: ContactInfoStickerProps) 
       className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95"
       title="Kattints a másoláshoz"
     >
-      <div className="relative h-12 md:h-14">
+      <div className="relative h-[4.5rem] md:h-[5.25rem]">
         <Image
           src={stickerSrc}
           alt=""
-          width={300}
-          height={56}
-          className="h-full w-auto object-contain grayscale"
-          style={{ filter: variant === 'purple' ? 'grayscale(100%) brightness(0.7)' : 'grayscale(100%) brightness(0.85)' }}
+          width={450}
+          height={84}
+          className="h-full w-auto object-contain"
         />
-        <span className="absolute inset-0 flex items-center justify-center font-body text-sm md:text-base text-white tracking-wide">
+        <span className="absolute inset-0 flex items-center justify-center font-body text-base md:text-lg text-white tracking-wide">
           {copied ? '✓ Másolva!' : value}
         </span>
       </div>
