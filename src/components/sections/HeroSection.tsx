@@ -15,14 +15,14 @@ export function HeroSection({ event }: HeroSectionProps) {
   const socials = event?.socialLinks
 
   return (
-    <section className="relative min-h-dvh flex flex-col overflow-hidden">
+    <section className="relative h-dvh flex flex-col overflow-hidden">
       {/* Background concert photo */}
       <div className="absolute inset-0">
         <Image
           src="/hero-bg.webp"
           alt="Csendháborítás koncert"
           fill
-          className="object-cover"
+          className="object-cover object-top"
           priority
           sizes="100vw"
         />
@@ -90,7 +90,7 @@ export function HeroSection({ event }: HeroSectionProps) {
 
         {/* Social icons */}
         {(socials?.facebook || socials?.instagram || socials?.tiktok) && (
-          <div className="flex gap-9 items-center mt-3">
+          <div className="flex gap-9 items-center">
             {socials.facebook && (
               <a
                 href={socials.facebook}
@@ -129,8 +129,8 @@ export function HeroSection({ event }: HeroSectionProps) {
       </div>
 
       {/* Skyline at bottom of hero */}
-      <div className="relative">
-        <SkylineDivider linePosition="bottom" />
+      <div className="relative -mt-4">
+        <SkylineDivider linePosition="bottom" size="large" />
       </div>
     </section>
   )
