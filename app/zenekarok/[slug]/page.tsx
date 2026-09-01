@@ -245,23 +245,6 @@ export default async function BandPage({
 
       {/* ── MOBILE LAYOUT ── */}
       <div className="md:hidden bg-black">
-        {/* Band logo - top left */}
-        <div className="px-4 py-3">
-          {bandLogoUrl ? (
-            <Image
-              src={bandLogoUrl}
-              alt={`${band.name} logo`}
-              width={150}
-              height={50}
-              className="max-w-28 object-contain"
-            />
-          ) : (
-            <h1 className={`font-display text-2xl tracking-widest ${dayAccent}`}>
-              {band.name}
-            </h1>
-          )}
-        </div>
-
         {/* Concert photo */}
         <div className="relative w-full aspect-4/3">
           <div className="absolute inset-0 overflow-hidden">
@@ -278,6 +261,22 @@ export default async function BandPage({
               <div className="absolute inset-0 bg-surface" />
             )}
             <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/90" />
+          </div>
+          {/* Band logo - top left overlay */}
+          <div className="absolute top-3 left-3 z-20">
+            {bandLogoUrl ? (
+              <Image
+                src={bandLogoUrl}
+                alt={`${band.name} logo`}
+                width={100}
+                height={33}
+                className="max-w-20 object-contain"
+              />
+            ) : (
+              <h1 className={`font-display text-lg tracking-widest ${dayAccent}`}>
+                {band.name}
+              </h1>
+            )}
           </div>
           {/* Event info sticker */}
           <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-30 w-[min(360px,90%)]">
