@@ -18,18 +18,14 @@ export function ContactInfoSticker({ value, variant, type }: ContactInfoStickerP
   const isEmail = type === 'email'
   const [emailUser, emailDomain] = isEmail ? value.split('@') : [value, '']
 
-  // Phone is 1.5x bigger than email
-  const textSizeClass = type === 'phone' 
-    ? 'text-lg md:text-2xl' 
-    : 'text-xs md:text-sm'
+  // Same text size for both
+  const textSizeClass = 'text-lg md:text-2xl'
   
   // Phone uses bold, email uses medium weight
   const fontWeightClass = type === 'phone' ? 'font-bold' : 'font-medium'
   
-  // Sticker height: phone is bigger
-  const stickerHeight = type === 'phone'
-    ? 'h-[5rem] md:h-[6rem]'
-    : 'h-[5.5rem] md:h-[6.5rem]'
+  // Sticker height: same for both
+  const stickerHeight = 'h-[5.5rem] md:h-[6.5rem]'
 
   const handleCopy = async () => {
     try {
