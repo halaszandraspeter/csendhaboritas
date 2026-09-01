@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { getEvent } from '@/src/lib/sanity/queries'
 import { sanityImageUrl } from '@/src/lib/sanity/image'
+import { footerOverlapPaddingClass } from '@/src/config/layout'
 
 export const metadata: Metadata = {
   title: 'Támogatók',
@@ -13,7 +14,7 @@ export default async function TamogatokPage() {
   const sponsors = event?.sponsors ?? []
 
   return (
-    <main className="px-6 py-16 max-w-5xl mx-auto">
+    <main className={`px-6 py-16 max-w-5xl mx-auto ${footerOverlapPaddingClass}`}>
       <h1 className="font-display text-4xl md:text-5xl tracking-widest text-fg text-center mb-12">
         TÁMOGATÓK
       </h1>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getEvent } from '@/src/lib/sanity/queries'
 import type { Organizer } from '@/src/types'
 import { ContactInfoSticker } from '@/src/components/ui/ContactInfoSticker'
+import { footerOverlapPaddingClass } from '@/src/config/layout'
 
 export const metadata: Metadata = {
   title: 'Kapcsolat',
@@ -59,7 +60,7 @@ export default async function KapcsolatPage() {
   const organizers = event?.organizers ?? []
 
   return (
-    <main className="px-6 py-16 max-w-4xl mx-auto">
+    <main className={`px-6 py-16 max-w-4xl mx-auto ${footerOverlapPaddingClass}`}>
       <h1 className="font-display text-4xl md:text-5xl tracking-widest text-fg text-center mb-16">
         KAPCSOLAT
       </h1>

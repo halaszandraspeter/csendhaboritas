@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getEvent } from '@/src/lib/sanity/queries'
+import { footerOverlapPaddingClass } from '@/src/config/layout'
 
 export const metadata: Metadata = {
   title: 'Házirend',
@@ -11,7 +12,7 @@ export default async function HazirendPage() {
   const rules = event?.rules ?? []
 
   return (
-    <main className="px-6 py-16 max-w-3xl mx-auto">
+    <main className={`px-6 py-16 max-w-3xl mx-auto ${footerOverlapPaddingClass}`}>
       <h1 className="font-display text-4xl md:text-5xl tracking-widest text-fg text-center mb-12">
         HÁZIREND
       </h1>

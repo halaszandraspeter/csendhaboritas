@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MapPin } from 'lucide-react'
 import { getEvent } from '@/src/lib/sanity/queries'
 import { sanityImageUrl } from '@/src/lib/sanity/image'
+import { footerOverlapPaddingClass } from '@/src/config/layout'
 
 export const metadata: Metadata = {
   title: 'Helyszín',
@@ -31,7 +32,7 @@ export default async function HelyszinPage() {
   const photos = event?.venuePhotos ?? []
 
   return (
-    <div className="min-h-dvh px-6 py-16 max-w-4xl mx-auto w-full">
+    <div className={`min-h-dvh px-6 py-16 max-w-4xl mx-auto w-full ${footerOverlapPaddingClass}`}>
       <h1 className="font-display text-5xl md:text-7xl tracking-widest text-fg mb-12 text-center">
         HELYSZÍN
       </h1>
