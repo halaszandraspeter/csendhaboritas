@@ -19,10 +19,10 @@ export function HeroSection({ event }: HeroSectionProps) {
       {/* Background concert photo */}
       <div className="absolute inset-0">
         <Image
-          src="/hero-bg.jpg"
+          src="/hero-bg.webp"
           alt="Csendháborítás koncert"
           fill
-          className="object-cover grayscale"
+          className="object-cover"
           priority
           sizes="100vw"
         />
@@ -34,23 +34,41 @@ export function HeroSection({ event }: HeroSectionProps) {
       <div className="relative flex-1 flex flex-col items-center justify-center px-6 text-center gap-6 pt-8">
         {/* Logo */}
         <Image
-          src="/logo.png"
+          src="/logo-main.webp"
           alt="Miskolci Csendháborítás"
           width={360}
           height={120}
-          className="w-64 md:w-96 invert drop-shadow-[0_2px_24px_rgba(0,0,0,0.9)]"
+          className="w-64 md:w-96 drop-shadow-[0_2px_24px_rgba(0,0,0,0.9)]"
           priority
         />
 
         {/* Day labels */}
         <div className="flex gap-4 items-center flex-wrap justify-center">
-          <span className="px-3 py-1 bg-day1 text-bg font-display tracking-widest text-sm md:text-base">
-            OKTÓBER 9.
-          </span>
+          <div className="relative px-6 py-3">
+            <Image
+              src="/sticker-purple.webp"
+              alt=""
+              fill
+              className="object-contain"
+              aria-hidden="true"
+            />
+            <span className="relative font-display tracking-widest text-sm md:text-base text-bg font-bold">
+              OKTÓBER 9.
+            </span>
+          </div>
           <span className="text-muted-fg font-body text-sm">·</span>
-          <span className="px-3 py-1 bg-day2 text-bg font-display tracking-widest text-sm md:text-base">
-            OKTÓBER 10.
-          </span>
+          <div className="relative px-6 py-3">
+            <Image
+              src="/sticker-green.webp"
+              alt=""
+              fill
+              className="object-contain"
+              aria-hidden="true"
+            />
+            <span className="relative font-display tracking-widest text-sm md:text-base text-bg font-bold">
+              OKTÓBER 10.
+            </span>
+          </div>
         </div>
 
         {/* Venue */}

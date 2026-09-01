@@ -32,11 +32,10 @@ export function Header() {
         {/* Centre logo */}
         <Link href="/" className="flex-shrink-0 mx-8">
           <Image
-            src="/logo.png"
+            src="/logo-main.webp"
             alt="Miskolci Csendháborítás"
             width={180}
             height={60}
-            className="invert"
             priority
           />
         </Link>

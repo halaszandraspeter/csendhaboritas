@@ -60,7 +60,7 @@ export default async function BandPage({
       <div className="hidden md:flex min-h-dvh relative">
 
         {/* Left — concert photo */}
-        <div className="relative w-[60%] overflow-hidden">
+        <div className="relative w-1/2 overflow-hidden">
           {bandPhotoUrl ? (
             <Image
               src={bandPhotoUrl}
@@ -79,7 +79,7 @@ export default async function BandPage({
           <div className="absolute top-6 left-6">
             <Link href="/" className="block">
               <Image
-                src="/logo.png"
+                src="/logo-band.webp"
                 alt="Miskolci Csendháborítás"
                 width={280}
                 height={96}
@@ -95,18 +95,18 @@ export default async function BandPage({
 
         {/* Centre — vertical decorative text */}
         <div
-          className="flex-shrink-0 flex items-center overflow-hidden"
+          className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none"
         >
           <span
-            className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90 -ml-6`}
+            className={`font-display text-[144px] font-black tracking-[0.05em] leading-none ${dayAccent} select-none opacity-90`}
             style={{ writingMode: 'vertical-rl' }}
           >
-            CSENDHABORÍTÁS
+            CSENDHÁBORÍTÁS
           </span>
         </div>
 
         {/* Right — band info */}
-        <div className="flex-1 flex flex-col justify-between p-8 overflow-y-auto">
+        <div className="w-1/2 flex flex-col justify-between p-8 overflow-y-auto">
           {/* Band logo / name */}
           <div className="flex justify-center">
             {bandLogoUrl ? (
