@@ -60,7 +60,7 @@ export default async function BandPage({
         <div className="flex flex-1 relative pt-16 px-16 gap-32">
 
           {/* Left — concert photo */}
-          <div className="relative w-1/2 overflow-visible bg-black flex flex-col">
+          <div className="relative w-1/2 overflow-visible bg-black flex flex-col z-10">
             {/* Image wrapper — sticker is positioned relative to this */}
             <div className="relative pt-16">
               {/* Top gradient — fade from black into image */}
