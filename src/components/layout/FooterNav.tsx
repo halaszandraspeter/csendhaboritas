@@ -4,9 +4,9 @@ import Link from 'next/link'
 import { useCallback } from 'react'
 
 const navItems = [
-  { href: '/#fellepok', label: 'Fellépők' },
   { href: '/#program', label: 'Program' },
   { href: '/#helyszin', label: 'Helyszín' },
+  { href: '/#fellepok', label: 'Fellépők' },
   { href: '/hazirend', label: 'Házirend' },
   { href: '/kapcsolat', label: 'Kapcsolat' },
   { href: '/tamogatok', label: 'Támogatók' },

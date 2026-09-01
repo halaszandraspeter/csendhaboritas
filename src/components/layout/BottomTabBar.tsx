@@ -7,9 +7,9 @@ import { cn } from '@/src/lib/utils'
 import { useCallback } from 'react'
 
 const tabs = [
-  { href: '/#fellepok', label: 'Fellépők', Icon: Music },
   { href: '/#program', label: 'Program', Icon: Calendar },
   { href: '/#helyszin', label: 'Helyszín', Icon: MapPin },
+  { href: '/#fellepok', label: 'Fellépők', Icon: Music },
   { href: '/hazirend', label: 'Házirend', Icon: FileText },
 ]
 
