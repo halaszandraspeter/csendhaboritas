@@ -57,7 +57,7 @@ export default async function BandPage({
   return (
     <article className="min-h-dvh bg-[#e5e5e5]">
       {/* ── DESKTOP LAYOUT ── */}
-      <div className="hidden md:flex min-h-dvh relative pt-8 px-8 gap-8">
+      <div className="hidden md:flex min-h-dvh relative pt-16 px-16 gap-16">
 
         {/* Left — concert photo */}
         <div className="relative w-1/2 overflow-hidden">
@@ -75,17 +75,17 @@ export default async function BandPage({
           )}
           {/* Gradient toward the divider */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80" />
-          {/* Logo top-left */}
-          <div className="absolute top-6 left-6">
+          {/* Logo top-left — sticks out of the picture */}
+          <div className="absolute -top-8 -left-8">
             <Link href="/" className="block">
               <Image
                 src="/logo-band.webp"
                 alt="Miskolci Csendháborítás"
-                width={280}
-                height={96}
+                width={560}
+                height={192}
               />
             </Link>
-            <div className={`${dayBg} inline-block mt-4 px-3 py-2`}>
+            <div className={`${dayBg} inline-block mt-2 px-3 py-2`}>
               <span className="font-display text-3xl font-bold tracking-widest text-black uppercase">
                 {band.name}
               </span>
