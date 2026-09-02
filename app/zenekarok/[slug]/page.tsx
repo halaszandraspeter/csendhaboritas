@@ -88,12 +88,11 @@ export default async function BandPage({
               <div className="absolute bottom-0 left-0 right-0 h-1/5 bg-gradient-to-b from-transparent to-black z-10 pointer-events-none" />
               {/* Gradient toward the divider */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
-            </div>
-            {/* Sticker + music embed — grouped so they move together and never collide,
-                with a flexible gap that grows into any leftover space below */}
-            <div className="relative z-20 flex flex-1 flex-col items-center -mt-[55%]">
-              <div className="w-[min(480px,90%)]">
-                <div className="relative">
+              {/* Sticker + music embed — grouped so they move together and never collide.
+                  Positioned absolutely (relative to the image) so their size never affects
+                  the column's own layout height, which caused overflow into the footer. */}
+              <div className="absolute top-[62%] left-1/2 -translate-x-1/2 z-20 flex flex-col items-center w-[min(480px,90%)]">
+                <div className="relative w-full">
                   <Image
                     src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
                     alt=""
@@ -111,13 +110,12 @@ export default async function BandPage({
                     </span>
                   </div>
                 </div>
+                {band.musicEmbedUrl && (
+                  <div className="w-full mt-4">
+                    <MusicEmbed url={band.musicEmbedUrl} />
+                  </div>
+                )}
               </div>
-              <div className="min-h-4 max-h-8 flex-1" aria-hidden="true" />
-              {band.musicEmbedUrl && (
-                <div className="w-full px-4">
-                  <MusicEmbed url={band.musicEmbedUrl} />
-                </div>
-              )}
             </div>
             {/* Logo top-left — sticks out of the picture */}
             <div className="absolute -top-10 -left-6 z-20 w-[clamp(280px,28vw,560px)]">
