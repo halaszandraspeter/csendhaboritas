@@ -91,7 +91,7 @@ export default async function BandPage({
             </div>
             {/* Sticker + music embed — grouped so they move together and never collide,
                 with a flexible gap that grows into any leftover space below */}
-            <div className="relative z-20 flex flex-1 flex-col items-center -mt-[47%]">
+            <div className="relative z-20 flex flex-1 flex-col items-center -mt-[55%]">
               <div className="w-[min(480px,90%)]">
                 <div className="relative">
                   <Image
@@ -112,7 +112,7 @@ export default async function BandPage({
                   </div>
                 </div>
               </div>
-              <div className="min-h-4 max-h-16 flex-1" aria-hidden="true" />
+              <div className="min-h-4 max-h-8 flex-1" aria-hidden="true" />
               {band.musicEmbedUrl && (
                 <div className="w-full px-4">
                   <MusicEmbed url={band.musicEmbedUrl} />
