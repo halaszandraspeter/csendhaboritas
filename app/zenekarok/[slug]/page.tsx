@@ -85,6 +85,7 @@ export default async function BandPage({
               ) : (
                 <div className="aspect-4/5 bg-surface" />
               )}
+              <div className="absolute bottom-0 left-0 right-0 h-1/5 bg-gradient-to-b from-transparent to-black z-10 pointer-events-none" />
               {/* Gradient toward the divider */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
               {/* Event info sticker — opposite color to band's day */}
@@ -160,6 +161,7 @@ export default async function BandPage({
               />
               <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-bg/80" />
               <div className="absolute inset-0 bg-bg/60" />
+              <div className="absolute bottom-0 left-0 right-0 h-1/5 bg-gradient-to-b from-transparent to-black" />
             </div>
             {/* Band logo / name */}
             <div className="relative flex justify-center">
