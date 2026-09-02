@@ -319,7 +319,7 @@ export default async function BandPage({
             )}
           </div>
           {/* Event info sticker */}
-          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-30 w-[min(360px,90%)]">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 w-[min(360px,90%)]">
             <div className="relative">
               <Image
                 src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
@@ -341,7 +341,7 @@ export default async function BandPage({
           </div>
         </div>
 
-        <div className="px-5 pb-24 pt-12">
+        <div className="px-5 pb-24 pt-6">
           {/* Bio */}
           {band.bio && (
             <div className="mb-6">
