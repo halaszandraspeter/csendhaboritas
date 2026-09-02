@@ -89,7 +89,7 @@ export default async function BandPage({
               {/* Gradient toward the divider */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
               {/* Event info sticker — opposite color to band's day */}
-              <div className="absolute top-[68%] left-1/2 -translate-x-1/2 z-20 w-[min(480px,90%)]">
+              <div className="absolute top-[68%] left-1/2 -translate-x-1/2 translate-y-4 z-20 w-[min(480px,90%)]">
                 <div className="relative">
                   <Image
                     src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}

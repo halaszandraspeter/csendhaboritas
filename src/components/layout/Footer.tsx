@@ -14,7 +14,7 @@ export function Footer({ event }: FooterProps) {
   return (
     <footer className="relative">
       {/* Skyline overlaps page content above */}
-      <div className="relative -mt-24 md:-mt-32 pointer-events-none">
+      <div className="relative z-30 -mt-24 md:-mt-32 pointer-events-none">
         <SkylineDivider linePosition="bottom" />
       </div>
 
