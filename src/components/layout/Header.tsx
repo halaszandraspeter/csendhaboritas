@@ -19,7 +19,7 @@ const navItems = [
 /**
  * Responsive header with hamburger menu on mobile.
  */
-export function Header() {
+export function Header({ mainLogoUrl = '/logo-main.webp' }: { mainLogoUrl?: string }) {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [closeButtonColor, setCloseButtonColor] = useState<'green' | 'purple'>('green')
@@ -85,7 +85,7 @@ export function Header() {
           {/* Centre logo */}
           <Link href="/" className="shrink-0 mx-8">
             <Image
-              src="/logo-main.webp"
+              src={mainLogoUrl}
               alt="Miskolci Csendháborítás"
               width={180}
               height={60}
@@ -138,7 +138,7 @@ export function Header() {
           {/* Logo at top of menu */}
           <Link href="/" onClick={() => setIsMenuOpen(false)} className="mb-6">
             <Image
-              src="/logo-main.webp"
+              src={mainLogoUrl}
               alt="Miskolci Csendháborítás"
               width={252}
               height={84}

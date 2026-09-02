@@ -98,4 +98,6 @@ export interface EventData {
   rules?: EventRule[]
   organizers?: Organizer[]
   ogImage?: SanityImage
+  mainLogo?: SanityImage
+  lightLogo?: SanityImage
 }

@@ -38,18 +38,23 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const event = await getEvent()
+  const mainLogoUrl = event?.mainLogo
+    ? sanityImageUrl(event.mainLogo).width(560).url()
+    : '/logo-main.webp'
+
   return (
     <html
       lang="hu"
       className={`${displayFont.variable} ${bodyFont.variable}`}
     >
       <body className="min-h-dvh flex flex-col bg-bg text-fg font-body">
-        <Header />
+        <Header mainLogoUrl={mainLogoUrl} />
 
         <main className="flex-1">{children}</main>
 

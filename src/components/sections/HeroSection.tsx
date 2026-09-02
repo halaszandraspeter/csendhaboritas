@@ -5,6 +5,7 @@ import {
   InstagramIcon,
   TikTokIcon,
 } from '@/src/components/ui/SocialIcons'
+import { sanityImageUrl } from '@/src/lib/sanity/image'
 import type { EventData } from '@/src/types'
 
 interface HeroSectionProps {
@@ -13,6 +14,9 @@ interface HeroSectionProps {
 
 export function HeroSection({ event }: HeroSectionProps) {
   const socials = event?.socialLinks
+  const mainLogoUrl = event?.mainLogo
+    ? sanityImageUrl(event.mainLogo).width(960).url()
+    : '/logo-main.webp'
 
   return (
     <section className="relative h-[100dvh] md:h-[calc(100dvh-5.5rem)] flex flex-col overflow-hidden">
@@ -34,7 +38,7 @@ export function HeroSection({ event }: HeroSectionProps) {
       <div className="relative flex-1 flex flex-col items-center justify-center px-6 text-center gap-7 pt-8">
         {/* Logo */}
         <Image
-          src="/logo-main.webp"
+          src={mainLogoUrl}
           alt="Miskolci Csendháborítás"
           width={480}
           height={160}

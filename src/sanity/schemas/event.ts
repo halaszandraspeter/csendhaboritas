@@ -28,6 +28,20 @@ export const eventSchema = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'mainLogo',
+      title: 'Fő logó (sötét háttérhez)',
+      type: 'image',
+      description: 'A fejlécben és a főoldal hero szekciójában használt logó.',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'lightLogo',
+      title: 'Világos logó (zenekar oldalhoz)',
+      type: 'image',
+      description: 'A zenekar részletező oldalon, fotó felett használt logóváltozat.',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'venue',
       title: 'Helyszín neve',
       type: 'string',

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { getBandBySlug, getAllBandSlugs } from '@/src/lib/sanity/queries'
+import { getBandBySlug, getAllBandSlugs, getEvent } from '@/src/lib/sanity/queries'
 import { sanityImageUrl } from '@/src/lib/sanity/image'
 import { DayBadge } from '@/src/components/ui/DayBadge'
 import { SocialLinks } from '@/src/components/ui/SocialLinks'
@@ -39,6 +39,11 @@ export default async function BandPage({
   const band = await getBandBySlug(slug)
 
   if (!band) notFound()
+
+  const event = await getEvent()
+  const lightLogoUrl = event?.lightLogo
+    ? sanityImageUrl(event.lightLogo).width(560).url()
+    : '/logo-band.webp'
 
   const bandPhotoUrl = band.bandPhotoImage
     ? sanityImageUrl(band.bandPhotoImage).width(900).url()
@@ -111,7 +116,7 @@ export default async function BandPage({
             <div className="absolute -top-10 -left-6 z-20 w-[clamp(280px,28vw,560px)]">
               <Link href="/" className="block">
                 <Image
-                  src="/logo-band.webp"
+                  src={lightLogoUrl}
                   alt="Miskolci Csendháborítás"
                   width={560}
                   height={192}
