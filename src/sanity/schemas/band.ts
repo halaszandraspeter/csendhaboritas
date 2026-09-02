@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { aspectRatioValidator } from './validators/aspectRatio'
 
 export const bandSchema = defineType({
   name: 'band',
@@ -59,13 +60,25 @@ export const bandSchema = defineType({
       name: 'bandPhotoImage',
       title: 'Zenekar fotó (pre-cut transparent PNG)',
       type: 'image',
-      options: { hotspot: true },
+      description: 'A zenekar oldalon függőlegesen jelenik meg. Ajánlott arány: 4:5 (pl. 960×1200px). Állítsd be a fotó pont a néző → “Edit crop and hotspot” → 4:5 előnézet szerint.',
+      options: {
+        hotspot: {
+          previews: [{ title: '4:5 (zenekar oldal)', aspectRatio: 4 / 5 }],
+        },
+      },
+      validation: (Rule) => Rule.custom(aspectRatioValidator(4 / 5, '4:5')),
     }),
     defineField({
       name: 'cardThumbnailImage',
       title: 'Kártya kép (négyszögletes crop, grid-hez)',
       type: 'image',
-      options: { hotspot: true },
+      description: 'A főoldali zenekar rácsban jelenik meg, vízszintes formátumban. Ajánlott arány: 3:2 (pl. 1200×800px).',
+      options: {
+        hotspot: {
+          previews: [{ title: '3:2 (rács nézet)', aspectRatio: 3 / 2 }],
+        },
+      },
+      validation: (Rule) => Rule.custom(aspectRatioValidator(3 / 2, '3:2')),
     }),
     defineField({
       name: 'members',
@@ -80,7 +93,13 @@ export const bandSchema = defineType({
               name: 'photo',
               title: 'Fotó',
               type: 'image',
-              options: { hotspot: true },
+              description: 'Négyzet alakú (1:1) kép, pl. 600×600px.',
+              options: {
+                hotspot: {
+                  previews: [{ title: '1:1 (tagfotó)', aspectRatio: 1 }],
+                },
+              },
+              validation: (Rule) => Rule.custom(aspectRatioValidator(1, '1:1')),
             }),
             defineField({
               name: 'nameAlignment',

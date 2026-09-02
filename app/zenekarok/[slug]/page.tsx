@@ -46,7 +46,7 @@ export default async function BandPage({
     : '/logo-band.webp'
 
   const bandPhotoUrl = band.bandPhotoImage
-    ? sanityImageUrl(band.bandPhotoImage).width(900).url()
+    ? sanityImageUrl(band.bandPhotoImage).width(960).height(1200).url()
     : null
 
   const bandLogoUrl = band.bandLogoImage
@@ -73,14 +73,14 @@ export default async function BandPage({
                 <Image
                   src={bandPhotoUrl}
                   alt={`${band.name} koncert fotó`}
-                  width={900}
+                  width={960}
                   height={1200}
                   className="w-full h-auto grayscale"
                   priority
                   sizes="50vw"
                 />
               ) : (
-                <div className="aspect-[3/4] bg-surface" />
+                <div className="aspect-4/5 bg-surface" />
               )}
               {/* Gradient toward the divider */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
@@ -251,7 +251,7 @@ export default async function BandPage({
       {/* ── MOBILE LAYOUT ── */}
       <div className="md:hidden bg-black">
         {/* Concert photo */}
-        <div className="relative w-full aspect-4/3">
+        <div className="relative w-full aspect-4/5">
           <div className="absolute inset-0 overflow-hidden">
             {bandPhotoUrl ? (
               <Image
