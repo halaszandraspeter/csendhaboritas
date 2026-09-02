@@ -17,7 +17,7 @@ const navItems = [
 ]
 
 /**
- * Responsive header with hamburger menu on mobile.
+ * Responsive header with hamburger menu below 1024px.
  */
 export function Header({ mainLogoUrl = '/logo-main.webp' }: { mainLogoUrl?: string }) {
   const pathname = usePathname()
@@ -66,7 +66,7 @@ export function Header({ mainLogoUrl = '/logo-main.webp' }: { mainLogoUrl?: stri
   return (
     <>
       {/* Desktop Header */}
-      <header className="hidden md:block border-b border-muted sticky top-0 z-40 bg-bg/95 backdrop-blur-sm">
+      <header className="hidden lg:block border-b border-muted sticky top-0 z-40 bg-bg/95 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Left nav items */}
           <nav className="flex gap-8">
@@ -113,7 +113,7 @@ export function Header({ mainLogoUrl = '/logo-main.webp' }: { mainLogoUrl?: stri
       <button
         onClick={handleMenuToggle}
         className={cn(
-          'md:hidden fixed top-4 right-4 z-50 p-3 rounded-full bg-bg/95 backdrop-blur-sm border border-muted shadow-lg transition-all duration-200',
+          'lg:hidden fixed top-4 right-4 z-50 p-3 rounded-full bg-bg/95 backdrop-blur-sm border border-muted shadow-lg transition-all duration-200',
           isMenuOpen && closeButtonColor === 'green' && 'bg-day1 border-day1',
           isMenuOpen && closeButtonColor === 'purple' && 'bg-day2 border-day2'
         )}
@@ -130,7 +130,7 @@ export function Header({ mainLogoUrl = '/logo-main.webp' }: { mainLogoUrl?: stri
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'md:hidden fixed inset-0 z-40 bg-bg/98 backdrop-blur-md transition-all duration-300',
+          'lg:hidden fixed inset-0 z-40 bg-bg/98 backdrop-blur-md transition-all duration-300',
           isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         )}
       >
