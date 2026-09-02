@@ -97,4 +97,5 @@ export interface EventData {
   sponsors?: Sponsor[]
   rules?: EventRule[]
   organizers?: Organizer[]
+  ogImage?: SanityImage
 }

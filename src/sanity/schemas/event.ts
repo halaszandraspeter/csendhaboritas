@@ -20,6 +20,14 @@ export const eventSchema = defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'ogImage',
+      title: 'Megosztási kép (Open Graph)',
+      type: 'image',
+      description:
+        'Facebook/Messenger/Twitter linkmegosztáskor megjelenő kép. Ajánlott méret: 1200×630px.',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'venue',
       title: 'Helyszín neve',
       type: 'string',
