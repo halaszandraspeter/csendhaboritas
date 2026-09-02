@@ -112,7 +112,7 @@ export default async function BandPage({
             </div>
             {/* Music embed — below image */}
             {band.musicEmbedUrl && (
-              <div className="relative z-20 px-4">
+              <div className="relative z-20 px-4 -mt-16">
                 <MusicEmbed url={band.musicEmbedUrl} />
               </div>
             )}
