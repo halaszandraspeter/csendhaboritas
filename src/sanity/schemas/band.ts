@@ -1,5 +1,4 @@
 import { defineField, defineType } from 'sanity'
-import { aspectRatioValidator } from './validators/aspectRatio'
 
 export const bandSchema = defineType({
   name: 'band',
@@ -58,27 +57,17 @@ export const bandSchema = defineType({
     }),
     defineField({
       name: 'bandPhotoImage',
-      title: 'Zenekar fotó (pre-cut transparent PNG)',
+      title: 'Zenekar fotó (4:5, függőleges)',
       type: 'image',
-      description: 'A zenekar oldalon függőlegesen jelenik meg. Ajánlott arány: 4:5 (pl. 960×1200px). Állítsd be a fotó pont a néző → “Edit crop and hotspot” → 4:5 előnézet szerint.',
-      options: {
-        hotspot: {
-          previews: [{ title: '4:5 (zenekar oldal)', aspectRatio: 4 / 5 }],
-        },
-      },
-      validation: (Rule) => Rule.custom(aspectRatioValidator(4 / 5, '4:5')),
+      description: 'A zenekar oldalon függőlegesen jelenik meg. Arány: 4:5 (pl. 960×1200px).',
+      options: { hotspot: true },
     }),
     defineField({
       name: 'cardThumbnailImage',
-      title: 'Kártya kép (négyszögletes crop, grid-hez)',
+      title: 'Kártya kép (3:2, vízszintes)',
       type: 'image',
-      description: 'A főoldali zenekar rácsban jelenik meg, vízszintes formátumban. Ajánlott arány: 3:2 (pl. 1200×800px).',
-      options: {
-        hotspot: {
-          previews: [{ title: '3:2 (rács nézet)', aspectRatio: 3 / 2 }],
-        },
-      },
-      validation: (Rule) => Rule.custom(aspectRatioValidator(3 / 2, '3:2')),
+      description: 'A főoldali zenekar rácsban jelenik meg. Arány: 3:2 (pl. 1200×800px).',
+      options: { hotspot: true },
     }),
     defineField({
       name: 'members',
@@ -91,15 +80,10 @@ export const bandSchema = defineType({
             defineField({ name: 'name', title: 'Név', type: 'string' }),
             defineField({
               name: 'photo',
-              title: 'Fotó',
+              title: 'Fotó (1:1)',
               type: 'image',
-              description: 'Négyzet alakú (1:1) kép, pl. 600×600px.',
-              options: {
-                hotspot: {
-                  previews: [{ title: '1:1 (tagfotó)', aspectRatio: 1 }],
-                },
-              },
-              validation: (Rule) => Rule.custom(aspectRatioValidator(1, '1:1')),
+              description: 'Négyzet alakú kép, pl. 600×600px.',
+              options: { hotspot: true },
             }),
             defineField({
               name: 'nameAlignment',
