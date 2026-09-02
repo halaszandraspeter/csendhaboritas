@@ -24,7 +24,7 @@ export default async function HazirendPage() {
               const lines = rule.description.split('\n').filter((line) => line.trim())
               return (
                 <section key={rule._key} className="text-center">
-                  <h2 className="font-display text-xl md:text-2xl tracking-widest mb-3">
+                  <h2 className="font-display text-2xl md:text-3xl tracking-widest mb-3">
                     <span
                       className={`${idx % 2 === 0 ? 'bg-day1' : 'bg-day2'} text-black px-2 py-1 box-decoration-clone`}
                     >
@@ -34,7 +34,7 @@ export default async function HazirendPage() {
                   <div className="font-body text-base leading-[1.7]">
                     {lines.map((line, i) => (
                       <div key={i}>
-                        <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
+                        <span className="text-[#e5e5e5] uppercase">
                           {line}
                         </span>
                       </div>
