@@ -6,7 +6,8 @@ import { sanityImageUrl } from '@/src/lib/sanity/image'
 import { DayBadge } from '@/src/components/ui/DayBadge'
 import { SocialLinks } from '@/src/components/ui/SocialLinks'
 import { MusicEmbed } from '@/src/components/ui/MusicEmbed'
-import { dayTextClass, dayBorderClass, dayBgClass } from '@/src/config/colors'
+import { DuotoneLogo } from '@/src/components/ui/DuotoneLogo'
+import { dayTextClass, dayBorderClass, dayBgClass, colors } from '@/src/config/colors'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
@@ -56,6 +57,7 @@ export default async function BandPage({
   const dayAccent = dayTextClass(band.day)
   const dayBorder = dayBorderClass(band.day)
   const dayBg = dayBgClass(band.day)
+  const dayColor = band.day === 1 ? colors.day1 : colors.day2
 
   return (
     <article className="min-h-dvh bg-[#e5e5e5]">
@@ -161,12 +163,14 @@ export default async function BandPage({
             {/* Band logo / name */}
             <div className="relative flex justify-center">
               {bandLogoUrl ? (
-                <Image
+                <DuotoneLogo
                   src={bandLogoUrl}
                   alt={`${band.name} logo`}
                   width={400}
                   height={150}
-                  className="max-w-[280px] object-contain mb-4"
+                  color={dayColor}
+                  imgClassName="max-w-[280px] object-contain"
+                  className="mb-4"
                 />
               ) : (
                 <h1 className={`font-display text-5xl tracking-widest ${dayAccent} mb-4`}>
@@ -270,12 +274,14 @@ export default async function BandPage({
           {/* Band logo - top left overlay */}
           <div className="absolute top-3 left-3 z-20">
             {bandLogoUrl ? (
-              <Image
+              <DuotoneLogo
                 src={bandLogoUrl}
                 alt={`${band.name} logo`}
                 width={100}
                 height={33}
-                className="max-w-20 object-contain"
+                color={dayColor}
+                offset={2}
+                imgClassName="max-w-20 object-contain"
               />
             ) : (
               <h1 className={`font-display text-lg tracking-widest ${dayAccent}`}>
