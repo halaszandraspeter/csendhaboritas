@@ -170,7 +170,7 @@ export default async function BandPage({
                     alt={`${band.name} logo`}
                     width={400}
                     height={150}
-                    color={colors.fg}
+                    color="#e5e5e5"
                     shadowColor={dayColor}
                     imgClassName="max-w-[280px] object-contain"
                     className="mb-4"
@@ -187,7 +187,7 @@ export default async function BandPage({
               ) : (
                 <h1
                   className={`font-display text-5xl tracking-widest mb-4 ${useLogoEffect ? '' : dayAccent}`}
-                  style={useLogoEffect ? { color: colors.fg, textShadow: `4px 4px 0 ${dayColor}` } : undefined}
+                  style={useLogoEffect ? { color: '#e5e5e5', textShadow: `4px 4px 0 ${dayColor}` } : undefined}
                 >
                   {band.name}
                 </h1>
@@ -295,7 +295,7 @@ export default async function BandPage({
                   alt={`${band.name} logo`}
                   width={100}
                   height={33}
-                  color={colors.fg}
+                  color="#e5e5e5"
                   shadowColor={dayColor}
                   offset={2}
                   imgClassName="max-w-20 object-contain"
@@ -312,7 +312,7 @@ export default async function BandPage({
             ) : (
               <h1
                 className={`font-display text-lg tracking-widest ${useLogoEffect ? '' : dayAccent}`}
-                style={useLogoEffect ? { color: colors.fg, textShadow: `2px 2px 0 ${dayColor}` } : undefined}
+                style={useLogoEffect ? { color: '#e5e5e5', textShadow: `2px 2px 0 ${dayColor}` } : undefined}
               >
                 {band.name}
               </h1>
