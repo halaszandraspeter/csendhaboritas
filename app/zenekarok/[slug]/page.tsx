@@ -117,6 +117,9 @@ export default async function BandPage({
                 )}
               </div>
             </div>
+            {/* Flow spacer — reserves room below the image so the page (and footer skyline)
+                push down enough to clear the absolutely-positioned music embed above */}
+            {band.musicEmbedUrl && <div className="h-24" aria-hidden="true" />}
             {/* Logo top-left — sticks out of the picture */}
             <div className="absolute -top-10 -left-6 z-20 w-[clamp(280px,28vw,560px)]">
               <Link href="/" className="block">
