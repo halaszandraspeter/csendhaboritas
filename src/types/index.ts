@@ -43,6 +43,8 @@ export interface Band {
   day: 1 | 2
   /** Redesigned band logo image with event colour underlay */
   bandLogoImage?: SanityImage
+  /** When true (default), the logo/name renders white with a day-colour offset shadow */
+  logoShadowEffect?: boolean
   /** Pre-cut transparent PNG concert/live photo */
   bandPhotoImage?: SanityImage
   /** Rectangular crop used for grid cards */

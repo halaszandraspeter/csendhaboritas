@@ -56,6 +56,14 @@ export const bandSchema = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'logoShadowEffect',
+      title: 'Logó árnyék effekt',
+      type: 'boolean',
+      description:
+        'Ha be van kapcsolva, a logó (vagy a zenekar neve) fehér színnel és a nap színével eltolt árnyékkal jelenik meg. Kapcsold ki többszínű logónál.',
+      initialValue: true,
+    }),
+    defineField({
       name: 'bandPhotoImage',
       title: 'Zenekar fotó (4:5, függőleges)',
       type: 'image',

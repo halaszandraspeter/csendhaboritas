@@ -6,9 +6,11 @@ interface DuotoneLogoProps {
   alt: string
   width: number
   height: number
-  /** Colour of the top layer (e.g. the current day's colour) */
+  /** Colour of the top (foreground) layer */
   color: string
-  /** Offset in px for the black shadow layer behind */
+  /** Colour of the offset shadow layer behind */
+  shadowColor?: string
+  /** Offset in px for the shadow layer behind */
   offset?: number
   /** Classes controlling the rendered size (applied to the sizing image) */
   imgClassName?: string
@@ -18,7 +20,7 @@ interface DuotoneLogoProps {
 
 /**
  * Renders a logo twice as solid-colour silhouettes stacked with an offset:
- * a black shadow behind and the given colour on top, using the logo's alpha as a mask.
+ * an offset shadow behind and the foreground colour on top, using the logo's alpha as a mask.
  */
 export function DuotoneLogo({
   src,
@@ -26,13 +28,16 @@ export function DuotoneLogo({
   width,
   height,
   color,
+  shadowColor = '#000',
   offset = 4,
   imgClassName,
   className,
 }: DuotoneLogoProps) {
+  // mask-image requires a CORS-clean, same-origin resource, so proxy the CDN asset.
+  const maskUrl = `/api/asset?url=${encodeURIComponent(src)}`
   const mask = {
-    WebkitMaskImage: `url("${src}")`,
-    maskImage: `url("${src}")`,
+    WebkitMaskImage: `url("${maskUrl}")`,
+    maskImage: `url("${maskUrl}")`,
     WebkitMaskRepeat: 'no-repeat',
     maskRepeat: 'no-repeat',
     WebkitMaskPosition: 'center',
@@ -52,13 +57,13 @@ export function DuotoneLogo({
         className={imgClassName}
         style={{ opacity: 0 }}
       />
-      {/* Black shadow, offset behind */}
+      {/* Shadow, offset behind */}
       <div
         aria-hidden
         className="absolute inset-0"
-        style={{ ...mask, backgroundColor: '#000', transform: `translate(${offset}px, ${offset}px)` }}
+        style={{ ...mask, backgroundColor: shadowColor, transform: `translate(${offset}px, ${offset}px)` }}
       />
-      {/* Day-colour layer on top */}
+      {/* Foreground layer on top */}
       <div aria-hidden className="absolute inset-0" style={{ ...mask, backgroundColor: color }} />
     </div>
   )

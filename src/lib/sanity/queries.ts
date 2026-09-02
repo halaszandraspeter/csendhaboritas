@@ -24,7 +24,7 @@ const ALL_BANDS_QUERY = defineQuery(`
 const BAND_BY_SLUG_QUERY = defineQuery(`
   *[_type == "band" && slug.current == $slug][0] {
     _id, _type, name, slug, day, genre, bio, setTime,
-    bandLogoImage, bandPhotoImage, cardThumbnailImage,
+    bandLogoImage, bandPhotoImage, cardThumbnailImage, logoShadowEffect,
     members[]{ _key, name, photo },
     socialLinks, musicEmbedUrl
   }

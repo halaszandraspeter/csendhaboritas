@@ -58,6 +58,7 @@ export default async function BandPage({
   const dayBorder = dayBorderClass(band.day)
   const dayBg = dayBgClass(band.day)
   const dayColor = band.day === 1 ? colors.day1 : colors.day2
+  const useLogoEffect = band.logoShadowEffect !== false
 
   return (
     <article className="min-h-dvh bg-[#e5e5e5]">
@@ -163,17 +164,31 @@ export default async function BandPage({
             {/* Band logo / name */}
             <div className="relative flex justify-center">
               {bandLogoUrl ? (
-                <DuotoneLogo
-                  src={bandLogoUrl}
-                  alt={`${band.name} logo`}
-                  width={400}
-                  height={150}
-                  color={dayColor}
-                  imgClassName="max-w-[280px] object-contain"
-                  className="mb-4"
-                />
+                useLogoEffect ? (
+                  <DuotoneLogo
+                    src={bandLogoUrl}
+                    alt={`${band.name} logo`}
+                    width={400}
+                    height={150}
+                    color={colors.fg}
+                    shadowColor={dayColor}
+                    imgClassName="max-w-[280px] object-contain"
+                    className="mb-4"
+                  />
+                ) : (
+                  <Image
+                    src={bandLogoUrl}
+                    alt={`${band.name} logo`}
+                    width={400}
+                    height={150}
+                    className="max-w-[280px] object-contain mb-4"
+                  />
+                )
               ) : (
-                <h1 className={`font-display text-5xl tracking-widest ${dayAccent} mb-4`}>
+                <h1
+                  className={`font-display text-5xl tracking-widest mb-4 ${useLogoEffect ? '' : dayAccent}`}
+                  style={useLogoEffect ? { color: colors.fg, textShadow: `4px 4px 0 ${dayColor}` } : undefined}
+                >
                   {band.name}
                 </h1>
               )}
@@ -274,17 +289,31 @@ export default async function BandPage({
           {/* Band logo - top left overlay */}
           <div className="absolute top-3 left-3 z-20">
             {bandLogoUrl ? (
-              <DuotoneLogo
-                src={bandLogoUrl}
-                alt={`${band.name} logo`}
-                width={100}
-                height={33}
-                color={dayColor}
-                offset={2}
-                imgClassName="max-w-20 object-contain"
-              />
+              useLogoEffect ? (
+                <DuotoneLogo
+                  src={bandLogoUrl}
+                  alt={`${band.name} logo`}
+                  width={100}
+                  height={33}
+                  color={colors.fg}
+                  shadowColor={dayColor}
+                  offset={2}
+                  imgClassName="max-w-20 object-contain"
+                />
+              ) : (
+                <Image
+                  src={bandLogoUrl}
+                  alt={`${band.name} logo`}
+                  width={100}
+                  height={33}
+                  className="max-w-20 object-contain"
+                />
+              )
             ) : (
-              <h1 className={`font-display text-lg tracking-widest ${dayAccent}`}>
+              <h1
+                className={`font-display text-lg tracking-widest ${useLogoEffect ? '' : dayAccent}`}
+                style={useLogoEffect ? { color: colors.fg, textShadow: `2px 2px 0 ${dayColor}` } : undefined}
+              >
                 {band.name}
               </h1>
             )}
