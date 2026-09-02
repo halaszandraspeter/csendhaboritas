@@ -88,8 +88,11 @@ export default async function BandPage({
               <div className="absolute bottom-0 left-0 right-0 h-1/5 bg-gradient-to-b from-transparent to-black z-10 pointer-events-none" />
               {/* Gradient toward the divider */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
-              {/* Event info sticker — opposite color to band's day */}
-              <div className="absolute top-[65%] left-1/2 -translate-x-1/2 translate-y-4 z-20 w-[min(480px,90%)]">
+            </div>
+            {/* Sticker + music embed — grouped so they move together and never collide,
+                with a flexible gap that grows into any leftover space below */}
+            <div className="relative z-20 flex flex-1 flex-col items-center -mt-[47%]">
+              <div className="w-[min(480px,90%)]">
                 <div className="relative">
                   <Image
                     src={band.day === 1 ? '/sticker-purple.webp' : '/sticker-green.webp'}
@@ -109,13 +112,13 @@ export default async function BandPage({
                   </div>
                 </div>
               </div>
+              <div className="min-h-4 max-h-16 flex-1" aria-hidden="true" />
+              {band.musicEmbedUrl && (
+                <div className="w-full px-4">
+                  <MusicEmbed url={band.musicEmbedUrl} />
+                </div>
+              )}
             </div>
-            {/* Music embed — below image */}
-            {band.musicEmbedUrl && (
-              <div className="relative z-20 px-4 -mt-48">
-                <MusicEmbed url={band.musicEmbedUrl} />
-              </div>
-            )}
             {/* Logo top-left — sticks out of the picture */}
             <div className="absolute -top-10 -left-6 z-20 w-[clamp(280px,28vw,560px)]">
               <Link href="/" className="block">

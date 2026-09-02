@@ -34,6 +34,18 @@ export function MusicEmbed({ url, className }: MusicEmbedProps) {
     return null
   }
 
+  // Spotify/etc. embeds often fail to load in local/dev network setups — show a
+  // placeholder rectangle instead so layout can still be verified visually.
+  if (process.env.NODE_ENV !== 'production') {
+    return (
+      <div
+        className={`w-full h-[152px] bg-neutral-700/60 border border-dashed border-neutral-400 flex items-center justify-center text-neutral-300 text-xs ${className ?? ''}`}
+      >
+        Music player placeholder (dev only)
+      </div>
+    )
+  }
+
   return (
     <div className={`w-full overflow-hidden ${className ?? ''}`}>
       <iframe
