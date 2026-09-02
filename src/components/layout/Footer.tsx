@@ -1,6 +1,5 @@
 import { SkylineDivider } from '@/src/components/ui/SkylineDivider'
 import { FacebookIcon, InstagramIcon, TikTokIcon } from '@/src/components/ui/SocialIcons'
-import { FooterNav } from './FooterNav'
 import type { EventData } from '@/src/types'
 
 interface FooterProps {
@@ -24,9 +23,6 @@ export function Footer({ event }: FooterProps) {
         <p className="font-display text-2xl md:text-3xl tracking-widest text-fg">
           MISKOLCI CSENDHÁBORÍTÁS
         </p>
-
-        {/* Nav */}
-        <FooterNav />
 
         {/* Social links */}
         {(socials?.facebook || socials?.instagram || socials?.tiktok) && (
