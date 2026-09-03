@@ -21,7 +21,7 @@ export function DoodleArrow({ day, className }: DoodleArrowProps) {
     >
       <svg
         viewBox="0 0 140 100"
-        className="h-20 w-32 shrink-0 overflow-visible"
+        className="h-14 w-24 shrink-0 overflow-visible"
         fill="none"
         stroke="currentColor"
         strokeWidth={2.5}
@@ -34,7 +34,7 @@ export function DoodleArrow({ day, className }: DoodleArrowProps) {
         <path d="M40 96 L 46.5 77.1" />
         <path d="M40 96 L 59.3 90.8" />
       </svg>
-      <span className="font-display text-lg leading-tight tracking-widest uppercase rotate-6 whitespace-nowrap self-start">
+      <span className="font-display text-base leading-tight tracking-widest uppercase rotate-6 whitespace-nowrap self-start">
         katt ránk a
         <br />
         részletekért

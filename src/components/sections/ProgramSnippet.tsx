@@ -10,7 +10,7 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
   return (
     <section className="px-6 py-16 max-w-5xl mx-auto w-full scroll-mt-24" id="program">
       <h2 className="font-display text-4xl md:text-5xl tracking-widest text-fg text-center mb-10">
-        PROGRAM
+        KONCERTEK
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -75,10 +75,10 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
         </div>
       </div>
 
-      <div className="text-center mt-8">
+      <div className="text-center mt-10">
         <Link
           href="/program"
-          className="inline-block font-display tracking-widest text-sm border border-fg/30 px-6 py-2 hover:border-fg hover:text-fg text-fg/70 transition-colors"
+          className="inline-block font-display tracking-widest text-lg md:text-xl bg-fg text-bg px-10 py-4 hover:bg-fg/90 transition-colors"
         >
           TELJES PROGRAM →
         </Link>

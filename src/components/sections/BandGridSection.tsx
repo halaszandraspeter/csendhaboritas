@@ -22,7 +22,7 @@ function DaySection({
   return (
     <div>
       <div className="flex items-center gap-4 mb-4">
-        <p className={`font-display text-4xl md:text-6xl tracking-widest ${accentClass} uppercase`}>
+        <p className={`font-display text-2xl md:text-3xl tracking-widest ${accentClass} uppercase`}>
           {label}
         </p>
         {bands.length > 0 && <DoodleArrow day={day} className="ml-auto" />}
