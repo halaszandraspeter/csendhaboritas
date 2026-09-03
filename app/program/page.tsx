@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getAllActivities, getAllBands } from '@/src/lib/sanity/queries'
 import { sanityImageUrl } from '@/src/lib/sanity/image'
+import { footerOverlapPaddingClass } from '@/src/config/layout'
 import type { Activity, Band } from '@/src/types'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -148,7 +149,7 @@ export default async function ProgramPage() {
   const day2Schedule = buildSchedule(bands, activities, 2)
 
   return (
-    <div className="min-h-dvh px-6 py-16 max-w-5xl mx-auto w-full">
+    <div className={`min-h-dvh px-6 py-16 max-w-5xl mx-auto w-full ${footerOverlapPaddingClass}`}>
       <h1 className="font-display text-5xl md:text-7xl tracking-widest text-fg mb-12 text-center">
         PROGRAM
       </h1>
