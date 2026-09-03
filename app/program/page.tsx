@@ -78,7 +78,7 @@ function ActivityRow({ activity, dayColor }: { activity: Activity; dayColor: Day
           alt={activity.name}
           width={56}
           height={56}
-          className="w-14 h-14 rounded object-cover shrink-0"
+          className="w-14 h-14 rounded object-cover shrink-0 grayscale"
         />
       )}
       <div className="flex-1 min-w-0">
