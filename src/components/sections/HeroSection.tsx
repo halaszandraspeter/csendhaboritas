@@ -35,19 +35,19 @@ export function HeroSection({ event }: HeroSectionProps) {
       </div>
 
       {/* Content */}
-      <div className="relative flex-1 flex flex-col items-center justify-center px-6 text-center gap-7 pt-8">
+      <div className="relative flex-1 flex flex-col items-center justify-center px-6 text-center gap-[clamp(0.8125rem,2.5vh,1.75rem)] pt-[clamp(0.975rem,3vh,2rem)] min-h-0">
         {/* Logo */}
         <Image
           src={mainLogoUrl}
           alt="Miskolci Csendháborítás"
           width={480}
           height={160}
-          className="w-80 md:w-[30rem] drop-shadow-[0_2px_24px_rgba(0,0,0,0.9)]"
+          className="w-[clamp(13rem,40vh,38rem)] drop-shadow-[0_2px_24px_rgba(0,0,0,0.9)]"
           priority
         />
 
         {/* Tagline */}
-        <div className="font-body text-sm md:text-lg leading-[1.7] text-center space-y-5">
+        <div className="font-body text-[clamp(0.52rem,1.6vh,1.125rem)] leading-[1.7] text-center space-y-[clamp(0.4875rem,1.5vh,1.25rem)]">
           <div>
             <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">Egy fesztivál a miskolci undergroundért.</span></div>
             <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">12 előadó, 2 nap és 1 közös cél:</span></div>
@@ -60,7 +60,7 @@ export function HeroSection({ event }: HeroSectionProps) {
 
         {/* Day labels */}
         <div className="flex gap-5 items-center flex-wrap justify-center">
-          <div className="relative px-7 py-4">
+          <div className="relative px-[clamp(0.89375rem,2.75vh,2.25rem)] py-[clamp(0.65rem,2vh,1.375rem)]">
             <Image
               src="/sticker-green.webp"
               alt=""
@@ -68,12 +68,12 @@ export function HeroSection({ event }: HeroSectionProps) {
               className="object-contain"
               aria-hidden="true"
             />
-            <span className="relative font-display tracking-widest text-sm md:text-lg text-bg font-bold">
+            <span className="relative font-display tracking-widest text-[clamp(0.715rem,2.2vh,1.5rem)] text-bg font-bold">
               OKTÓBER 9.
             </span>
           </div>
           <span className="text-muted-fg font-body text-sm">·</span>
-          <div className="relative px-7 py-4">
+          <div className="relative px-[clamp(0.89375rem,2.75vh,2.25rem)] py-[clamp(0.65rem,2vh,1.375rem)]">
             <Image
               src="/sticker-purple.webp"
               alt=""
@@ -81,14 +81,14 @@ export function HeroSection({ event }: HeroSectionProps) {
               className="object-contain"
               aria-hidden="true"
             />
-            <span className="relative font-display tracking-widest text-sm md:text-lg text-bg font-bold">
+            <span className="relative font-display tracking-widest text-[clamp(0.715rem,2.2vh,1.5rem)] text-bg font-bold">
               OKTÓBER 10.
             </span>
           </div>
         </div>
 
         {/* Venue */}
-        <p className="font-display text-xl md:text-3xl tracking-widest text-fg/80">
+        <p className="font-display text-[clamp(0.585rem,1.8vh,1.125rem)] tracking-widest text-fg/80">
           GRIZZLY MUSIC PUB · MISKOLC
         </p>
 
