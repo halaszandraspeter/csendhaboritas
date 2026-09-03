@@ -16,7 +16,7 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Day 1 */}
         <div className="border border-muted p-6">
-          <p className="font-display text-xl tracking-widest text-day1 mb-4">
+          <p className="font-display text-2xl md:text-3xl tracking-widest text-day1 mb-4">
             OKTÓBER 9. — 1. NAP
           </p>
           <ul className="space-y-2">
@@ -24,13 +24,13 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
               day1Bands.map((band) => (
                 <li
                   key={band._id}
-                  className="flex justify-between items-center text-fg/80 font-body text-sm"
+                  className="flex justify-between items-center text-fg/80 font-body text-lg"
                 >
-                  <span className="font-display tracking-wider text-base text-fg">
+                  <span className="font-display tracking-wider text-xl md:text-2xl text-fg">
                     {band.name}
                   </span>
                   {band.setTime && (
-                    <span className="text-muted-fg tabular-nums">
+                    <span className="text-muted-fg tabular-nums text-lg md:text-xl">
                       {band.setTime}
                     </span>
                   )}
@@ -46,7 +46,7 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
 
         {/* Day 2 */}
         <div className="border border-muted p-6">
-          <p className="font-display text-xl tracking-widest text-day2 mb-4">
+          <p className="font-display text-2xl md:text-3xl tracking-widest text-day2 mb-4">
             OKTÓBER 10. — 2. NAP
           </p>
           <ul className="space-y-2">
@@ -54,13 +54,13 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
               day2Bands.map((band) => (
                 <li
                   key={band._id}
-                  className="flex justify-between items-center text-fg/80 font-body text-sm"
+                  className="flex justify-between items-center text-fg/80 font-body text-lg"
                 >
-                  <span className="font-display tracking-wider text-base text-fg">
+                  <span className="font-display tracking-wider text-xl md:text-2xl text-fg">
                     {band.name}
                   </span>
                   {band.setTime && (
-                    <span className="text-muted-fg tabular-nums">
+                    <span className="text-muted-fg tabular-nums text-lg md:text-xl">
                       {band.setTime}
                     </span>
                   )}

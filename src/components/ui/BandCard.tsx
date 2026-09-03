@@ -36,18 +36,14 @@ export function BandCard({ band }: BandCardProps) {
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end p-4 gap-1.5">
-        <DayBadge day={band.day} />
+        <DayBadge day={band.day} time={band.setTime} />
         <h3 className="font-display text-2xl md:text-3xl tracking-widest text-fg leading-none">
           {band.name}
         </h3>
-        {band.genre && (
-          <p className="text-xs font-body text-muted-fg uppercase tracking-wider">
-            {band.genre}
-          </p>
-        )}
-        {band.setTime && (
-          <p className="text-xs font-body text-muted-fg">{band.setTime}</p>
-        )}
+        {/* Reserve genre space so the day badge stays aligned across cards */}
+        <p className="text-xs font-body text-muted-fg uppercase tracking-wider min-h-4">
+          {band.genre || '\u00A0'}
+        </p>
       </div>
 
       {/* Day-colour left border on hover */}

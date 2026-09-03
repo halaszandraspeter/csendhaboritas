@@ -1,4 +1,5 @@
 import { BandCard } from '@/src/components/ui/BandCard'
+import { DoodleArrow } from '@/src/components/ui/DoodleArrow'
 import type { Band } from '@/src/types'
 
 interface BandGridSectionProps {
@@ -11,16 +12,21 @@ function DaySection({
   label,
   bands,
   accentClass,
+  day,
 }: {
   label: string
   bands: Band[]
   accentClass: string
+  day: 1 | 2
 }) {
   return (
     <div>
-      <p className={`font-display text-sm tracking-widest ${accentClass} mb-4 uppercase`}>
-        {label}
-      </p>
+      <div className="flex items-center gap-4 mb-4">
+        <p className={`font-display text-4xl md:text-6xl tracking-widest ${accentClass} uppercase`}>
+          {label}
+        </p>
+        {bands.length > 0 && <DoodleArrow day={day} className="ml-auto" />}
+      </div>
       {bands.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-muted">
           {bands.map((band) => (
@@ -48,11 +54,13 @@ export function BandGridSection({ day1Bands, day2Bands }: BandGridSectionProps) 
           label="Október 9. — 1. Nap"
           bands={day1Bands}
           accentClass="text-day1"
+          day={1}
         />
         <DaySection
           label="Október 10. — 2. Nap"
           bands={day2Bands}
           accentClass="text-day2"
+          day={2}
         />
       </div>
     </section>
