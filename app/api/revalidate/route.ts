@@ -57,6 +57,9 @@ export async function POST(req: NextRequest) {
         // Revalidate all band pages in case order changed
         revalidatePath('/zenekarok', 'layout')
         break
+      case 'activity':
+        revalidatePath('/program')
+        break
       default:
         // Unknown type - revalidate everything
         revalidatePath('/', 'layout')

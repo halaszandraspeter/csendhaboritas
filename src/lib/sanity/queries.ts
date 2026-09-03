@@ -1,7 +1,7 @@
 import { cache } from 'react'
 import { defineQuery } from 'next-sanity'
 import { client } from './client'
-import type { Band, EventData } from '@/src/types'
+import type { Activity, Band, EventData } from '@/src/types'
 
 const isSanityConfigured =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID &&
@@ -34,6 +34,12 @@ const ALL_BAND_SLUGS_QUERY = defineQuery(`
   *[_type == "band"]{ slug }
 `)
 
+const ALL_ACTIVITIES_QUERY = defineQuery(`
+  *[_type == "activity"] | order(day asc, setTime asc) {
+    _id, _type, name, day, setTime, image, description
+  }
+`)
+
 const EVENT_QUERY = defineQuery(`
   *[_type == "event" && isActive == true][0] {
     _id, _type, name, venue, address,
@@ -64,6 +70,14 @@ export const getAllBands = cache(async (): Promise<Band[]> => {
 export const getBandBySlug = cache(async (slug: string): Promise<Band | null> => {
   if (!isSanityConfigured) return null
   return client.fetch(BAND_BY_SLUG_QUERY, { slug }) as Promise<Band | null>
+})
+
+/**
+ * Fetch all program activities, ordered by day then time.
+ */
+export const getAllActivities = cache(async (): Promise<Activity[]> => {
+  if (!isSanityConfigured) return []
+  return client.fetch(ALL_ACTIVITIES_QUERY) as Promise<Activity[]>
 })
 
 /** Fetch all band slugs for static param generation. */

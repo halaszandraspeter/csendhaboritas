@@ -57,6 +57,17 @@ export interface Band {
   musicEmbedUrl?: string
 }
 
+export interface Activity {
+  _id: string
+  _type: 'activity'
+  name: string
+  /** 1 = Október 9., 2 = Október 10. */
+  day: 1 | 2
+  setTime?: string
+  image?: SanityImage
+  description?: string
+}
+
 export interface Sponsor {
   _key: string
   name: string
