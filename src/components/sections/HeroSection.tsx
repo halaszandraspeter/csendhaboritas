@@ -24,7 +24,7 @@ export function HeroSection({ event }: HeroSectionProps) {
     : '/logo-main.webp'
 
   return (
-    <section className="relative h-[100dvh] md:h-[calc(100dvh-5.5rem)] flex flex-col overflow-hidden">
+    <section className="relative h-svh md:h-[calc(100svh-5.5rem)] flex flex-col overflow-hidden">
       {/* Background concert photo */}
       <div className="absolute inset-0">
         <Image
