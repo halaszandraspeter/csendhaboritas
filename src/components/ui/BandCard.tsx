@@ -6,9 +6,10 @@ import type { Band } from '@/src/types'
 
 interface BandCardProps {
   band: Band
+  dayLabel?: string
 }
 
-export function BandCard({ band }: BandCardProps) {
+export function BandCard({ band, dayLabel }: BandCardProps) {
   const thumbnailUrl = band.cardThumbnailImage
     ? sanityImageUrl(band.cardThumbnailImage).width(600).height(400).url()
     : null
@@ -36,7 +37,7 @@ export function BandCard({ band }: BandCardProps) {
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end p-4 gap-1.5">
-        <DayBadge day={band.day} time={band.setTime} />
+        <DayBadge day={band.day} time={band.setTime} label={dayLabel} />
         <h3 className="font-display text-2xl md:text-3xl tracking-widest text-fg leading-none">
           {band.name}
         </h3>

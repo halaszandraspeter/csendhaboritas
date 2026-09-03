@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import { getAllActivities, getAllBands } from '@/src/lib/sanity/queries'
+import { getAllActivities, getAllBands, getEvent } from '@/src/lib/sanity/queries'
 import { sanityImageUrl } from '@/src/lib/sanity/image'
 import { footerOverlapPaddingClass } from '@/src/config/layout'
+import { eventDayLabels } from '@/src/lib/dates'
 import type { Activity, Band } from '@/src/types'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -144,7 +145,12 @@ function DayColumn({
 }
 
 export default async function ProgramPage() {
-  const [bands, activities] = await Promise.all([getAllBands(), getAllActivities()])
+  const [bands, activities, event] = await Promise.all([
+    getAllBands(),
+    getAllActivities(),
+    getEvent(),
+  ])
+  const days = eventDayLabels(event?.days)
   const day1Schedule = buildSchedule(bands, activities, 1)
   const day2Schedule = buildSchedule(bands, activities, 2)
 
@@ -155,12 +161,14 @@ export default async function ProgramPage() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <DayColumn label="OKTÓBER 9." dayColor="day1" schedule={day1Schedule} />
-        <DayColumn label="OKTÓBER 10." dayColor="day2" schedule={day2Schedule} />
+        <DayColumn label={days[0]?.upper ?? 'OKTÓBER 9.'} dayColor="day1" schedule={day1Schedule} />
+        <DayColumn label={days[1]?.upper ?? 'OKTÓBER 10.'} dayColor="day2" schedule={day2Schedule} />
       </div>
 
       <p className="text-center text-xs text-muted-fg font-body mt-12">
-        Grizzly Music Pub · Miskolc · 2026
+        {[event?.venue ?? 'Grizzly Music Pub', event?.city ?? 'Miskolc', event?.year ?? '2026'].join(
+          ' · '
+        )}
       </p>
     </div>
   )

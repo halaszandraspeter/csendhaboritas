@@ -6,6 +6,7 @@ import {
   TikTokIcon,
 } from '@/src/components/ui/SocialIcons'
 import { sanityImageUrl } from '@/src/lib/sanity/image'
+import { eventDayLabels } from '@/src/lib/dates'
 import type { EventData } from '@/src/types'
 
 interface HeroSectionProps {
@@ -14,6 +15,10 @@ interface HeroSectionProps {
 
 export function HeroSection({ event }: HeroSectionProps) {
   const socials = event?.socialLinks
+  const days = eventDayLabels(event?.days)
+  const venueCity =
+    [event?.venue, event?.city].filter(Boolean).join(' · ').toUpperCase() ||
+    'GRIZZLY MUSIC PUB · MISKOLC'
   const mainLogoUrl = event?.mainLogo
     ? sanityImageUrl(event.mainLogo).width(960).url()
     : '/logo-main.webp'
@@ -39,7 +44,7 @@ export function HeroSection({ event }: HeroSectionProps) {
         {/* Logo */}
         <Image
           src={mainLogoUrl}
-          alt="Miskolci Csendháborítás"
+          alt={event?.name ?? 'Miskolci Csendháborítás'}
           width={480}
           height={160}
           className="w-[clamp(15rem,46vh,42rem)] drop-shadow-[0_2px_24px_rgba(0,0,0,0.9)]"
@@ -47,16 +52,21 @@ export function HeroSection({ event }: HeroSectionProps) {
         />
 
         {/* Tagline */}
-        <div className="font-body text-[clamp(0.6rem,1.85vh,1.25rem)] leading-[1.7] text-center space-y-[clamp(0.5625rem,1.72vh,1.4rem)]">
-          <div>
-            <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">Egy fesztivál a miskolci undergroundért.</span></div>
-            <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">12 előadó, 2 nap és 1 közös cél:</span></div>
+        {event?.heroDescription && (
+          <div className="font-body text-[clamp(0.6rem,1.85vh,1.25rem)] leading-[1.7] text-center">
+            {event.heroDescription.split('\n').map((line, i) =>
+              line.trim() === '' ? (
+                <div key={i} className="h-[clamp(0.5rem,1.72vh,1.4rem)]" />
+              ) : (
+                <div key={i}>
+                  <span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">
+                    {line.trim()}
+                  </span>
+                </div>
+              )
+            )}
           </div>
-          <div>
-            <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">egy olyan közeg megteremtése,</span></div>
-            <div><span className="bg-[#e5e5e5] text-black px-1 py-[0.15em] box-decoration-clone uppercase">ahol az új hangok egymásra találnak.</span></div>
-          </div>
-        </div>
+        )}
 
         {/* Day labels */}
         <div className="flex gap-5 items-center flex-wrap justify-center">
@@ -69,7 +79,7 @@ export function HeroSection({ event }: HeroSectionProps) {
               aria-hidden="true"
             />
             <span className="relative font-display tracking-widest text-[clamp(0.82rem,2.5vh,1.65rem)] text-bg font-bold">
-              OKTÓBER 9.
+              {days[0]?.upper ?? 'OKTÓBER 9.'}
             </span>
           </div>
           <span className="text-muted-fg font-body text-sm">·</span>
@@ -82,14 +92,14 @@ export function HeroSection({ event }: HeroSectionProps) {
               aria-hidden="true"
             />
             <span className="relative font-display tracking-widest text-[clamp(0.82rem,2.5vh,1.65rem)] text-bg font-bold">
-              OKTÓBER 10.
+              {days[1]?.upper ?? 'OKTÓBER 10.'}
             </span>
           </div>
         </div>
 
         {/* Venue */}
         <p className="font-display text-[clamp(0.67rem,2.05vh,1.25rem)] tracking-widest text-fg/80">
-          GRIZZLY MUSIC PUB · MISKOLC
+          {venueCity}
         </p>
 
         {/* Social icons */}

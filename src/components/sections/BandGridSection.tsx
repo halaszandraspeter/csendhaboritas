@@ -1,10 +1,12 @@
 import { BandCard } from '@/src/components/ui/BandCard'
 import { DoodleArrow } from '@/src/components/ui/DoodleArrow'
-import type { Band } from '@/src/types'
+import { eventDayLabels } from '@/src/lib/dates'
+import type { Band, EventData } from '@/src/types'
 
 interface BandGridSectionProps {
   day1Bands: Band[]
   day2Bands: Band[]
+  event?: EventData | null
 }
 
 /** Renders a day section — real data if available, "coming soon" otherwise */
@@ -13,11 +15,13 @@ function DaySection({
   bands,
   accentClass,
   day,
+  dayLabel,
 }: {
   label: string
   bands: Band[]
   accentClass: string
   day: 1 | 2
+  dayLabel?: string
 }) {
   return (
     <div>
@@ -30,7 +34,7 @@ function DaySection({
       {bands.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-muted">
           {bands.map((band) => (
-            <BandCard key={band._id} band={band} />
+            <BandCard key={band._id} band={band} dayLabel={dayLabel} />
           ))}
         </div>
       ) : (
@@ -42,7 +46,10 @@ function DaySection({
   )
 }
 
-export function BandGridSection({ day1Bands, day2Bands }: BandGridSectionProps) {
+export function BandGridSection({ day1Bands, day2Bands, event }: BandGridSectionProps) {
+  const days = eventDayLabels(event?.days)
+  const d1 = days[0]?.title ?? 'Október 9.'
+  const d2 = days[1]?.title ?? 'Október 10.'
   return (
     <section className="px-6 py-16 max-w-7xl mx-auto w-full scroll-mt-24" id="fellepok">
       <h2 className="font-display text-4xl md:text-5xl tracking-widest text-fg text-center mb-12">
@@ -51,16 +58,18 @@ export function BandGridSection({ day1Bands, day2Bands }: BandGridSectionProps) 
 
       <div className="space-y-10">
         <DaySection
-          label="Október 9. — 1. Nap"
+          label={`${d1} — 1. Nap`}
           bands={day1Bands}
           accentClass="text-day1"
           day={1}
+          dayLabel={d1}
         />
         <DaySection
-          label="Október 10. — 2. Nap"
+          label={`${d2} — 2. Nap`}
           bands={day2Bands}
           accentClass="text-day2"
           day={2}
+          dayLabel={d2}
         />
       </div>
     </section>

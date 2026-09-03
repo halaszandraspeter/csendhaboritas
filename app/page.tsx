@@ -14,9 +14,9 @@ export default async function Kezdolap() {
   return (
     <div className={footerOverlapPaddingClass}>
       <HeroSection event={event} />
-      <ProgramSnippet day1Bands={day1Bands} day2Bands={day2Bands} />
+      <ProgramSnippet day1Bands={day1Bands} day2Bands={day2Bands} event={event} />
       <HelyszinSnippet event={event} />
-      <BandGridSection day1Bands={day1Bands} day2Bands={day2Bands} />
+      <BandGridSection day1Bands={day1Bands} day2Bands={day2Bands} event={event} />
     </div>
   )
 }

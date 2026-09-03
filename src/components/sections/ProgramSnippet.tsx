@@ -1,12 +1,17 @@
 import Link from 'next/link'
-import type { Band } from '@/src/types'
+import { eventDayLabels } from '@/src/lib/dates'
+import type { Band, EventData } from '@/src/types'
 
 interface ProgramSnippetProps {
   day1Bands: Band[]
   day2Bands: Band[]
+  event?: EventData | null
 }
 
-export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
+export function ProgramSnippet({ day1Bands, day2Bands, event }: ProgramSnippetProps) {
+  const days = eventDayLabels(event?.days)
+  const d1 = days[0]?.upper ?? 'OKTÓBER 9.'
+  const d2 = days[1]?.upper ?? 'OKTÓBER 10.'
   return (
     <section className="px-6 py-16 max-w-5xl mx-auto w-full scroll-mt-24" id="program">
       <h2 className="font-display text-4xl md:text-5xl tracking-widest text-fg text-center mb-10">
@@ -17,7 +22,7 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
         {/* Day 1 */}
         <div className="border border-muted p-6">
           <p className="font-display text-2xl md:text-3xl tracking-widest text-day1 mb-4">
-            OKTÓBER 9. — 1. NAP
+            {d1} — 1. NAP
           </p>
           <ul className="space-y-2">
             {day1Bands.length > 0 ? (
@@ -47,7 +52,7 @@ export function ProgramSnippet({ day1Bands, day2Bands }: ProgramSnippetProps) {
         {/* Day 2 */}
         <div className="border border-muted p-6">
           <p className="font-display text-2xl md:text-3xl tracking-widest text-day2 mb-4">
-            OKTÓBER 10. — 2. NAP
+            {d2} — 2. NAP
           </p>
           <ul className="space-y-2">
             {day2Bands.length > 0 ? (

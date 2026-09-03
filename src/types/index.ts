@@ -100,6 +100,11 @@ export interface EventData {
   _type: 'event'
   name: string
   isActive?: boolean
+  /** Event days as ISO 'YYYY-MM-DD' strings; order defines day 1, day 2… */
+  days?: string[]
+  year?: string
+  city?: string
+  heroDescription?: string
   venue: string
   address: string
   mapEmbedUrl?: string

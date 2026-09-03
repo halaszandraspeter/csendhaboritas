@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getBandBySlug, getAllBandSlugs, getEvent } from '@/src/lib/sanity/queries'
 import { sanityImageUrl } from '@/src/lib/sanity/image'
+import { dayLabelFor } from '@/src/lib/dates'
 import { DayBadge } from '@/src/components/ui/DayBadge'
 import { SocialLinks } from '@/src/components/ui/SocialLinks'
 import { MusicEmbed } from '@/src/components/ui/MusicEmbed'
@@ -23,11 +24,13 @@ export async function generateMetadata({
   const { slug } = await params
   const band = await getBandBySlug(slug)
   if (!band) return {}
+  const event = await getEvent()
+  const eventLabel = `${event?.name ?? 'Miskolci Csendháborítás'} ${event?.year ?? '2026'}`
   return {
     title: band.name,
     description: band.bio
       ? band.bio.slice(0, 160)
-      : `${band.name} a Miskolci Csendháborítás 2026 fellépői között.`,
+      : `${band.name} a ${eventLabel} fellépői között.`,
   }
 }
 
@@ -42,6 +45,9 @@ export default async function BandPage({
   if (!band) notFound()
 
   const event = await getEvent()
+  const venue = event?.venue ?? 'Grizzly Music Pub'
+  const city = event?.city ?? 'Miskolc'
+  const dayShort = dayLabelFor(event?.days, band.day)?.short ?? `okt. ${band.day === 1 ? '9' : '10'}.`
   const lightLogoUrl = event?.lightLogo
     ? sanityImageUrl(event.lightLogo).width(560).url()
     : '/logo-band.webp'
@@ -103,10 +109,10 @@ export default async function BandPage({
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
                     <span className="font-display text-sm lg:text-base xl:text-lg tracking-widest uppercase">
-                      Grizzly Music Pub · Csendháborítás
+                      {venue} · Csendháborítás
                     </span>
                     <span className="font-display text-lg lg:text-xl xl:text-2xl tracking-widest font-bold">
-                      {band.setTime ?? '--:--'} okt. {band.day === 1 ? '9' : '10'}. · Miskolc
+                      {band.setTime ?? '--:--'} {dayShort} · {city}
                     </span>
                   </div>
                 </div>
@@ -125,7 +131,7 @@ export default async function BandPage({
               <Link href="/" className="block">
                 <Image
                   src={lightLogoUrl}
-                  alt="Miskolci Csendháborítás"
+                  alt={event?.name ?? 'Miskolci Csendháborítás'}
                   width={560}
                   height={192}
                   className="w-full h-auto"
@@ -337,10 +343,10 @@ export default async function BandPage({
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
                 <span className="font-display text-lg tracking-widest uppercase">
-                  Grizzly Music Pub · Csendháborítás
+                  {venue} · Csendháborítás
                 </span>
                 <span className="font-display text-[1.6rem] tracking-widest font-bold">
-                  {band.setTime ?? '--:--'} okt. {band.day === 1 ? '9' : '10'}. · Miskolc
+                  {band.setTime ?? '--:--'} {dayShort} · {city}
                 </span>
               </div>
             </div>

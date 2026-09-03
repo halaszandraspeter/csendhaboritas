@@ -6,6 +6,7 @@ import { Header } from '@/src/components/layout/Header'
 import { FooterWrapper } from '@/src/components/layout/FooterWrapper'
 import { getEvent } from '@/src/lib/sanity/queries'
 import { sanityImageUrl } from '@/src/lib/sanity/image'
+import { eventDayLabels } from '@/src/lib/dates'
 import './globals.css'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,16 +15,23 @@ export async function generateMetadata(): Promise<Metadata> {
     ? sanityImageUrl(event.ogImage).width(1200).height(630).fit('crop').url()
     : '/og-image.png'
 
+  const name = event?.name ?? 'Miskolci Csendháborítás'
+  const year = event?.year ?? '2026'
+  const venue = event?.venue ?? 'Grizzly Music Pub'
+  const city = event?.city ?? 'Miskolc'
+  const days = eventDayLabels(event?.days)
+  const dateRange = days.map((d) => d.title).join(' – ')
+  const titleWithYear = `${name} ${year}`
+
   return {
     title: {
-      default: 'Miskolci Csendháborítás 2026',
-      template: '%s | Miskolci Csendháborítás',
+      default: titleWithYear,
+      template: `%s | ${name}`,
     },
-    description:
-      'Miskolc legizgalmasabb zenei bemutatója — 12 zenekar, 2 nap, Grizzly Music Pub. Október 9–10, 2026.',
+    description: `${name} — ${venue}, ${city}.${dateRange ? ` ${dateRange}, ${year}.` : ''}`,
     openGraph: {
-      title: 'Miskolci Csendháborítás 2026',
-      description: '12 zenekar · 2 nap · Grizzly Music Pub, Miskolc',
+      title: titleWithYear,
+      description: `${venue} · ${city}${dateRange ? ` · ${dateRange}` : ''}`,
       locale: 'hu_HU',
       type: 'website',
       images: [
@@ -31,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: 'Miskolci Csendháborítás 2026',
+          alt: titleWithYear,
         },
       ],
     },

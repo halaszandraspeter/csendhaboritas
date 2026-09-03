@@ -21,7 +21,7 @@ export function Footer({ event }: FooterProps) {
         <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col items-center gap-6 text-center">
         {/* Brand */}
         <p className="font-display text-2xl md:text-3xl tracking-widest text-fg">
-          MISKOLCI CSENDHÁBORÍTÁS
+          {event?.name ?? 'MISKOLCI CSENDHÁBORÍTÁS'}
         </p>
 
         {/* Social links */}
@@ -82,7 +82,7 @@ export function Footer({ event }: FooterProps) {
 
         {/* Copyright */}
         <p className="text-xs text-muted-fg font-body">
-          © 2026 Miskolci Csendháborítás
+          © {event?.year ?? '2026'} {event?.name ?? 'Miskolci Csendháborítás'}
         </p>
         </div>
       </div>
