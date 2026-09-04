@@ -73,6 +73,8 @@ export interface Sponsor {
   name: string
   logo?: SanityImage
   url?: string
+  /** When true, this sponsor is featured as the elevated main sponsor. Only one allowed. */
+  isMain?: boolean
 }
 
 export interface EventSocialLinks {

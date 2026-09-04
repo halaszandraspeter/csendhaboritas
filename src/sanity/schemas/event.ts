@@ -92,6 +92,12 @@ export const eventSchema = defineType({
       name: 'sponsors',
       title: 'Szponzorok / partnerek',
       type: 'array',
+      description: 'Jelölj ki pontosan egy fő támogatót, aki kiemelten jelenik meg.',
+      validation: (Rule) =>
+        Rule.custom((sponsors?: { isMain?: boolean }[]) => {
+          const mainCount = (sponsors ?? []).filter((s) => s?.isMain).length
+          return mainCount > 1 ? 'Csak egy fő támogató lehet.' : true
+        }),
       of: [
         {
           type: 'object',
@@ -104,9 +110,23 @@ export const eventSchema = defineType({
               options: { hotspot: true },
             }),
             defineField({ name: 'url', title: 'Weboldal', type: 'url' }),
+            defineField({
+              name: 'isMain',
+              title: 'Fő támogató',
+              type: 'boolean',
+              description: 'Kiemelt fő támogató. Csak egy lehet!',
+              initialValue: false,
+            }),
           ],
           preview: {
-            select: { title: 'name', media: 'logo' },
+            select: { title: 'name', media: 'logo', isMain: 'isMain' },
+            prepare({ title, media, isMain }) {
+              return {
+                title: isMain ? `★ ${title ?? ''}`.trim() : title,
+                subtitle: isMain ? 'Fő támogató' : undefined,
+                media,
+              }
+            },
           },
         },
       ],

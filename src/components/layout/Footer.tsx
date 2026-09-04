@@ -9,6 +9,8 @@ interface FooterProps {
 export function Footer({ event }: FooterProps) {
   const socials = event?.socialLinks
   const sponsors = event?.sponsors ?? []
+  const mainSponsor = sponsors.find((s) => s.isMain) ?? null
+  const otherSponsors = sponsors.filter((s) => s !== mainSponsor)
 
   return (
     <footer className="relative">
@@ -65,18 +67,32 @@ export function Footer({ event }: FooterProps) {
 
         {/* Sponsors */}
         {sponsors.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-6 items-center pt-2">
-            {sponsors.map((sponsor) => (
+          <div className="flex flex-col items-center gap-3 pt-2">
+            {mainSponsor && (
               <a
-                key={sponsor._key}
-                href={sponsor.url ?? '#'}
+                href={mainSponsor.url ?? '#'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="opacity-50 hover:opacity-100 transition-opacity text-fg font-display tracking-widest text-sm"
+                className="opacity-70 hover:opacity-100 transition-opacity text-day1 font-display tracking-widest text-base"
               >
-                {sponsor.name}
+                {mainSponsor.name}
               </a>
-            ))}
+            )}
+            {otherSponsors.length > 0 && (
+              <div className="flex flex-wrap justify-center gap-6 items-center">
+                {otherSponsors.map((sponsor) => (
+                  <a
+                    key={sponsor._key}
+                    href={sponsor.url ?? '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="opacity-50 hover:opacity-100 transition-opacity text-fg font-display tracking-widest text-sm"
+                  >
+                    {sponsor.name}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
