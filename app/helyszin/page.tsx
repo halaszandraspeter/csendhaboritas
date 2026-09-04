@@ -137,7 +137,7 @@ export default async function HelyszinPage() {
         className={cn(
           'mb-12',
           heroPhoto && 'md:hidden',
-          'max-sm:w-full max-sm:justify-center max-sm:text-xl'
+          'max-md:w-full max-md:justify-center max-md:text-xl'
         )}
       />
 
