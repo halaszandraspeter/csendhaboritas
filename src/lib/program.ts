@@ -65,7 +65,10 @@ export function buildRows(
  * A row is `current` from its start until the next timed row starts (or +90min
  * for the last set of the night); earlier rows are `past`.
  */
-export function computeStatuses(rows: ScheduleRow[], now: number | null): RowStatus[] {
+export function computeStatuses(
+  rows: readonly { startMs: number | null }[],
+  now: number | null
+): RowStatus[] {
   if (now == null) return rows.map(() => 'upcoming')
 
   const starts = rows

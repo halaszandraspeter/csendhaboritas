@@ -94,7 +94,7 @@ function TimeNode({
   return (
     <span
       className={cn(
-        'block rounded-full border bg-black px-4 py-1.5 font-display text-xl tabular-nums',
+        'block rounded-full border bg-black px-2 md:px-4 py-1.5 font-display text-xl tabular-nums',
         color.time,
         color.chipBorder,
         status === 'current' && cn('ring-2 ring-offset-2 ring-offset-black animate-pulse', color.ring)
