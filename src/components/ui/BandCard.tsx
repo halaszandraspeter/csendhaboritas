@@ -25,7 +25,7 @@ export function BandCard({ band, dayLabel }: BandCardProps) {
           src={thumbnailUrl}
           alt={band.name}
           fill
-          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+          className="object-cover grayscale transition-all duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       ) : (

@@ -2,6 +2,8 @@ import { cn } from '@/src/lib/utils'
 
 interface DoodleArrowProps {
   day: 1 | 2
+  /** Breakpoint at which the hint becomes visible. Defaults to 'lg'. */
+  showFrom?: 'md' | 'lg'
   className?: string
 }
 
@@ -9,12 +11,13 @@ interface DoodleArrowProps {
  * Hand-drawn, wobbly "click on us for details" doodle.
  * Desktop-only hint that points from the label down toward the band cards.
  */
-export function DoodleArrow({ day, className }: DoodleArrowProps) {
+export function DoodleArrow({ day, showFrom = 'lg', className }: DoodleArrowProps) {
   return (
     <div
       aria-hidden
       className={cn(
-        'pointer-events-none hidden lg:flex items-center gap-2 select-none',
+        'pointer-events-none items-center gap-2 select-none',
+        showFrom === 'md' ? 'hidden md:flex' : 'hidden lg:flex',
         day === 1 ? 'text-day1' : 'text-day2',
         className
       )}
