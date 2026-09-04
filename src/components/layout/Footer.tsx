@@ -73,7 +73,7 @@ export function Footer({ event }: FooterProps) {
                 href={mainSponsor.url ?? '#'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="opacity-70 hover:opacity-100 transition-opacity text-day1 font-display tracking-widest text-base"
+                className="opacity-70 hover:opacity-100 transition-opacity text-day1 font-display tracking-widest text-sm md:text-base"
               >
                 {mainSponsor.name}
               </a>
@@ -86,7 +86,7 @@ export function Footer({ event }: FooterProps) {
                     href={sponsor.url ?? '#'}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="opacity-50 hover:opacity-100 transition-opacity text-fg font-display tracking-widest text-sm"
+                    className="opacity-50 hover:opacity-100 transition-opacity text-fg font-display tracking-widest text-xs md:text-sm"
                   >
                     {sponsor.name}
                   </a>
