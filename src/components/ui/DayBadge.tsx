@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { cn } from '@/src/lib/utils'
 
 interface DayBadgeProps {
@@ -5,6 +6,7 @@ interface DayBadgeProps {
   time?: string
   label?: string
   className?: string
+  children?: ReactNode
 }
 
 const dayLabels: Record<1 | 2, string> = {
@@ -12,7 +14,7 @@ const dayLabels: Record<1 | 2, string> = {
   2: 'Október 10.',
 }
 
-export function DayBadge({ day, time, label, className }: DayBadgeProps) {
+export function DayBadge({ day, time, label, className, children }: DayBadgeProps) {
   return (
     <span
       className={cn(
@@ -23,6 +25,7 @@ export function DayBadge({ day, time, label, className }: DayBadgeProps) {
     >
       {label ?? dayLabels[day]}
       {time && <span>{time}</span>}
+      {children}
     </span>
   )
 }

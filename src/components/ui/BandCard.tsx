@@ -37,7 +37,25 @@ export function BandCard({ band, dayLabel }: BandCardProps) {
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end p-4 gap-1.5">
-        <DayBadge day={band.day} time={band.setTime} label={dayLabel} />
+        <DayBadge day={band.day} time={band.setTime} label={dayLabel}>
+          {/* Tap affordance — only where the desktop doodle hint is absent */}
+          <span className="ml-auto flex lg:hidden items-center gap-1">
+            Részletek
+            <svg
+              viewBox="0 0 24 24"
+              className="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={3}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="M5 12h14" />
+              <path d="M13 6l6 6-6 6" />
+            </svg>
+          </span>
+        </DayBadge>
         <h3 className="font-display text-2xl md:text-3xl tracking-widest text-fg leading-none">
           {band.name}
         </h3>
@@ -47,9 +65,9 @@ export function BandCard({ band, dayLabel }: BandCardProps) {
         </p>
       </div>
 
-      {/* Day-colour left border on hover */}
+      {/* Day-colour left border — always visible on touch, animates in on hover */}
       <div
-        className={`absolute left-0 inset-y-0 w-0.5 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom ${
+        className={`absolute left-0 inset-y-0 w-1 origin-bottom scale-y-100 lg:w-0.5 lg:scale-y-0 lg:group-hover:scale-y-100 transition-transform duration-300 ${
           band.day === 1 ? 'bg-day1' : 'bg-day2'
         }`}
       />
