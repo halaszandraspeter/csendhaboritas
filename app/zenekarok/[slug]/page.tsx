@@ -9,6 +9,7 @@ import { SocialLinks } from '@/src/components/ui/SocialLinks'
 import { MusicEmbed } from '@/src/components/ui/MusicEmbed'
 import { DuotoneLogo } from '@/src/components/ui/DuotoneLogo'
 import { dayTextClass, dayBorderClass, dayBgClass, colors } from '@/src/config/colors'
+import { hungarianArticle } from '@/src/lib/utils'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
@@ -250,7 +251,7 @@ export default async function BandPage({
               <div className="relative mb-6 mt-10 text-right">
                 <h2 className="font-display text-2xl tracking-widest mb-3">
                   <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
-                    MI VAGYUNK A {band.name.toUpperCase()}
+                    MI VAGYUNK {hungarianArticle(band.name).toUpperCase()} {band.name.toUpperCase()}
                   </span>
                 </h2>
                 <div className="font-body text-base leading-[1.7]">
@@ -359,7 +360,7 @@ export default async function BandPage({
             <div className="mb-6">
               <h2 className="font-display text-xl tracking-widest mb-3">
                 <span className={`${dayBg} text-black px-2 py-1 box-decoration-clone`}>
-                  MI VAGYUNK A {band.name.toUpperCase()}
+                  MI VAGYUNK {hungarianArticle(band.name).toUpperCase()} {band.name.toUpperCase()}
                 </span>
               </h2>
               <div className="font-body text-base leading-[1.7]">
