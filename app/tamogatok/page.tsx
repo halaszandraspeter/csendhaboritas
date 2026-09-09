@@ -114,7 +114,7 @@ export default async function TamogatokPage() {
           {mainSponsor && (
             <section className="space-y-6">
               <div className="max-w-2xl mx-auto">
-                <SectionLabel label="FELBUJTÓ" color="day1" />
+                <SectionLabel label="„FELBUJTÓ”" color="day1" />
               </div>
               <MainSponsorCard sponsor={mainSponsor} />
             </section>
@@ -122,7 +122,7 @@ export default async function TamogatokPage() {
 
           {partners.length > 0 && (
             <section className="space-y-8">
-              {mainSponsor && <SectionLabel label="BŰNTÁRSAK" color="day2" />}
+              {mainSponsor && <SectionLabel label="„BŰNTÁRSAK”" color="day2" />}
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 {partners.map((sponsor) => (
                   <SponsorCard key={sponsor._key} sponsor={sponsor} />
