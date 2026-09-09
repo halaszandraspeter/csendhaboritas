@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Miskolci Csendháborítás
+
+Official website for the **Miskolci Csendháborítás** music festival. Built with Next.js (App Router) and powered by Sanity as a headless CMS.
+
+## Stack
+
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router) · React 19 |
+| Styling | Tailwind CSS 4 · tailwindcss-animate · clsx + tailwind-merge + CVA |
+| CMS | Sanity (`next-sanity`) |
+| Carousel | embla-carousel-react |
+| Icons | lucide-react |
+| Analytics | @vercel/analytics + @vercel/speed-insights |
+| Deploy | Vercel |
+
+See [PLAN.md](PLAN.md) for the design and content plan.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Routes
 
-To learn more about Next.js, take a look at the following resources:
+| Route | Description |
+|---|---|
+| `/` | Kezdőlap (home) |
+| `/program` | Program |
+| `/helyszin` | Helyszín (venue) |
+| `/fellepok/[slug]` | Fellépők — individual band page |
+| `/hazirend` | Házirend (house rules) |
+| `/tamogatok` | Támogatók (sponsors) |
+| `/kapcsolat` | Kapcsolat (contact) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/                 Next.js App Router routes + API endpoints
+src/components/       Layout, section, and UI components
+src/lib/              Data helpers and Sanity client/queries
+src/sanity/schemas/   Sanity content schemas (event, band)
+src/config/           Colors, fonts, and layout tokens
+```
 
-## Deploy on Vercel
+## Content management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Content is authored in Sanity. On publish, the `/api/revalidate` webhook triggers
+on-demand revalidation of the affected pages.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Deployed on [Vercel](https://vercel.com). Pushing to the default branch triggers a
+production deploy.

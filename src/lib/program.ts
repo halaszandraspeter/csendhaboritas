@@ -32,7 +32,7 @@ export function buildRows(
       id: b._id,
       kind: 'band',
       name: b.name,
-      href: `/zenekarok/${b.slug.current}`,
+      href: `/fellepok/${b.slug.current}`,
       genre: b.genre,
       setTime: b.setTime,
       imageUrl: b.cardThumbnailImage

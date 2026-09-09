@@ -37,15 +37,15 @@ Defined in `src/config/colors.ts` and `tailwind.config.ts`.
 /                    → Kezdőlap
 /program             → Program
 /helyszin            → Helyszín
-/zenekarok           → Zenekarok (band grid)
-/zenekarok/[slug]    → Individual band page
+/fellepok           → Fellépők (band grid)
+/fellepok/[slug]    → Individual band page
 ```
 
 ---
 
 ## Navigation
 
-- **Desktop**: Symmetrical header bar — `Kezdőlap · Program · Helyszín · Zenekarok`
+- **Desktop**: Symmetrical header bar — `Kezdőlap · Program · Helyszín · Fellépők`
 - **Mobile**: Bottom tab bar — 4 icons + labels, same order
 
 ---
@@ -80,14 +80,14 @@ Each entry shows band name + set time. Mobile: Day 1 stacks above Day 2.
 
 ---
 
-## Zenekarok page (band grid)
+## Fellépők page (band grid)
 
 12 dark photo cards: rectangular crop + dark overlay + band name + day color badge.
-Clicking a card navigates to `/zenekarok/[slug]`.
+Clicking a card navigates to `/fellepok/[slug]`.
 
 ---
 
-## Band page (`/zenekarok/[slug]`)
+## Band page (`/fellepok/[slug]`)
 
 ### Desktop layout
 | Zone | Content |
@@ -114,7 +114,7 @@ Driven entirely by the `day` field in Sanity (`1` → lime green, `2` → hot pi
 ```
 [Miskolc skyline motif — top divider]
 MISKOLCI CSENDHÁBORÍTÁS
-Kezdőlap · Program · Helyszín · Zenekarok
+Kezdőlap · Program · Helyszín · Fellépők
 [Facebook]  [Instagram]  [TikTok]
 [Sponsor logos row]
 © 2026 Miskolci Csendháborítás

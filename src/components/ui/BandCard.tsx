@@ -16,7 +16,7 @@ export function BandCard({ band, dayLabel }: BandCardProps) {
 
   return (
     <Link
-      href={`/zenekarok/${band.slug.current}`}
+      href={`/fellepok/${band.slug.current}`}
       className="group relative block overflow-hidden bg-surface aspect-[3/2]"
     >
       {/* Background image */}

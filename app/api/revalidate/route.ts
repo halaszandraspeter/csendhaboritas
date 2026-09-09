@@ -52,10 +52,10 @@ export async function POST(req: NextRequest) {
         revalidatePath('/', 'layout')
         revalidatePath('/program')
         if (body.slug?.current) {
-          revalidatePath(`/zenekarok/${body.slug.current}`)
+          revalidatePath(`/fellepok/${body.slug.current}`)
         }
         // Revalidate all band pages in case order changed
-        revalidatePath('/zenekarok', 'layout')
+        revalidatePath('/fellepok', 'layout')
         break
       case 'activity':
         revalidatePath('/program')
