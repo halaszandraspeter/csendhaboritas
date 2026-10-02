@@ -165,7 +165,7 @@ function TimelineCard({
           )}
         </div>
         {isBand
-          ? row.genre && <p className="mt-1 text-sm text-muted-fg font-body">{row.genre}</p>
+          ? row.genre && <p className="mt-1 text-sm text-muted-fg font-body uppercase tracking-wider">{row.genre}</p>
           : row.name && (
               <p className="mt-1 text-[0.65rem] tracking-widest text-muted-fg font-body">PROGRAM</p>
             )}
