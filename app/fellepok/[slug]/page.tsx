@@ -78,7 +78,7 @@ export default async function BandPage({
             {/* Image wrapper — sticker is positioned relative to this */}
             <div className="relative pt-16">
               {/* Top gradient — fade from black into image */}
-              <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none" />
+              <div className="absolute top-0 left-0 right-0 h-[14%] bg-gradient-to-t from-transparent via-black via-40% to-black z-10 pointer-events-none" />
               {bandPhotoUrl ? (
                 <Image
                   src={bandPhotoUrl}
@@ -161,18 +161,20 @@ export default async function BandPage({
           {/* Right — band info */}
           <div className="w-1/2 flex flex-col justify-between p-8 overflow-y-auto relative bg-black">
             {/* Background image */}
-            <div className="absolute inset-0 overflow-hidden">
-              <Image
-                src="/hero-bg.webp"
-                alt=""
-                width={900}
-                height={1200}
-                className="w-full h-auto"
-                aria-hidden="true"
-              />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-bg/80" />
-              <div className="absolute inset-0 bg-bg/60" />
-              <div className="absolute bottom-0 left-0 right-0 h-1/5 bg-gradient-to-b from-transparent to-black" />
+            <div className="absolute inset-0 overflow-hidden isolate">
+              <div className="relative">
+                <Image
+                  src="/hero-bg.webp"
+                  alt=""
+                  width={900}
+                  height={1200}
+                  className="w-full h-auto"
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-bg/80" />
+                <div className="absolute inset-0 bg-bg/60" />
+                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-b from-transparent via-black/80 to-black z-10 pointer-events-none" />
+              </div>
             </div>
             {/* Band logo / name */}
             <div className="relative flex justify-center">
