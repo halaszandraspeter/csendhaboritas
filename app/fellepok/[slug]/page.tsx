@@ -92,7 +92,7 @@ export default async function BandPage({
               ) : (
                 <div className="aspect-4/5 bg-surface" />
               )}
-              <div className="absolute bottom-0 left-0 right-0 h-1/5 bg-gradient-to-b from-transparent to-black z-10 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 right-0 h-[14%] bg-gradient-to-b from-transparent to-black z-10 pointer-events-none" />
               {/* Gradient toward the divider */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-bg/80 pointer-events-none" />
               {/* Sticker + music embed — grouped so they move together and never collide.
@@ -299,7 +299,7 @@ export default async function BandPage({
             ) : (
               <div className="absolute inset-0 bg-surface" />
             )}
-            <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/90" />
+            <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black" />
           </div>
           {/* Band logo - top left overlay */}
           <div className="absolute top-3 left-3 z-20">
