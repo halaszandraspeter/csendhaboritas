@@ -14,7 +14,7 @@ const isSanityConfigured =
 
 const ALL_BANDS_QUERY = defineQuery(`
   *[_type == "band" && event._ref == *[_type == "event" && isActive == true][0]._id] | order(day asc, setTime asc) {
-    _id, _type, name, slug, day, genre, setTime,
+    _id, _type, name, slug, day, genre, setTime, hajnal,
     bandLogoImage, bandPhotoImage, cardThumbnailImage,
     members[]{ _key, name, photo },
     socialLinks, musicEmbedUrl
@@ -23,7 +23,7 @@ const ALL_BANDS_QUERY = defineQuery(`
 
 const BAND_BY_SLUG_QUERY = defineQuery(`
   *[_type == "band" && slug.current == $slug && event._ref == *[_type == "event" && isActive == true][0]._id][0] {
-    _id, _type, name, slug, day, genre, bio, setTime,
+    _id, _type, name, slug, day, genre, bio, setTime, hajnal,
     bandLogoImage, bandPhotoImage, cardThumbnailImage, logoShadowEffect,
     members[]{ _key, name, photo },
     socialLinks, musicEmbedUrl
@@ -36,7 +36,7 @@ const ALL_BAND_SLUGS_QUERY = defineQuery(`
 
 const ALL_ACTIVITIES_QUERY = defineQuery(`
   *[_type == "activity" && event._ref == *[_type == "event" && isActive == true][0]._id] | order(day asc, setTime asc) {
-    _id, _type, name, day, setTime, image, description
+    _id, _type, name, day, setTime, hajnal, image, description
   }
 `)
 

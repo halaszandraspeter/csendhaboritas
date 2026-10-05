@@ -39,6 +39,14 @@ export const bandSchema = defineType({
       description: 'pl. "22:30"',
     }),
     defineField({
+      name: 'hajnal',
+      title: 'Hajnali időpont',
+      type: 'boolean',
+      description:
+        'Ha be van kapcsolva, a fellépési idő (pl. "02:00") éjfél utáni, hajnali időpontnak számít, és a fellépés az adott nap műsorának végén jelenik meg — annak ellenére, hogy az óra kora reggelinek tűnik.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'genre',
       title: 'Műfaj',
       type: 'string',

@@ -38,7 +38,7 @@ export function buildRows(
       imageUrl: b.cardThumbnailImage
         ? sanityImageUrl(b.cardThumbnailImage).width(900).height(600).fit('crop').url()
         : undefined,
-      startMs: setEpoch(dayIso, b.setTime),
+      startMs: setEpoch(dayIso, b.setTime, b.hajnal),
     }))
 
   const activityRows: ScheduleRow[] = activities
@@ -52,12 +52,15 @@ export function buildRows(
       imageUrl: a.image
         ? sanityImageUrl(a.image).width(800).height(800).fit('crop').url()
         : undefined,
-      startMs: setEpoch(dayIso, a.setTime),
+      startMs: setEpoch(dayIso, a.setTime, a.hajnal),
     }))
 
-  return [...bandRows, ...activityRows].sort((a, b) =>
-    (a.setTime ?? '').localeCompare(b.setTime ?? '')
-  )
+  return [...bandRows, ...activityRows].sort((a, b) => {
+    if (a.startMs == null && b.startMs == null) return 0
+    if (a.startMs == null) return 1
+    if (b.startMs == null) return -1
+    return a.startMs - b.startMs
+  })
 }
 
 /**

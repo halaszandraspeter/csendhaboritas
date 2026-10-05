@@ -72,14 +72,16 @@ export function dayLabelFor(days: string[] | undefined, day: number): DayLabel |
 
 /**
  * Epoch (ms) for a set's start, combining the event day (ISO 'YYYY-MM-DD') with
- * a 'HH:mm' set time. Sets before 08:00 are treated as after-midnight (next
- * calendar day). The event is in Hungary; October is CEST (UTC+2).
+ * a 'HH:mm' set time. When `hajnal` is true, the time is after midnight and is
+ * placed on the next calendar day (so it sorts at the end of the day's
+ * timeline even though the clock reads e.g. "02:00"). The event is in
+ * Hungary; October is CEST (UTC+2).
  */
-export function setEpoch(dayIso?: string, setTime?: string): number | null {
+export function setEpoch(dayIso?: string, setTime?: string, hajnal?: boolean): number | null {
   if (!dayIso || !setTime) return null
   const [y, m, d] = dayIso.split('-').map(Number)
   const [hh, mm] = setTime.split(':').map(Number)
   if (!y || !m || !d || Number.isNaN(hh) || Number.isNaN(mm)) return null
-  const afterMidnight = hh < 8 ? 1 : 0
+  const afterMidnight = hajnal ? 1 : 0
   return Date.UTC(y, m - 1, d + afterMidnight, hh - 2, mm)
 }

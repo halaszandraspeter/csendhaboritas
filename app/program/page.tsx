@@ -22,9 +22,19 @@ export default async function ProgramPage() {
 
   return (
     <div className={`min-h-dvh px-6 py-16 max-w-3xl mx-auto w-full ${footerOverlapPaddingClass}`}>
-      <h1 className="font-display text-5xl md:text-7xl tracking-widest text-fg mb-16 text-center">
+      <h1 className="font-display text-5xl md:text-7xl tracking-widest text-fg mb-8 text-center">
         PROGRAM
       </h1>
+
+      <div className="mb-16 max-w-xl mx-auto overflow-hidden rounded-xl border border-muted bg-surface/60 p-6 text-center">
+        <p className="font-display text-xl tracking-widest text-fg mb-2">FIGYELEM</p>
+        <p className="text-sm text-muted-fg font-body">
+          A programváltoztatás jogát fenntartjuk! A decibelszint és az elkövetők kreativitása
+          függvényében a menetrend új értelmezést nyerhet. A csendháborítás gyanúja minden
+          résztvevőre kiterjed, az ártatlanság a hangerő növekedésével csökken. Így aki túl
+          csendes, azt külön megfigyelés alá helyezzük. Panaszokat csak kellően hangosan fogadunk.
+        </p>
+      </div>
 
       <div className="space-y-20">
         <ProgramTimeline

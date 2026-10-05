@@ -52,6 +52,8 @@ export interface Band {
   genre?: string
   bio?: string
   setTime?: string
+  /** When true, `setTime` is after midnight and belongs at the end of this day's timeline */
+  hajnal?: boolean
   members?: BandMember[]
   socialLinks?: BandSocialLinks
   musicEmbedUrl?: string
@@ -64,6 +66,8 @@ export interface Activity {
   /** 1 = Október 9., 2 = Október 10. */
   day: 1 | 2
   setTime?: string
+  /** When true, `setTime` is after midnight and belongs at the end of this day's timeline */
+  hajnal?: boolean
   image?: SanityImage
   description?: string
 }
