@@ -1,6 +1,8 @@
 // Hungarian date labels generated from the event's `days` (ISO 'YYYY-MM-DD') list.
 // Parsed manually to avoid timezone shifts from Date().
 
+import type { EventDay } from '@/src/types'
+
 const MONTHS_LONG = [
   'január',
   'február',
@@ -61,13 +63,13 @@ export function formatEventDay(iso?: string): DayLabel | null {
 }
 
 /** All day labels for an event, in order. */
-export function eventDayLabels(days?: string[]): DayLabel[] {
-  return (days ?? []).map(formatEventDay).filter((x): x is DayLabel => x !== null)
+export function eventDayLabels(days?: EventDay[]): DayLabel[] {
+  return (days ?? []).map((d) => formatEventDay(d.date)).filter((x): x is DayLabel => x !== null)
 }
 
 /** Label for a specific 1-based day number (band.day / activity.day). */
-export function dayLabelFor(days: string[] | undefined, day: number): DayLabel | null {
-  return formatEventDay(days?.[day - 1])
+export function dayLabelFor(days: EventDay[] | undefined, day: number): DayLabel | null {
+  return formatEventDay(days?.[day - 1]?.date)
 }
 
 /**

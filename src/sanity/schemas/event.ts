@@ -20,6 +20,44 @@ export const eventSchema = defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'days',
+      title: 'Napok (dátum + napijegy ár)',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'eventDay',
+          fields: [
+            defineField({
+              name: 'date',
+              title: 'Dátum',
+              type: 'date',
+              options: { dateFormat: 'YYYY. MMMM D.' },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'ticketPrice',
+              title: 'Napijegy ára (Ft)',
+              type: 'number',
+              description: 'Az adott napra szóló napijegy ára forintban (pl. a főoldali matricán).',
+              validation: (Rule) => Rule.min(0),
+            }),
+          ],
+          preview: {
+            select: { date: 'date', price: 'ticketPrice' },
+            prepare({ date, price }) {
+              return {
+                title: date ?? 'Nincs dátum',
+                subtitle: price != null ? `${price} Ft` : 'Nincs ár megadva',
+              }
+            },
+          },
+        },
+      ],
+      description:
+        'Az esemény napjai, dátummal és napijeggyel. A sorrend adja az 1. nap, 2. nap… sorszámot, és ebből generálódnak a dátumcímkék (pl. „Október 9.”) és a főoldali napijegy-matricák.',
+    }),
+    defineField({
       name: 'ogImage',
       title: 'Megosztási kép (Open Graph)',
       type: 'image',

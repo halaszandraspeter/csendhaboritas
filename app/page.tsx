@@ -14,8 +14,8 @@ function buildEventJsonLd(event: EventData | null, bands: Band[]) {
   const venue = event?.venue ?? 'Grizzly Music Pub'
   const city = event?.city ?? 'Miskolc'
   const days = event?.days ?? []
-  const startDate = days[0]
-  const endDate = days[days.length - 1] ?? startDate
+  const startDate = days[0]?.date
+  const endDate = days[days.length - 1]?.date ?? startDate
   const image = event?.ogImage
     ? sanityImageUrl(event.ogImage).width(1200).height(630).fit('crop').url()
     : `${SITE_URL}/og-image.png`
@@ -46,6 +46,16 @@ function buildEventJsonLd(event: EventData | null, bands: Band[]) {
       name: band.name,
       url: `${SITE_URL}/fellepok/${band.slug.current}`,
     })),
+    offers: days
+      .filter((d) => d.ticketPrice != null)
+      .map((d) => ({
+        '@type': 'Offer',
+        price: d.ticketPrice,
+        priceCurrency: 'HUF',
+        availability: 'https://schema.org/InStock',
+        validFrom: d.date,
+        url: SITE_URL,
+      })),
     organizer: {
       '@type': 'Organization',
       name,

@@ -18,8 +18,8 @@ export default async function ProgramPage() {
     getEvent(),
   ])
   const days = eventDayLabels(event?.days)
-  const day1Rows = buildRows(bands, activities, 1, event?.days?.[0])
-  const day2Rows = buildRows(bands, activities, 2, event?.days?.[1])
+  const day1Rows = buildRows(bands, activities, 1, event?.days?.[0]?.date)
+  const day2Rows = buildRows(bands, activities, 2, event?.days?.[1]?.date)
 
   return (
     <div className={`min-h-dvh px-6 py-16 max-w-3xl mx-auto w-full ${footerOverlapPaddingClass}`}>

@@ -87,6 +87,14 @@ export interface EventSocialLinks {
   tiktok?: string
 }
 
+export interface EventDay {
+  _key: string
+  /** ISO 'YYYY-MM-DD' */
+  date: string
+  /** Day-ticket price in Ft, shown on the homepage program stickers. */
+  ticketPrice?: number
+}
+
 export interface EventRule {
   _key: string
   title: string
@@ -106,8 +114,8 @@ export interface EventData {
   _type: 'event'
   name: string
   isActive?: boolean
-  /** Event days as ISO 'YYYY-MM-DD' strings; order defines day 1, day 2… */
-  days?: string[]
+  /** Event days with per-day ticket price; order defines day 1, day 2… */
+  days?: EventDay[]
   year?: string
   city?: string
   heroDescription?: string

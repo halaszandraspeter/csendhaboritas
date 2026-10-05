@@ -24,11 +24,13 @@ function DayList({
   bands,
   day,
   dayIso,
+  ticketPrice,
 }: {
   label: string
   bands: Band[]
   day: 1 | 2
   dayIso?: string
+  ticketPrice?: number
 }) {
   // Start null to avoid SSR/client hydration mismatch; fill in after mount.
   const [now, setNow] = useState<number | null>(null)
@@ -63,7 +65,7 @@ function DayList({
           aria-hidden="true"
         />
         <span className="relative flex h-full w-full items-center justify-center pt-1 font-display tracking-widest text-base md:text-lg text-bg font-bold">
-          2000 Ft
+          {ticketPrice ?? 2000} Ft
         </span>
       </div>
       <p className={cn('font-display text-2xl md:text-3xl tracking-widest mb-4', s.label)}>
@@ -125,8 +127,20 @@ export function ProgramSnippet({ day1Bands, day2Bands, event }: ProgramSnippetPr
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <DayList label={d1} bands={day1Bands} day={1} dayIso={event?.days?.[0]} />
-        <DayList label={d2} bands={day2Bands} day={2} dayIso={event?.days?.[1]} />
+        <DayList
+          label={d1}
+          bands={day1Bands}
+          day={1}
+          dayIso={event?.days?.[0]?.date}
+          ticketPrice={event?.days?.[0]?.ticketPrice}
+        />
+        <DayList
+          label={d2}
+          bands={day2Bands}
+          day={2}
+          dayIso={event?.days?.[1]?.date}
+          ticketPrice={event?.days?.[1]?.ticketPrice}
+        />
       </div>
 
       <p className="text-center font-display text-lg md:text-xl tracking-widest text-fg/80 mt-8">
