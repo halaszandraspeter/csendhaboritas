@@ -123,9 +123,14 @@ export default async function TamogatokPage() {
           {partners.length > 0 && (
             <section className="space-y-8">
               {mainSponsor && <SectionLabel label="„BŰNTÁRSAK”" color="day2" />}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              <div className="flex flex-wrap justify-center gap-8">
                 {partners.map((sponsor) => (
-                  <SponsorCard key={sponsor._key} sponsor={sponsor} />
+                  <div
+                    key={sponsor._key}
+                    className="w-[calc(50%-1rem)] md:w-[calc(33.3333%-1.3333rem)] lg:w-[calc(25%-1.5rem)]"
+                  >
+                    <SponsorCard sponsor={sponsor} />
+                  </div>
                 ))}
               </div>
             </section>
