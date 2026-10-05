@@ -129,36 +129,9 @@ export function ProgramSnippet({ day1Bands, day2Bands, event }: ProgramSnippetPr
         <DayList label={d2} bands={day2Bands} day={2} dayIso={event?.days?.[1]} />
       </div>
 
-      <div className="text-center mt-8">
-        <div className="relative inline-block pr-30 md:pr-34">
-          <p className="font-display tracking-widest text-lg md:text-xl text-fg">
-            KÉT NAPIJEGY CSAK
-          </p>
-          <div
-            className="absolute top-1/2 right-0 w-28 h-28 md:w-32 md:h-32 shrink-0"
-            style={{ transform: 'translateY(calc(-50% - 0.125rem))' }}
-          >
-            <div
-              className="absolute inset-0 overflow-hidden"
-              style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}
-            >
-              <Image src="/sticker-green.webp" alt="" fill className="object-contain scale-[1.08]" aria-hidden="true" />
-            </div>
-            <div
-              className="absolute inset-0 overflow-hidden"
-              style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
-            >
-              <Image src="/sticker-purple.webp" alt="" fill className="object-contain" aria-hidden="true" />
-            </div>
-            <span className="absolute inset-0 flex items-center justify-center pt-1 font-display tracking-wide text-lg md:text-xl text-bg font-bold">
-              3000 Ft
-            </span>
-          </div>
-        </div>
-        <p className="font-body text-sm text-muted-fg mt-1">
-          Karszalagvásárlás a helyszínen készpénzzel vagy kártyával.
-        </p>
-      </div>
+      <p className="text-center font-display text-lg md:text-xl tracking-widest text-fg/80 mt-8">
+        KARSZALAGVÁSÁRLÁS A HELYSZÍNEN KÉSZPÉNZZEL VAGY KÁRTYÁVAL
+      </p>
 
       <div className="text-center mt-10">
         <Link
