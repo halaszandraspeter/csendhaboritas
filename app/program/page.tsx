@@ -8,6 +8,7 @@ import { ProgramTimeline } from '@/src/components/sections/ProgramTimeline'
 export const metadata: Metadata = {
   title: 'Program',
   description: 'A Miskolci Csendháborítás két napjának teljes műsora — Október 9–10.',
+  alternates: { canonical: '/program' },
 }
 
 export default async function ProgramPage() {

@@ -4,15 +4,16 @@ import { MapPin, Navigation } from 'lucide-react'
 import { getEvent } from '@/src/lib/sanity/queries'
 import { sanityImageUrl } from '@/src/lib/sanity/image'
 import { footerOverlapPaddingClass } from '@/src/config/layout'
+import { VENUE_LAT, VENUE_LNG } from '@/src/config/site'
 import { cn } from '@/src/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Helyszín',
   description: 'Grizzly Music Pub — a Miskolci Csendháborítás helyszíne. Cím, megközelítés, térkép.',
+  alternates: { canonical: '/helyszin' },
 }
 
-// Grizzly Music Pub exact coordinates (from the Google Maps place URL).
-const VENUE_COORDS = '48.1037614,20.7787727'
+const VENUE_COORDS = `${VENUE_LAT},${VENUE_LNG}`
 const MAPS_PLACE_URL = `https://www.google.com/maps/search/?api=1&query=${VENUE_COORDS}`
 const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${VENUE_COORDS}`
 

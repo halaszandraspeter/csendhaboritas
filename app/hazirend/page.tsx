@@ -5,6 +5,7 @@ import { footerOverlapPaddingClass } from '@/src/config/layout'
 export const metadata: Metadata = {
   title: 'Házirend',
   description: 'A Miskolci Csendháborítás házirendje.',
+  alternates: { canonical: '/hazirend' },
 }
 
 const paperEdgeVariants = [

@@ -8,6 +8,7 @@ import type { Sponsor } from '@/src/types'
 export const metadata: Metadata = {
   title: 'Támogatók',
   description: 'A Miskolci Csendháborítás támogatói.',
+  alternates: { canonical: '/tamogatok' },
 }
 
 /** Section divider matching the program page: a coloured rule with a centred label. */

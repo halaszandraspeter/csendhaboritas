@@ -7,6 +7,7 @@ import { footerOverlapPaddingClass } from '@/src/config/layout'
 export const metadata: Metadata = {
   title: 'Kapcsolat',
   description: 'Kapcsolatfelvétel a Miskolci Csendháborítás szervezőivel.',
+  alternates: { canonical: '/kapcsolat' },
 }
 
 function OrganizerCard({

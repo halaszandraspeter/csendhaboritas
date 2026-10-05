@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { displayFont, bodyFont } from '@/src/config/fonts'
+import { SITE_URL } from '@/src/config/site'
 import { Header } from '@/src/components/layout/Header'
 import { FooterWrapper } from '@/src/components/layout/FooterWrapper'
 import { getEvent } from '@/src/lib/sanity/queries'
@@ -24,14 +25,19 @@ export async function generateMetadata(): Promise<Metadata> {
   const titleWithYear = `${name} ${year}`
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: titleWithYear,
       template: `%s | ${name}`,
     },
     description: `${name} — ${venue}, ${city}.${dateRange ? ` ${dateRange}, ${year}.` : ''}`,
+    alternates: {
+      canonical: '/',
+    },
     openGraph: {
       title: titleWithYear,
       description: `${venue} · ${city}${dateRange ? ` · ${dateRange}` : ''}`,
+      url: '/',
       locale: 'hu_HU',
       type: 'website',
       images: [
@@ -42,6 +48,9 @@ export async function generateMetadata(): Promise<Metadata> {
           alt: titleWithYear,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
     },
   }
 }

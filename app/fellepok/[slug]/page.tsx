@@ -32,6 +32,7 @@ export async function generateMetadata({
     description: band.bio
       ? band.bio.slice(0, 160)
       : `${band.name} a ${eventLabel} fellépői között.`,
+    alternates: { canonical: `/fellepok/${slug}` },
   }
 }
 
