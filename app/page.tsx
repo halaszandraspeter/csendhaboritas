@@ -71,7 +71,7 @@ export default async function Kezdolap() {
   const day2Bands = bands.filter((b) => b.day === 2)
 
   return (
-    <div className={footerOverlapPaddingClass}>
+    <div className={`overflow-x-clip ${footerOverlapPaddingClass}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildEventJsonLd(event, bands)) }}
