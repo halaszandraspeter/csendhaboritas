@@ -44,9 +44,9 @@ export const eventSchema = defineType({
             }),
             defineField({
               name: 'soldOut',
-              title: 'Elfogyott',
+              title: 'SOLD OUT',
               type: 'boolean',
-              description: 'Ha be van kapcsolva, a főoldali matricán az ár helyett „ELFOGYOTT” jelenik meg.',
+              description: 'When enabled, the homepage sticker shows "SOLD OUT" instead of the price.',
               initialValue: false,
             }),
           ],
@@ -55,7 +55,7 @@ export const eventSchema = defineType({
             prepare({ date, price, soldOut }) {
               return {
                 title: date ?? 'Nincs dátum',
-                subtitle: soldOut ? 'ELFOGYOTT' : price != null ? `${price} Ft` : 'Nincs ár megadva',
+                subtitle: soldOut ? 'SOLD OUT' : price != null ? `${price} Ft` : 'Nincs ár megadva',
               }
             },
           },
