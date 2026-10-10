@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/src/lib/utils'
-import { DoodleArrow } from '@/src/components/ui/DoodleArrow'
+import { useNow } from '@/src/lib/useNow'
 import { computeStatuses, type RowStatus, type ScheduleRow } from '@/src/lib/program'
 
 export type DayColor = 'day1' | 'day2'
@@ -44,7 +44,7 @@ function NowBadge({ color }: { color: Color }) {
   )
 }
 
-// Mobile-only tap affordance; the desktop doodle covers the two-column layout.
+// Tap affordance on band cards.
 function Chevron({ className }: { className?: string }) {
   return (
     <svg
@@ -62,7 +62,7 @@ function Chevron({ className }: { className?: string }) {
   )
 }
 
-// "Részletek ›" hint in the day colour; mobile-only.
+// "Részletek ›" hint in the day colour.
 function DetailsBadge({ color, className }: { color: Color; className?: string }) {
   return (
     <span
@@ -140,7 +140,7 @@ function TimelineCard({
           {isBand && (
             <DetailsBadge
               color={color}
-              className="md:hidden absolute bottom-2 right-2 rounded-full bg-black/60 px-2.5 py-1 backdrop-blur-sm"
+              className="absolute bottom-2 right-2 rounded-full bg-black/60 px-2.5 py-1 backdrop-blur-sm"
             />
           )}
         </div>
@@ -161,7 +161,7 @@ function TimelineCard({
           </span>
           {status === 'current' && <NowBadge color={color} />}
           {isBand && !row.imageUrl && (
-            <Chevron className={cn('md:hidden ml-auto', color.time)} />
+            <Chevron className={cn('ml-auto', color.time)} />
           )}
         </div>
         {isBand
@@ -190,26 +190,16 @@ export function ProgramTimeline({
   weekday,
   dayColor,
   rows,
-  showHint = false,
 }: {
   label: string
   weekday: string
   dayColor: DayColor
   rows: ScheduleRow[]
-  showHint?: boolean
 }) {
-  // Start null to avoid SSR/client hydration mismatch; fill in after mount.
-  const [now, setNow] = useState<number | null>(null)
-  useEffect(() => {
-    setNow(Date.now())
-    const t = setInterval(() => setNow(Date.now()), 30_000)
-    return () => clearInterval(t)
-  }, [])
+  const now = useNow()
 
   const statuses = useMemo(() => computeStatuses(rows, now), [rows, now])
   const color = dayStyles[dayColor]
-  const dayNum = dayColor === 'day1' ? 1 : 2
-  const hasBand = rows.some((r) => r.kind === 'band')
 
   return (
     <section>
@@ -232,12 +222,6 @@ export function ProgramTimeline({
           </p>
         )}
       </div>
-
-      {showHint && hasBand && (
-        <div className="hidden md:flex justify-end pr-8 -mt-2 -mb-6">
-          <DoodleArrow day={dayNum} showFrom="md" />
-        </div>
-      )}
 
       {rows.length === 0 ? (
         <p className="py-10 text-center font-display text-2xl tracking-widest text-muted-fg/50">

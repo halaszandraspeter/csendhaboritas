@@ -2,10 +2,10 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import { eventDayLabels, setEpoch } from '@/src/lib/dates'
 import { computeStatuses } from '@/src/lib/program'
 import { cn } from '@/src/lib/utils'
+import { useNow } from '@/src/lib/useNow'
 import type { Band, EventData } from '@/src/types'
 
 interface ProgramSnippetProps {
@@ -34,13 +34,7 @@ function DayList({
   ticketPrice?: number
   soldOut?: boolean
 }) {
-  // Start null to avoid SSR/client hydration mismatch; fill in after mount.
-  const [now, setNow] = useState<number | null>(null)
-  useEffect(() => {
-    setNow(Date.now())
-    const t = setInterval(() => setNow(Date.now()), 30_000)
-    return () => clearInterval(t)
-  }, [])
+  const now = useNow()
 
   const s = dayStyles[day]
   const sortedBands = [...bands].sort((a, b) => {

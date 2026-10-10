@@ -43,14 +43,12 @@ export default async function ProgramPage() {
           weekday={days[0]?.weekday ?? ''}
           dayColor="day1"
           rows={day1Rows}
-          showHint
         />
         <ProgramTimeline
           label={days[1]?.upper ?? 'OKTÓBER 10.'}
           weekday={days[1]?.weekday ?? ''}
           dayColor="day2"
           rows={day2Rows}
-          showHint
         />
       </div>
 
