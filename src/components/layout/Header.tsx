@@ -32,10 +32,12 @@ export function Header({ mainLogoUrl = '/logo-main.webp' }: { mainLogoUrl?: stri
     setIsMenuOpen(!isMenuOpen)
   }
 
-  // Close menu on route change
-  useEffect(() => {
+  // Close menu on route change (adjust state during render, not in an effect)
+  const [menuPathname, setMenuPathname] = useState(pathname)
+  if (menuPathname !== pathname) {
+    setMenuPathname(pathname)
     setIsMenuOpen(false)
-  }, [pathname])
+  }
 
   // Prevent body scroll when menu is open
   useEffect(() => {
