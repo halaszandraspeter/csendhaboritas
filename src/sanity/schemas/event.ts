@@ -42,13 +42,20 @@ export const eventSchema = defineType({
               description: 'Az adott napra szóló napijegy ára forintban (pl. a főoldali matricán).',
               validation: (Rule) => Rule.min(0),
             }),
+            defineField({
+              name: 'soldOut',
+              title: 'Elfogyott',
+              type: 'boolean',
+              description: 'Ha be van kapcsolva, a főoldali matricán az ár helyett „ELFOGYOTT” jelenik meg.',
+              initialValue: false,
+            }),
           ],
           preview: {
-            select: { date: 'date', price: 'ticketPrice' },
-            prepare({ date, price }) {
+            select: { date: 'date', price: 'ticketPrice', soldOut: 'soldOut' },
+            prepare({ date, price, soldOut }) {
               return {
                 title: date ?? 'Nincs dátum',
-                subtitle: price != null ? `${price} Ft` : 'Nincs ár megadva',
+                subtitle: soldOut ? 'ELFOGYOTT' : price != null ? `${price} Ft` : 'Nincs ár megadva',
               }
             },
           },

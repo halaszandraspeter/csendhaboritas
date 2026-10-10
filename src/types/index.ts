@@ -93,6 +93,8 @@ export interface EventDay {
   date: string
   /** Day-ticket price in Ft, shown on the homepage program stickers. */
   ticketPrice?: number
+  /** When true, the sticker shows SOLD OUT instead of the price. */
+  soldOut?: boolean
 }
 
 export interface EventRule {

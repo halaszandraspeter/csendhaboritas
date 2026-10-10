@@ -25,12 +25,14 @@ function DayList({
   day,
   dayIso,
   ticketPrice,
+  soldOut,
 }: {
   label: string
   bands: Band[]
   day: 1 | 2
   dayIso?: string
   ticketPrice?: number
+  soldOut?: boolean
 }) {
   // Start null to avoid SSR/client hydration mismatch; fill in after mount.
   const [now, setNow] = useState<number | null>(null)
@@ -65,7 +67,7 @@ function DayList({
           aria-hidden="true"
         />
         <span className="relative flex h-full w-full items-center justify-center pt-1 font-display tracking-widest text-base md:text-lg text-bg font-bold">
-          {ticketPrice ?? 2000} Ft
+          {soldOut ? 'SOLD OUT' : `${ticketPrice ?? 2000} Ft`}
         </span>
       </div>
       <p className={cn('font-display text-2xl md:text-3xl tracking-widest mb-4', s.label)}>
@@ -133,6 +135,7 @@ export function ProgramSnippet({ day1Bands, day2Bands, event }: ProgramSnippetPr
           day={1}
           dayIso={event?.days?.[0]?.date}
           ticketPrice={event?.days?.[0]?.ticketPrice}
+          soldOut={event?.days?.[0]?.soldOut}
         />
         <DayList
           label={d2}
@@ -140,6 +143,7 @@ export function ProgramSnippet({ day1Bands, day2Bands, event }: ProgramSnippetPr
           day={2}
           dayIso={event?.days?.[1]?.date}
           ticketPrice={event?.days?.[1]?.ticketPrice}
+          soldOut={event?.days?.[1]?.soldOut}
         />
       </div>
 

@@ -42,7 +42,7 @@ const ALL_ACTIVITIES_QUERY = defineQuery(`
 
 const EVENT_QUERY = defineQuery(`
   *[_type == "event" && isActive == true][0] {
-    _id, _type, name, days[]{ _key, date, ticketPrice }, year, city, heroDescription, venue, address,
+    _id, _type, name, days[]{ _key, date, ticketPrice, soldOut }, year, city, heroDescription, venue, address,
     mapEmbedUrl, venueDescription, venuePhotos,
     transportInfo, socialLinks, ogImage, mainLogo, lightLogo,
     sponsors[]{ _key, name, logo, url, isMain },

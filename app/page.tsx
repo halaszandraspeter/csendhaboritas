@@ -52,7 +52,9 @@ function buildEventJsonLd(event: EventData | null, bands: Band[]) {
         '@type': 'Offer',
         price: d.ticketPrice,
         priceCurrency: 'HUF',
-        availability: 'https://schema.org/InStock',
+        availability: d.soldOut
+          ? 'https://schema.org/SoldOut'
+          : 'https://schema.org/InStock',
         validFrom: d.date,
         url: SITE_URL,
       })),
